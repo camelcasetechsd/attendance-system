@@ -11,3 +11,8 @@ default:
             base_url: http://attendance.local
             goutte: ~
             selenium2: ~
+
+development:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://attendance.camelcasetech.com
