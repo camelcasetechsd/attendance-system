@@ -40,7 +40,7 @@ EOT
         /* @var $entityManager \Doctrine\ORM\EntityManager */
         $entityManager = $this->getHelper('em')->getEntityManager();
 
-        $loader = new \Nelmio\Alice\Fixtures\Loader();
+        $loader = new \Nelmio\Alice\Loader\Yaml();
 
         $branches = $loader->load('application/data/fixtures/BranchFixtures.yml');
         $this->insertObjectsInDatabase($entityManager, $branches);

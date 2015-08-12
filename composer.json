@@ -5,7 +5,7 @@
         "zendframework/zendframework1": "1.*",
         "phly/mustache": "dev-master",
         "doctrine/orm": "2.*",
-        "nelmio/alice": "^2.0@dev",
+        "nelmio/alice": "1.7.2",
         "behat/behat": "2.5.x",
         "behat/mink": "1.4.*@stable",
         "behat/mink-extension": "*",
