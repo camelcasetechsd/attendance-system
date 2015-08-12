@@ -34,7 +34,10 @@ class Requests_Model_Permission
         $notificationData = array(
             'text' => $user->name . ' is Asking for a permission on ' . $permissionInfo['date'] . ' from ' . $permissionInfo['fromTime'] . ' to ' . $permissionInfo['toTime']
             , 'url' => '/requests/myrequests'
-            , 'user' => $reciver);
+            , 'user' => $reciver
+            );
+//        var_dump($notificationData);
+//        exit();
         $notificationModel = new Notifications_Model_Notifications($this->entityManager);
         $notificationModel->newNotification($notificationData);
     }

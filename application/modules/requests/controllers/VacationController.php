@@ -19,24 +19,22 @@ class Requests_VacationController extends Zend_Controller_Action
         $form = new Requests_Form_VacationRequestForm();
         $em = $this->getInvokeArg('bootstrap')->getResource('entityManager');
         $request = $this->getRequest();
+        $storage = Zend_Auth::getInstance()->getIdentity();
         $vacationRequestInfo = $this->_request->getParams();
         $vacationModel = new Requests_Model_VacationRequest($em);
         if ($request->isPost()) {
             if ($form->isValid($request->getPost())) {
-                if($vacationRequestInfo['toDate']==NULL){
+                if ($vacationRequestInfo['toDate'] == NULL) {
                     $vacationRequestInfo['toDate'] = NULL;
                 }
-                $vacationModel->newVacationRequest($vacationRequestInfo);
+                $vacationModel->newVacationRequest($vacationRequestInfo,$storage['id']);
                 $this->redirect('/requests/myrequests/index');
             }
         }
-
-
-
-
-
         $this->view->vacationRequestForm = $form;
-    }
+        
+        
+                }
 
     public function showAction()
     {
@@ -57,16 +55,13 @@ class Requests_VacationController extends Zend_Controller_Action
         $this->view->dateOfSubmission = $vacation[0]->dateOfSubmission;
         $this->view->attachment = $vacation[0]->attachment;
         $this->view->status = $vacation[0]->status;
-        if($vacation[0]->attachment == NULL)
-        {
+        if ($vacation[0]->attachment == NULL) {
             $this->view->attchNullFlag = TRUE;
-        }
-        else
-        {
+        } else {
             $this->view->attachImgFlag = TRUE;
         }
         $this->view->attachment = $vacation[0]->attachment;
-        
+
         $commentForm = new Requests_Form_CommentForm();
         $commentModel = new Requests_Model_Comment($em);
         $request = $this->getRequest();
@@ -76,26 +71,21 @@ class Requests_VacationController extends Zend_Controller_Action
                 $commentModel->addComment($commentInfo, $requestId, $requestType = 2);
             }
         }
-        $comments = $commentModel->listRequestComments($requestId,$requestType = 2 );
+        $comments = $commentModel->listRequestComments($requestId, $requestType = 2);
 
-        
+
         $currentuser = $vacationRequestModel->getCurrentUserId();
-        
-        foreach ($comments as $comment)
-        {
+
+        foreach ($comments as $comment) {
             $commentCreator = $commentModel->getCommentCreatorId($comment->id);
             if ($currentuser === $commentCreator) {
-            
+
                 $comment->iscreator = TRUE;
-            }
-            else {
+            } else {
 
                 $comment->iscreator = FALSE;
             }
-            
         }
-        
-        
         $this->view->requestComments = $comments;
         $this->view->commentForm = $commentForm;
     }

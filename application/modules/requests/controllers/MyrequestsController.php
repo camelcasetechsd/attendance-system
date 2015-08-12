@@ -19,16 +19,15 @@ class Requests_MyrequestsController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $userRepository = $this->_em->getRepository('Attendance\Entity\User'); 
-        
+        $userRepository = $this->_em->getRepository('Attendance\Entity\User');
+
         $permissionModel = new Requests_Model_Permission($this->_em);
 
         $vacationRequestsModel = new Requests_Model_VacationRequest($this->_em);
 
         $workFromHomeModel = new Requests_Model_Workfromhome($this->_em);
-        
-        if($this->acl->isAllowed($this->role, $this->resource, 'viewall'))
-        {
+
+        if ($this->acl->isAllowed($this->role, $this->resource, 'viewall')) {
             $permissions = $permissionModel->listAll();
             $vacationRequests = $vacationRequestsModel->listAll();
             $workFromHomeRequests = $workFromHomeModel->listAll();
@@ -43,24 +42,21 @@ class Requests_MyrequestsController extends Zend_Controller_Action
         $cancelActionAllowed = $this->acl->isAllowed($this->role, $this->resource, 'cancel');
         $approveActionAllowed = $this->acl->isAllowed($this->role, $this->resource, 'approve');
         $declineActionAllowed = $this->acl->isAllowed($this->role, $this->resource, 'decline');
-        foreach ($permissions as $request)
-        {
+        foreach ($permissions as $request) {
             //$request->commentActionAllowed = $commentActionAllowed;
             $request->cancelActionAllowed = ($cancelActionAllowed && ($request->status == 'Submitted'));
             $request->approveActionAllowed = $approveActionAllowed && ($request->status == 'Submitted');
             $request->declineActionAllowed = $declineActionAllowed && ($request->status == 'Submitted');
         }
-        
-        foreach ($workFromHomeRequests as $request)
-        {
+
+        foreach ($workFromHomeRequests as $request) {
             $request->user = $userRepository->find($request->user);
             $request->cancelActionAllowed = $cancelActionAllowed && ($request->status == 'Submitted');
             $request->approveActionAllowed = $approveActionAllowed && ($request->status == 'Submitted');
             $request->declineActionAllowed = $declineActionAllowed && ($request->status == 'Submitted');
         }
-        
-        foreach ($vacationRequests as $request)
-        {
+
+        foreach ($vacationRequests as $request) {
             //$request->commentActionAllowed = $commentActionAllowed;
             $request->cancelActionAllowed = $cancelActionAllowed && ($request->status == 'Submitted');
             $request->approveActionAllowed = $approveActionAllowed && ($request->status == 'Submitted');
@@ -75,21 +71,20 @@ class Requests_MyrequestsController extends Zend_Controller_Action
     public function cancelAction()
     {
         $requestId = $this->getParam('id');
-
         $request = $this->getRequestEntity($requestId);
-
         $request->status = Attendance\Entity\Permission::STATUS_CANCELLED;
-
         $this->updateEntity($request);
     }
 
     public function declineAction()
     {
         $requestId = $this->getParam('id');
-
         $request = $this->getRequestEntity($requestId);
-
         $request->status = Attendance\Entity\Permission::STATUS_DENIED;
+
+        $storage = Zend_Auth::getInstance()->getIdentity();
+        $model = new Requests_Model_Myrequests($this->_em);
+        $model->rejectionNotification($request);
 
         $this->updateEntity($request);
     }
@@ -97,42 +92,44 @@ class Requests_MyrequestsController extends Zend_Controller_Action
     public function approveAction()
     {
         $requestId = $this->getParam('id');
-
+        $storage = Zend_Auth::getInstance()->getIdentity();
+        $model = new Requests_Model_Myrequests($this->_em);
         $request = $this->getRequestEntity($requestId);
-
         $request = $this->getRequestEntity($requestId);
-        
         $previousRequestState = $request->status;
-        
         $request->status = Attendance\Entity\Permission::STATUS_APPROVED;
-
         // affecting user's vacation balance
         $user = $request->user;
-        
+
         switch ($this->getParam('requesttype')) {
             case "Permission" :
                 break;
             case "VacationRequest" :
-                if($request->vacationType->description == 'Casual' || $request->vacationType->description == 'Annual' )
-                {
+                if ($request->vacationType->description == 'Casual' || $request->vacationType->description == 'Annual') {
                     //to make sure its not approved twice
                     $vacationPeriod = $request->fromDate->diff($request->toDate);
-                    if($previousRequestState == Attendance\Entity\Permission::STATUS_SUBMITTED)
-                    {
+                    if ($previousRequestState == Attendance\Entity\Permission::STATUS_SUBMITTED) {
                         $user->vacationBalance = $user->vacationBalance - ($vacationPeriod->days + 1);
                     }
+                }
+                if ($user->vacationBalance == 0) {
+                    //sending notification to the one who asked for the vacation
+                    $model->zeroVacationBalanceNotification($request->user->id);
+                } if ($user->vacationBalance < 0) {
+                    //sending notification to the one who asked for the vacation
+                    $model->lessThanZeroVacationBalanceNotification($request->user->id);
+                    //sending to the manager that perivious one exceeded his/her limit
+                    $model->vacationBalanceAlarmNotification($request->user);
+                    
                 }
                 break;
             case "Workfromhome" :
                 break;
         }
-        
-//        $this->_em->merge($user);
-//        $this->_em->flush();
-//        
+        // sending notification to user    
+        $model->approvalNotification($request);
+
         $this->updateEntity($request);
-        
-        
     }
 
     private function getRequestEntity($requestId)
@@ -157,7 +154,6 @@ class Requests_MyrequestsController extends Zend_Controller_Action
 
         $this->_em->merge($request);
         $this->_em->flush();
-
         $this->redirect('requests/myrequests/index');
     }
 

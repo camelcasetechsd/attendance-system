@@ -18,32 +18,48 @@ class Requests_Model_VacationRequest
         $this->_request = $request;
     }
 
-    public function newVacationRequest($vacationRequestInfo)
+    public function newVacationRequest($vacationRequestInfo, $userId)
     {
-        $entity = new Attendance\Entity\VacationRequest();
-        $auth = Zend_Auth::getInstance();
-        $storage = $auth->getIdentity();
         $userRepository = $this->_em->getRepository('Attendance\Entity\User');
         $vacationRepository = $this->_em->getRepository('Attendance\Entity\Vacation');
-        $userId = $storage['id'];
+        $entity = new Attendance\Entity\VacationRequest();
         $vacationType = $vacationRequestInfo['type'];
         $entity->user = $userRepository->find($userId);
         $entity->fromDate = new DateTime($vacationRequestInfo['fromDate']);
-        
-        if($vacationRequestInfo['toDate'] == NULL)
-        {
+
+        if ($vacationRequestInfo['toDate'] == NULL) {
             $entity->toDate = NULL;
-        }
-        else{
+        } else {
             $entity->toDate = new DateTime($vacationRequestInfo['toDate']);
         }
-        
+
         $entity->vacationType = $vacationRepository->find($vacationType);
         $entity->attachment = $this->saveAttachement();
         $entity->dateOfSubmission = new DateTime("now");
         $entity->status = 1;
         $this->_em->persist($entity);
         $this->_em->flush($entity);
+
+        $user = $userRepository->find(array('id' => $userId));
+        // send the request to the Manager
+        $reciver = $userRepository->find(array('id' => 28));
+                switch ($vacationType) {
+            case 1:
+                $vacationName ="Sick leave";
+                break;
+            case 2:
+                $vacationName ="casual vacation";
+                break;
+            case 3:
+                $vacationName ="annual vacation";
+                break;
+        }
+        $notificationData = array(
+            'text' => $user->name . ' is Asking for a '.$vacationName.' on ' .$vacationRequestInfo['fromDate'].' to '.$vacationRequestInfo['toDate']
+            , 'url' => '/requests/myrequests'
+            , 'user' => $reciver);
+        $notificationModel = new Notifications_Model_Notifications( $this->_em);
+        $notificationModel->newNotification($notificationData);
     }
 
     protected function saveAttachement()
@@ -76,8 +92,8 @@ class Requests_Model_VacationRequest
     protected function getRandomName()
     {
         $seed = str_split('abcdefghijklmnopqrstuvwxyz'
-            . 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-            . '0123456789');
+                . 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                . '0123456789');
         shuffle($seed);
         $cid = substr(implode('', $seed), 1, 10) . uniqid();
         return $cid;
@@ -105,13 +121,12 @@ class Requests_Model_VacationRequest
         foreach ($requests as $key) {
             $key->dateOfSubmission = date_format($key->dateOfSubmission, 'm/d/Y');
             $key->fromDate = date_format($key->fromDate, 'm/d/Y');
-            if($key->toDate == NULL){
+            if ($key->toDate == NULL) {
                 $key->toDate = Null;
-            }
-            else{
+            } else {
                 $key->toDate = date_format($key->toDate, 'm/d/Y');
             }
-            
+
             switch ($key->status) {
                 case Attendance\Entity\VacationRequest::STATUS_SUBMITTED :
                     $key->status = 'Submitted';
@@ -135,14 +150,12 @@ class Requests_Model_VacationRequest
         foreach ($data as $key) {
             $key->dateOfSubmission = date_format($key->dateOfSubmission, 'm/d/Y');
             $key->fromDate = date_format($key->fromDate, 'm/d/Y');
-            if($key->toDate == Null)
-            {
-                $key->toDate =Null;
-            }
-            else{
+            if ($key->toDate == Null) {
+                $key->toDate = Null;
+            } else {
                 $key->toDate = date_format($key->toDate, 'm/d/Y');
             }
-            
+
             switch ($key->status) {
                 case Attendance\Entity\Permission::STATUS_SUBMITTED :
                     $key->status = 'Submitted';
@@ -170,25 +183,21 @@ class Requests_Model_VacationRequest
         foreach ($result as $key) {
             $key->dateOfSubmission = date_format($key->dateOfSubmission, 'm/d/Y');
             $key->fromDate = date_format($key->fromDate, 'm/d/Y');
-            if($key->toDate == Null)
-            {
+            if ($key->toDate == Null) {
                 $key->toDate = Null;
-            }
-            else{
+            } else {
                 $key->toDate = date_format($key->toDate, 'm/d/Y');
             }
-            
+
             $key->user = $this->getUserNameById($key->user);
             $key->vacationType = $this->getVacationTypeById($key->vacationType);
             if ($key->status == 1) {
                 $key->status = "Submitted";
-            } elseif($key->status == 2){
+            } elseif ($key->status == 2) {
                 $key->status = "Cancelled";
-            }
-            elseif ($key->status == 3) {
+            } elseif ($key->status == 3) {
                 $key->status = "Approved";
-            }
-            elseif ($key->status == 4) {
+            } elseif ($key->status == 4) {
                 $key->status = "Denied";
             }
             if ($key->attachment == NULL) {

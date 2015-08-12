@@ -12,9 +12,10 @@ class Requests_Model_Workfromhome
     {
         $this->_em = $em;
         $this->_request = $request;
+        $this->userRepository = $this->_em->getRepository('Attendance\Entity\User');
     }
 
-    public function newRequest($requestInfo)
+    public function newRequest($requestInfo, $userId)
     {
         $auth = Zend_Auth::getInstance()->getIdentity();
         $entity = new Attendance\Entity\WorkFromHome();
@@ -33,6 +34,19 @@ class Requests_Model_Workfromhome
 //      through EntityManager#persist() to ensure consistency of your object model.
         $this->_em->persist($entity);
         $this->_em->flush();
+
+        $user = $this->userRepository->find(array('id' => $userId));
+        // send the request to the Manager
+        $reciver = $this->userRepository->find(array('id' => 28));
+        $notificationData = array(
+            'text' => $user->name . ' is Asking for a work from home request  from ' . $requestInfo['startDate'] . ' to ' . $requestInfo['endDate']
+            , 'url' => '/requests/myrequests'
+            , 'user' => $reciver
+        );
+//        var_dump($notificationData);
+//        exit();
+        $notificationModel = new Notifications_Model_Notifications($this->_em);
+        $notificationModel->newNotification($notificationData);
     }
 
     public function listAll()

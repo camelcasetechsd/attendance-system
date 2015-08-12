@@ -19,13 +19,14 @@ class Requests_WorkfromhomeController extends Zend_Controller_Action
     public function newAction()
     {
         $form = new Requests_Form_WorkfromhomeForm();
+        $storage = Zend_Auth::getInstance()->getIdentity();
         $em = $this->getInvokeArg('bootstrap')->getResource('entityManager');
         $request = $this->getRequest();
         $requestInfo = $this->_request->getParams();
         $workFromHomeModel = new Requests_Model_Workfromhome($em);
         if ($request->isPost()) {
             if ($form->isValid($request->getPost())) {
-                $workFromHomeModel->newRequest($requestInfo);
+                $workFromHomeModel->newRequest($requestInfo,$storage['id']);
                 $this->redirect('/requests/myrequests/index');
             }
         }
