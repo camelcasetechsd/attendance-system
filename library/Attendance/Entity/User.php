@@ -163,7 +163,7 @@ class User
         if (function_exists('password_verify')) {
             return password_verify($givenPassword, $savedPassword);
         } else {
-            return $this->hashPassword($givenPassword) == $savedPassword;
+            return self::hashPassword($givenPassword) == $savedPassword;
         }
     }
 
