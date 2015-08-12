@@ -14,7 +14,7 @@ class User
 {
 
     const DEFAULT_VACATION_BALANCE = 21;
-    const STATUS_ACTIVE  = 1;
+    const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
 
     /**
@@ -81,14 +81,14 @@ class User
      */
     public $description;
 
-     /**
+    /**
      *
      * @ORM\ManyToOne(targetEntity="Attendance\Entity\Role")
      * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
      * @var Attendance\Entity\Role
      */
     public $role;
-    
+
     /**
      *
      * @ORM\ManyToOne(targetEntity="Attendance\Entity\Branch")
@@ -142,16 +142,29 @@ class User
      */
     public $totalWorkingHoursThisMonth;
 
-    static public function hashPassword($password)
-    {
-        return password_hash($password, PASSWORD_BCRYPT);
-    }
-
     /**
      *
      * @ORM\Column(type="integer")
      * @var integer
      */
     public $status;
+
+    static public function hashPassword($password)
+    {
+        if (function_exists("password_hash")) {
+            return password_hash($password, PASSWORD_BCRYPT);
+        } else {
+            return crypt($password);
+        }
+    }
+
+    static public function verifyPassword($givenPassword, $savedPassword)
+    {
+        if (function_exists('password_verify')) {
+            return password_verify($givenPassword, $savedPassword);
+        } else {
+            return self::hashPassword($givenPassword) == $savedPassword;
+        }
+    }
 
 }

@@ -235,7 +235,7 @@ class Default_Service_Auth_Adapter implements Zend_Auth_Adapter_Interface
             $resultIdentity = $resultIdentities[0];
             $password = $resultIdentity->{$this->_credentialColumn};
             
-            if (!password_verify($this->_credential, $password)) {
+            if (!Attendance\Entity\User::verifyPassword($this->_credential, $password)) {
                 $this->_authenticateResultInfo['code'] = Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID;
                 $this->_authenticateResultInfo['messages'][] = 'Supplied credential is invalid.';
             } else {
