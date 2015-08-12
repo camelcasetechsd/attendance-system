@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd /vagrangt;
-
 composer install --prefer-dist;
 
 ./bin/cli orm:schema-tool:drop --force;
