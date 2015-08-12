@@ -41,6 +41,10 @@ To access the vagrant environment from the terminal, change to the vagrant direc
     cd /vagrant
     ./bin/cli schema:data-generate 
 
+### run acceptance tests
+    cd /vagrant
+    ./bin/behat
+
 ### View the site:
 
 Visit [http://attendance.local/](http://attendance.local/) to view the site.
