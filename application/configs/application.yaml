@@ -53,6 +53,15 @@ testing:
 
 development:
   _extends: base
+  resources:
+    dbal:
+      master:
+        default: true
+        driver: pdo_mysql
+        host: localhost
+        dbname: attendance
+        user: camelcasetech
+        password: c@m31C@$3T3c4
 
 local:
   _extends: base
