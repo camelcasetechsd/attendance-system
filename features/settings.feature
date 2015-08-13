@@ -16,7 +16,7 @@ Scenario: open vacations
     And I follow "settings"
     And I follow "vacation"
     Then I should be on "/settings/vacation/index"
-Scenario: get create vacation form 
+Scenario: list create vacation form 
     Given I mock the login session
     And I am on "/settings/vacation/index"
     And I follow "Create new Vacation"
@@ -37,7 +37,7 @@ Scenario: open branches
     And I follow "settings"
     And I follow "branches"
     Then I should be on "/settings/branches/index"
-Scenario: get create branch form 
+Scenario: list create branch form 
     Given I mock the login session
     And I am on "/settings/branches/index"
     And I follow "Create new Branch"
@@ -59,7 +59,7 @@ Scenario: open department
     And I follow "settings"
     And I follow "departments"
     Then I should be on "/settings/departments/index"
-Scenario: get create department form 
+Scenario: list create department form 
     Given I mock the login session
     And I am on "/settings/departments/index"
     And I follow "Create new Department"
@@ -81,7 +81,7 @@ Scenario: open holidays
     And I follow "settings"
     And I follow "holidays"
     Then I should be on "/settings/holiday/index"
-Scenario: get create holiday form 
+Scenario: list create holiday form 
     Given I mock the login session
     And I am on "/settings/holiday/index"
     And I follow "Create new Holiday"
@@ -102,7 +102,7 @@ Scenario: open attendance
     And I follow "settings"
     And I follow "attendance"
     Then I should be on "/settings/attendance/index"
-  Scenario: get create attendance form 
+  Scenario: list create attendance form 
     Given I mock the login session
     And I am on "/settings/attendance/index"
     And I follow "Create new Attendance"
@@ -123,7 +123,7 @@ Scenario: open Positions
     And I follow "settings"
     And I follow "positions"
     Then I should be on "/settings/position/index"
-Scenario: get create position form 
+Scenario: list create position form 
     Given I mock the login session
     And I am on "/settings/position/index"
     And I follow "Create new Position"
