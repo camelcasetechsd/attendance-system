@@ -41,11 +41,11 @@ class Settings_Form_HolidayForm extends Zend_Form
         ))->setLabel('To Date: ');
         $toDate->addValidator(new Attendance_Validate_CustomDateValidator(array('token' =>  'dateFrom'))) ;
 
-        $submit = new Zend_Form_Element_Submit('submit');
+        $submit = new Zend_Form_Element_Submit('Create');
         $submit->
                 setAttribs(array(
                     'class' => 'btn btn-success',
-                    'value' => 'Submit!'
+                    'value' => 'Create'
         ));
         
         $this->addElements(array(

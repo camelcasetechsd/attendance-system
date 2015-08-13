@@ -28,7 +28,7 @@ class Settings_Form_PositionForm extends Zend_Form
         $this->addElement('hidden', 'id', array(
         ));
 
-        $this->addElement('submit', 'positionCreate', array(
+        $this->addElement('submit', 'Create', array(
             'ignore' => true,
             'label' => 'Create',
             'class' => 'btn btn-success'

@@ -36,7 +36,7 @@ class Settings_Form_VacationForm extends Zend_Form
             
         ));
 
-        $this->addElement('submit', 'vacationCreate', array(
+        $this->addElement('submit', 'Create', array(
             'ignore' => true,
             'label' => 'Create',
             'class'=>'btn btn-success'

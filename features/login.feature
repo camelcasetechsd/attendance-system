@@ -1,6 +1,6 @@
 Feature: test the login functionality
 
-  Scenario: Failed Login
+    Scenario: Failed Login
     Given I am on "/sign/in"
     When I fill in the following:
       | username | nouser@nomail.com |

@@ -73,7 +73,7 @@ class Settings_Form_AttendanceForm extends Zend_Form
         $this->addElement('hidden', 'id', array(
         ));
 
-        $this->addElement('submit', 'vacationCreate', array(
+        $this->addElement('submit', 'Create', array(
             'ignore' => true,
             'label' => 'Create',
             'class' => 'btn btn-success'
