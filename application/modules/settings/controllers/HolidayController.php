@@ -18,7 +18,7 @@ class Settings_HolidayController extends Zend_Controller_Action {
 
     public function indexAction() {
         $year = $this->getParam('year');
-        $filterForm = new Settings_Form_FilterByYearForm(/*$options =*/["year" => $year], $this->entityManager);
+        $filterForm = new Settings_Form_FilterByYearForm(/*$options =*/array("year" => $year), $this->entityManager);
         if ($year) {
             $holidayList = $this->holidayModel->filterByYear($year);
         } else {
