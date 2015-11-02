@@ -17,12 +17,11 @@ class Settings_HolidayController extends Zend_Controller_Action {
     }
 
     public function indexAction() {
-        $filterForm = new Settings_Form_FilterByYearForm(null,$this->entityManager);
-        if($this->getParam('year'))
-        {
-            $holidayList = $this->holidayModel->filterByYear($this->getParam('year'));
-        }else
-        {
+        $year = $this->getParam('year');
+        $filterForm = new Settings_Form_FilterByYearForm(/*$options =*/["year" => $year], $this->entityManager);
+        if ($year) {
+            $holidayList = $this->holidayModel->filterByYear($year);
+        } else {
             $holidayList = $this->holidayModel->listAll();
         }
         foreach ($holidayList as $holiday) {

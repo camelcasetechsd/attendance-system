@@ -2,10 +2,19 @@
 
 class Settings_Form_FilterByYearForm extends Zend_Form
 {
+    /**
+     * @var string selected year to filter by 
+     */
+    public $selectedYear;
+    
     protected $entityManager;
 
-    public function __construct($options = null,$em)
+    public function __construct($options, $em)
     {
+        if(! (isset($options["year"]))){
+            $options["year"] = null;
+        }
+        $this->selectedYear = $options["year"];
         $this->entityManager = $em;
         unset($options['em']);
         parent::__construct($options);
@@ -31,6 +40,9 @@ class Settings_Form_FilterByYearForm extends Zend_Form
         $allHolidays = $holidayRepository->findBy(array(), array('dateFrom' => 'DESC'));
         foreach ($allHolidays as $holiday) {
             $year->addMultiOption(date_format($holiday->dateFrom, 'Y'),date_format($holiday->dateFrom, 'Y'));
+        }
+        if(! is_null($this->selectedYear)){
+            $year->setValue($this->selectedYear);
         }
 
         
