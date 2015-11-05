@@ -3,6 +3,8 @@
 ## 
 
 default:
+    filters:
+        tags: "~@ignore"
     paths:
         features: '%behat.paths.base%/features'
         bootstrap: '%behat.paths.features%/bootstrap'
