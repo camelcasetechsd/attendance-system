@@ -35,6 +35,24 @@ class Notifications_Model_Notifications
        $notifications = $this->repository->findBy(array('user'=>$userId,'status'=>2), array('id' => 'DESC'));
        return $notifications;
     }
+    /**
+     * get Notifications Count
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * @access public
+     * 
+     * @param int $userId logged in user id
+     * @return int Notifications Count
+     */
+    public function listNotificationsCount($userId, $status){
+       $queryBuilder = $this->repository->createQueryBuilder("n");
+       $notificationsCount =  $queryBuilder->select('count(n.id)')
+               ->where("n.user = :userId")
+               ->andWhere("n.status = :status")
+               ->setParameters(array('userId'=>$userId,'status'=>$status))
+               ->getQuery()
+               ->getSingleScalarResult();
+       return $notificationsCount;
+    }
     public function seenNotification($notificationId){
         $notification = $this->repository->find(array('id'=>$notificationId));
         $notification->status = 1;

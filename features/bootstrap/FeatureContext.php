@@ -23,11 +23,15 @@ class FeatureContext extends MinkContext
     /**
      * Initializes context.
      * Every scenario gets it's own context object.
-     *
+     * 
      * @param array $parameters context parameters (set up via behat.yml)
      */
     public function __construct(array $parameters)
     {
+        $this->useContext('notification_subcontext', new NotificationSubContext(array(
+            /* custom params */
+        )));
+        
         $this->app = new ControllerTestCase();
         $this->app->setUp();
     }
@@ -89,13 +93,21 @@ class FeatureContext extends MinkContext
     }
 
     /**
-     * @Given /^I mock the login session$/
+     * @Given /^I mock the login session( with "([^"]*)" "([^"]*)")?$/
+     * 
+     * @param string $extraString extra credentials provided : ' with "username" "password"' ,default is bool false
+     * @param string $username optional username to login with ,default is bool false
+     * @param string $password optional password to login with ,default is bool false
      */
-    public function iMockTheLoginSession() {
+    public function iMockTheLoginSession($extraString = false, $username = false, $password = false) {
 
+        if($username === false && $password === false){
+            $username = "admin";
+            $password = "admin";
+        }
         $this->iAmOnHomepage();
-        $this->fillField('username', 'admin');
-        $this->fillField('password', 'admin');
+        $this->fillField('username', $username);
+        $this->fillField('password', $password);
         $this->pressButton('login');
     }
 

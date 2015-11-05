@@ -1,0 +1,3 @@
+-
+  path: APPLICATION_PATH/modules/notifications/listeners/NotificationListener.php
+  class: NotificationListener

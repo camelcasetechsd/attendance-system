@@ -87,3 +87,16 @@ li{
     margin-top: 17px;
     margin-bottom: 30px;
 }
+.notification_count 
+{
+    padding: 2px 4px 2px 4px;
+    background: #CA0000;
+    color: #ffffff;
+    margin-left: 12px;
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 23px;
+    position: absolute;
+    margin-top: -17px;
+    font-size: 7px;
+}
