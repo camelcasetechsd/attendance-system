@@ -1,7 +1,5 @@
 <?php
 
-use Attendance\Entity\Role;
-
 /**
  * Listener Check if user is logged in
  * Then related business would be attached to proper events

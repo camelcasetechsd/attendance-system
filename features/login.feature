@@ -1,7 +1,4 @@
-Feature: test the notification functionality
-new notification appear in side menu when created
-disappear when clicked on notification
-manager and others should see notifications
+Feature: test the login functionality
 
     Scenario: Failed Login
     Given I am on "/sign/in"

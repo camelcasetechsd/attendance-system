@@ -35,7 +35,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      * Register all event listeners
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * @access public
-     * @throws Zend_Application_Exception
+     * @throws Zend_Application_Exception Listener need class and path keys to be defined
+     * @throws Zend_Application_Exception Listener for class : $class ,at path : $path need to be defined
      */
     public function registerListeners()
     {
