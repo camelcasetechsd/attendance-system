@@ -1,4 +1,3 @@
-@ignore
 Feature: Notifications
   In order to stay notified with all updates
   As a logged in system user
