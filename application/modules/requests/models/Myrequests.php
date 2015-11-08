@@ -17,7 +17,7 @@ class Requests_Model_Myrequests
     public function approvalNotification($request)
     {
         // send the request to the user
-        $reciver = $this->userRepository->find(array('id' => $request->user));
+        $reciver = $this->userRepository->find(array('id' => $request->user->id));
         $notificationData = array(
             'text' => 'Your request has been approved '
             , 'url' => '/requests/myrequests'
@@ -31,7 +31,7 @@ class Requests_Model_Myrequests
     public function rejectionNotification($request)
     {
         // send the request to the user
-        $reciver = $this->userRepository->find(array('id' => $request->user));
+        $reciver = $this->userRepository->find(array('id' => $request->user->id));
         $notificationData = array(
             'text' => 'Sorry ... your request has been rejected  '
             , 'url' => '/requests/myrequests'
