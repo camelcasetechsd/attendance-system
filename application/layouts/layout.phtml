@@ -5,13 +5,7 @@
         <title>Attendance System</title>
         <meta charset="UTF-8">
 
-        <link rel="stylesheet" href="/css/template-styling.css" />
-        <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/bower_components/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
-        <link href="/bower_components/startbootstrap-sb-admin-2/dist/css/timeline.css" rel="stylesheet" type="text/css"/>
-        <link href="/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/css/errors_css.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="/concat/app{{#isProduction}}.min{{/isProduction}}.css" />
         <!-- Additional styles to be added to specific views -->
         {{$styles}}{{/styles}}
 
@@ -126,7 +120,7 @@
                             <!--log out-->
                             <li>
                                 {{#visible}}
-                                <a href="/sign/out">Log out , Bye {{name}} &nbsp;&nbsp;<i class="glyphicon glyphicon-log-out fa-fw " ></i><span class="fa arrow glyphicon glyphicon-log-out"></span></a>
+                                <a href="/sign/out">Log out , Bye {{name}} &nbsp;&nbsp;<i class="glyphicon glyphicon-log-out fa-fw " ></i><span class="fa arrow"></span></a>
                                 {{/visible}} 
                             </li>
                         </ul>
@@ -159,14 +153,7 @@
 
 
 
-
-        <script src="/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-        <script src="/bower_components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js" type="text/javascript"></script>
-        <script src="/js/confirmation.js" type="text/javascript"></script>
-        <script src="/js/ajaxCalls.js" type="text/javascript"></script>
-        <script src="/js/general.js" type="text/javascript"></script>
+        <script src="/concat/app{{#isProduction}}.min{{/isProduction}}.js" type="text/javascript"></script>
         <!-- Additional scripts to be added to specific views -->
         {{$scripts}}{{/scripts}}
 

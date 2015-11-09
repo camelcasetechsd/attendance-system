@@ -110,7 +110,9 @@ class CamelCaseTech_View extends Zend_View
 		
 		try {
 			// remove ".phtml" (view renderer adds this)
-			return $this->_mustache->render(substr($name, 0, -6), $this->getVars());
+                        $templateVariables = $this->getVars();
+                        $templateVariables["isProduction"] = (APPLICATION_ENV == "production" )? true : false;
+			return $this->_mustache->render(substr($name, 0, -6), $templateVariables);
 		} catch (\Phly\Mustache\Exception\InvalidTemplateException $e) { 
 			$trace = $e->getTrace();
 			$file = $trace[0]['args'][1];

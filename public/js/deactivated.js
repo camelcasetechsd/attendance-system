@@ -1,3 +1,5 @@
-window.setTimeout(function() {
-    window.location.href = '/sign/out'
-}, 3000);
+if ($('.redirect-deactivated').length) {
+    window.setTimeout(function () {
+        window.location.href = '/sign/out'
+    }, 3000);
+}
