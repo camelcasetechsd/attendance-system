@@ -3,11 +3,11 @@
 composer install --prefer-dist;
 
 ## prepare Grunt libraries
-sudo npm update -g npm
-sudo npm install -g grunt-cli
-sudo npm install grunt-contrib-cssmin --save-dev
-sudo npm install grunt-contrib-uglify --save-dev
-sudo npm install grunt-contrib-concat --save-dev
+npm update npm
+npm install grunt-cli
+npm install grunt-contrib-cssmin --save-dev
+npm install grunt-contrib-uglify --save-dev
+npm install grunt-contrib-concat --save-dev
 
 ## prepare Database
 ./bin/cli orm:schema-tool:drop --force;
@@ -20,7 +20,7 @@ bower install
 cd ../
 
 ## run Grunt tasks
-sudo grunt
+grunt
 cp -r public/bower_components/jquery-ui/themes/smoothness/images public/concat/
 cp -r public/bower_components/bootstrap/fonts public/
 cp -r public/bower_components/font-awesome/fonts public/
