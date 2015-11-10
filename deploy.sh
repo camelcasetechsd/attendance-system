@@ -9,6 +9,7 @@ npm install grunt --save-dev
 npm install grunt-contrib-cssmin --save-dev
 npm install grunt-contrib-uglify --save-dev
 npm install grunt-contrib-concat --save-dev
+alias grunt=./node_modules/.bin/grunt
 
 ## prepare Database
 ./bin/cli orm:schema-tool:drop --force;
