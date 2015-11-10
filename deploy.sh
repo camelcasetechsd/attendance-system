@@ -5,6 +5,7 @@ composer install --prefer-dist;
 ## prepare Grunt libraries
 npm update npm
 npm install grunt-cli
+npm install grunt --save-dev
 npm install grunt-contrib-cssmin --save-dev
 npm install grunt-contrib-uglify --save-dev
 npm install grunt-contrib-concat --save-dev
