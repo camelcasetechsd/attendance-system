@@ -5,4 +5,6 @@ nbproject/*
 composer.lock
 public/upload/images/*
 public/bower_components/
+public/concat/
+public/fonts/
 *~

@@ -21,3 +21,6 @@ cd ../
 
 ## run Grunt tasks
 sudo grunt
+cp -r public/bower_components/jquery-ui/themes/smoothness/images public/concat/
+cp -r public/bower_components/bootstrap/fonts public/
+cp -r public/bower_components/font-awesome/fonts public/
