@@ -8,3 +8,4 @@ public/bower_components/
 public/concat/
 public/fonts/
 *~
+/node_modules

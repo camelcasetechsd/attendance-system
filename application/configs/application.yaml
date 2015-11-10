@@ -63,5 +63,8 @@ development:
         user: camelcasetech
         password: c@m31C@$3T3c4
 
+vagrant:
+  _extends: base
+  
 local:
   _extends: base
