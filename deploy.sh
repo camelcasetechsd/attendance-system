@@ -9,7 +9,6 @@ npm install grunt --save-dev
 npm install grunt-contrib-cssmin --save-dev
 npm install grunt-contrib-uglify --save-dev
 npm install grunt-contrib-concat --save-dev
-alias grunt=./node_modules/.bin/grunt
 
 ## prepare Database
 ./bin/cli orm:schema-tool:drop --force;
@@ -22,7 +21,7 @@ bower install
 cd ../
 
 ## run Grunt tasks
-grunt
+./node_modules/.bin/grunt
 cp -r public/bower_components/jquery-ui/themes/smoothness/images public/concat/
 cp -r public/bower_components/bootstrap/fonts public/
 cp -r public/bower_components/font-awesome/fonts public/
