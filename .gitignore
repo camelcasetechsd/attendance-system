@@ -8,3 +8,14 @@ nbproject
 .settings
 composer.lock
 vendor/
+/.vagrant
+/logs
+composer.lock
+public/upload/images/*
+public/upload/vacation_attachments/*
+public/bower_components/
+public/concat/
+public/fonts/
+*~
+/node_modules
+data/mustache/
