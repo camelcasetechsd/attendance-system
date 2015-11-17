@@ -1,8 +1,10 @@
-<!-- article.mustache -->
 {{% BLOCKS }}
-{{< layout }}
+{{<layout}}
+{{$content}}
+<div >
+    <img class="img-responsive logo-pic" src="/images/logo.jpg" > 
+</div>
 
-{{$ content}}
-<p>smart antenna</p>
-{{/ content}}
-{{/ layout }}
+
+{{/content}}
+{{/layout}}

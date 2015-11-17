@@ -1,1 +1,156 @@
-Action "index", controller "Vacation", module "Myattendance".
+{{% BLOCKS }}
+{{<layout}}
+{{$styles}}
+
+{{/styles}}
+
+{{$content}}
+
+
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-2">
+        <div class="panel panel-default"><center>
+                <div class="panel-heading">Sick leaves </div>
+                <div class="panel-body"><h1>{{sicks}}</h1></div>
+            </center></div><!--panel default-->
+    </div>
+    <div class="col-sm-2">
+        <div class="panel panel-default"><center>
+                <div class="panel-heading">Casual vacations </div>
+                <div class="panel-body"><h1>{{casuals}}</h1></div>
+            </center></div><!--panel default-->
+    </div>
+    <div class="col-sm-2">
+        <div class="panel panel-default"><center>
+                <div class="panel-heading">Annual vacation </div>
+                <div class="panel-body"><h1>{{annuals}}</h1></div>
+            </center>
+        </div><!--panel default-->
+    </div>
+
+</div><!--row-->
+
+<div class="row middle-panel">
+    <div class="col-sm-2"></div>
+    <center>
+        <div class="col-sm-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    you're current Vacation Balance is
+                </div><!--panel heading-->
+                <div class="panel-body">
+                    <h1 id="balance">{{balance}}</h1>
+                    <hr />
+                    **Note : Sick leaves are not considered from the Vacation Balance 
+                </div><!--panel body-->
+            </div><!--panel default-->
+        </div></center>
+    <div class="col-sm-2"></div>
+</div><!--row-->
+
+<div class="panel panel-default ">
+
+    <div class="panel-heading">Sick leave</div>
+
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Date Of Submission</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#sick}}
+                    <tr>
+                        <td>{{dateOfSubmission}}</td>
+                        <td>{{fromDate}}</td>
+                        <td>{{toDate}}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                    {{/sick}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="panel panel-default">
+
+    <div class="panel-heading">Casual vacation</div>
+
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Date Of Submission</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#casual}}
+                    <tr>
+                        <td>{{dateOfSubmission}}</td>
+                        <td>{{fromDate}}</td>
+                        <td>{{toDate}}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                    {{/casual}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--Work from home table-->
+
+<br>
+<div class="panel panel-default">
+
+    <div class="panel-heading">Annual vacations</div>
+
+    <div class="panel-body">
+        <div class="dataTable_wrapper">
+            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Date Of Submission</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Status</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#annual}}
+                    <tr>
+                        <td>{{dateOfSubmission}}</td>
+                        <td>{{fromDate}}</td>
+                        <td>{{toDate}}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                    {{/annual}}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{{/content}}
+
+{{$scripts}}
+
+{{/scripts}}
+
+{{/layout}}

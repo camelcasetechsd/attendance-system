@@ -1,1 +1,33 @@
-Action "index", controller "Index", module "Notifications".
+{{% BLOCKS }}
+{{<layout}}
+
+
+{{$content}}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Notifications</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#unseenNotification}}
+        <tr id="{{id}}">
+            <td class="danger clickable-raw" onclick="document.location = '{{url}}';">{{text}}</td>
+        </tr>
+        {{/unseenNotification}}
+        {{#seenNotification}}
+        <tr>
+            <td class="info clickable-raw"onclick="document.location = '{{url}}';">{{text}}</td>
+        </tr>
+        {{/seenNotification}}
+        <tr>
+    </tbody>
+</table>
+
+
+
+{{/content}}
+
+
+{{/layout}}

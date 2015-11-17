@@ -1,1 +1,22 @@
-Action "index", controller "Error", module "DefaultModule".
+{{% BLOCKS }}
+
+{{<layout}}
+{{$content}}
+
+
+<div class="container login-container redirect-error">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default" error-panel>
+                <div class="panel-body">
+                    <center>
+                        you're not allowed to view this module you'll be redirected in 3 seconds
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/content}}
+{{/layout}}

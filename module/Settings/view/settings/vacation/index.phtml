@@ -1,1 +1,42 @@
-Action "index", controller "Vacation", module "Settings".
+{{% BLOCKS }}
+{{<layout}}
+{{$content}}
+<br><br>
+<a href="/settings/vacation/new" class="btn btn-small btn-success create-new ">Create new Vacation</a>
+<br><br>
+<div class="panel panel-default">
+
+    <div class="panel-heading">Vacations</div>
+
+    <!-- Table -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Balance</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#vacations}}
+            <tr>
+                <td>{{type}}</td>
+                <td>{{balance}}</td>
+                <td>{{description}}</td>
+                <td>
+                    <a data-toggle="tooltip" data-placement="left" title="Edit" href="edit/id/{{id}}"  ><span class="glyphicon glyphicon-edit"></span></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a data-toggle="tooltip" data-placement="left" title="Delete" href="delete/id/{{id}}" class="delete_row"> <span class="glyphicon glyphicon-remove"></span></a>
+                    
+                </td>
+            </tr>
+            {{/vacations}}
+        </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+{{/content}}
+{{/layout}}
