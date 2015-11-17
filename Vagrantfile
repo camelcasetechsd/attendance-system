@@ -4,7 +4,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "ubuntu/trusty64"
   #config.vm.box_url = "mybox/trusty64.box"
-  config.vm.synced_folder "./", "/var/www", id: "web-root"
+  config.vm.synced_folder "./", "/var/www", id: "web-root" , owner: "www-data", group: "www-data", mount_options: ["dmode=775,fmode=664"]
   config.vm.network "forwarded_port", guest: 22, host: 2251, id: "ssh", auto: true
   config.vm.network "private_network", ip: "10.1.1.33"
   config.omnibus.chef_version = "12.3.0"
