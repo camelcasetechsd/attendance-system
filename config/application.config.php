@@ -14,7 +14,8 @@ return array(
         'Requests',
         'Settings',
         'Users',
-        'Mustache'
+        'Mustache',
+        'CustomMustache'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

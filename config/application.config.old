@@ -7,14 +7,14 @@
  */
 return array(
     'modules' => array(
-        'Application',
-        'Test',
         'Calendar',
         'DefaultModule',
         'Myattendance',
         'Notifications',
         'Requests',
-        'Settings'
+        'Settings',
+        'Users',
+        'Mustache'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

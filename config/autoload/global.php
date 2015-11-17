@@ -40,9 +40,6 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
-        'factories' => array(
-            'Mustache\View\Renderer' =>  'DefaultModule\Service\RendererFactory',
-        ),
     ),
     'translator' => array(
         'locale' => 'en_US',
@@ -59,6 +56,9 @@ return array(
         'pragmas' => array(
             Mustache_Engine::PRAGMA_BLOCKS
         ),
-        'partials_loader' => dirname(__FILE__).'/../../layout',
+        'partials_loader' => array(
+            dirname(__FILE__).'/../../layout',
+            "extension" => ".phtml"
+        )
     )
 );
