@@ -1,0 +1,102 @@
+body {
+    padding: 0px;
+    margin: 0px;}
+.starter-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+.user-photos{
+    height : 70px;
+    width : 70px;
+}
+nav li a {
+    padding: 15px 15px; 
+}
+
+.loginform{
+    margin: 20% 20% 20% 20%;
+}
+
+.invalid{
+    color: RED;
+}
+
+.content{
+    background-color: white; 
+}
+.panel{
+    margin-bottom: -12px !important;
+    margin-top: 10px;
+}
+/*.myrow{
+    margin-right: 0px !important ; 
+    margin-left: -7px !important ; */
+/*
+}*/
+.logo-pic{
+    width: 83%;
+    margin-left: 70px;
+}
+.sick-panel{
+    margin-top: 60px;
+}
+.redirect-error{
+    margin-top:12%;
+}
+.redirect-error center{
+    color: red;
+    font-size: 1em;
+}
+.error-panel{
+    width: 20%;
+    height:20%;
+}
+#calendar{
+    margin: 20px auto !important;
+    width: 800px;
+    margin: 0 auto;
+}
+.create-new{
+    margin-top: 10px;
+}
+.twitter{
+width: 35px;
+height: 35px;
+margin-top: 8px;
+}
+
+.notify{
+    margin-bottom: -8px;
+    margin-right: 10px;
+}
+.navbar-top-links .dropdown-menu li{
+        margin-left: 11px;
+}
+
+.dropdown-menu li{
+    width: 700px !important;
+}
+li{
+    list-style-type: none;
+}
+
+.notification{
+    font-size: 1.5em;
+}
+.middle-panel{
+    margin-top: 17px;
+    margin-bottom: 30px;
+}
+.notification_count 
+{
+    padding: 2px 4px 2px 4px;
+    background: #CA0000;
+    color: #ffffff;
+    margin-left: 12px;
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 23px;
+    position: absolute;
+    margin-top: -17px;
+    font-size: 7px;
+}

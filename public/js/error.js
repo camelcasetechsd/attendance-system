@@ -1,0 +1,5 @@
+if ($('.redirect-error').length) {
+    window.setTimeout(function () {
+        window.location.href = '/index'
+    }, 3000);
+}
