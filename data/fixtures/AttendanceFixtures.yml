@@ -1,4 +1,4 @@
-Attendance\Entity\Attendance:
+Settings\Entity\Attendance:
     
     attendance {1..4}:
         branch: <numberBetween(1, 4)>

@@ -1,4 +1,4 @@
-\Attendance\Entity\Holiday:
+Settings\Entity\Holiday:
     holiday1:
         name: 'Eid El-Fetr'
         dateFrom: '2014-07-28'

@@ -1,4 +1,4 @@
-Attendance\Entity\Branch:
+Settings\Entity\Branch:
     branch1:
         name: 'Cairo Branch'
         description: Cairo Branch

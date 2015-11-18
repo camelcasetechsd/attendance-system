@@ -1,4 +1,4 @@
-Attendance\Entity\AttendanceRecord:
+Settings\Entity\AttendanceRecord:
     
     attendance {1..100}:
         timeIn: <dateTimeThisDecade()>

@@ -1,4 +1,4 @@
-Attendance\Entity\Position:
+Settings\Entity\Position:
     position1:
         name: CEO
         description: Chief Executive Officer

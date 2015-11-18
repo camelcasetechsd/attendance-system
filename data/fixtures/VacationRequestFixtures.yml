@@ -1,5 +1,4 @@
-
-Attendance\Entity\VacationRequest:
+Requests\Entity\VacationRequest:
     
     vacationrequest{1..7}:
         

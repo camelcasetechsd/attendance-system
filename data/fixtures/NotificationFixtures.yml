@@ -1,4 +1,4 @@
-Attendance\Entity\Notification:
+Notifications\Entity\Notification:
     notification1:
         text: 'Your vacation request had been approved'
         url : '/myattendance/vacation'

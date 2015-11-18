@@ -1,5 +1,4 @@
-
-Attendance\Entity\Permission:
+Requests\Entity\Permission:
     
     permission1:
         user: <numberBetween(1, 25)>

@@ -1,4 +1,4 @@
-Attendance\Entity\Department:
+Settings\Entity\Department:
     department1:
         name: 'CSI Department'
         description: CSI

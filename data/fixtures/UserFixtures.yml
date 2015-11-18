@@ -1,4 +1,4 @@
-Attendance\Entity\Role:
+Users\Entity\Role:
     role1:
         name: 'Employee'
         
@@ -11,7 +11,7 @@ Attendance\Entity\Role:
     role4:
         name: 'Admin'
 
-Attendance\Entity\User:
+Users\Entity\User:
     user{1..25}:
         name: <firstName()> <lastName()>
         username: <username()>

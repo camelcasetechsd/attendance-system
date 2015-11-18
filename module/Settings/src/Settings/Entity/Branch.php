@@ -2,7 +2,7 @@
 
 namespace Settings\Entity;
 use Doctrine\ORM\Mapping as ORM;
-use Users\Entity\User;
+
 /**
  * Class Branche
  * @ORM\Entity

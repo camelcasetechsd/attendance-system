@@ -1,4 +1,4 @@
-Attendance\Entity\Comment:
+Requests\Entity\Comment:
     
     comment1:
         body: I need to leave early this day

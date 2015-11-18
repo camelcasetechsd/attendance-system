@@ -1,5 +1,4 @@
-
-Attendance\Entity\WorkFromHome:
+Requests\Entity\WorkFromHome:
     
     workfromhome{1..7}:
         
