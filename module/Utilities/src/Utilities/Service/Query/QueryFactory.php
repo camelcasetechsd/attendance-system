@@ -1,10 +1,10 @@
 <?php
 
-namespace AbstractDB\Service\Query;
+namespace Utilities\Service\Query;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use AbstractDB\Service\Query\Query;
+use Utilities\Service\Query\Query;
 
 class QueryFactory implements FactoryInterface {
 

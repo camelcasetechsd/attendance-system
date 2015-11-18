@@ -1,5 +1,5 @@
 <?php
-namespace AbstractDB;
+namespace Utilities;
 
 class Module
 {

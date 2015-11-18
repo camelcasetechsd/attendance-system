@@ -9,9 +9,9 @@ $env = getenv('APPLICATION_ENV') ?: 'production';
  */
 return array(
     'modules' => array(
+        'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
-        'AbstractDB',
         'Calendar',
         'DefaultModule',
         'Myattendance',
@@ -20,7 +20,8 @@ return array(
         'Settings',
         'Users',
         'Mustache',
-        'CustomMustache'
+        'CustomMustache',
+        'Utilities'
     ),
     'module_listener_options' => array(
         'module_paths' => array(

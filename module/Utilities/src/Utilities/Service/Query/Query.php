@@ -1,29 +1,35 @@
 <?php
-namespace AbstractDB\Service\Query;
+namespace Utilities\Service\Query;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Collections\Criteria;
 
 class Query
 {
     /**
      *
-     * @var EntityManager 
+     * @var ObjectManager 
      */
-    protected $entityManager;
+    public $entityManager;
+    /**
+     *
+     * @var Doctrine\Common\Persistence\ObjectRepository 
+     */
+    public $entityRepository;
     /**
      *
      * @var string 
      */
-    protected $entityName;
+    public $entityName;
     
     /**
      * 
-     * @param EntityManager $entityManager
+     * @param ObjectManager $entityManager
      */
-    public function __construct(EntityManager $entityManager) {
+    public function __construct(ObjectManager $entityManager) {
         $this->entityManager = $entityManager;
     }
-    
+
     /**
      * 
      * @param string $entityName
@@ -82,5 +88,10 @@ class Query
     public function findOneBy(array $criteria, array $orderBy = null)
     {
         return $this->entityRepository->findOneBy($criteria, $orderBy);
+    }
+    
+    public function filter(Criteria $criteria)
+    {
+        return $this->entityRepository->matching($criteria);
     }
 }
