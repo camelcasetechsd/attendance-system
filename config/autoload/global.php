@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Global Configuration Override
  *
@@ -15,21 +16,21 @@ return array(
         // We want to show the user if the page is not found
         'display_not_found_reason' => true,
         // We want to display exceptions when the occur
-        'display_exceptions'       => true,
+        'display_exceptions' => true,
         // This defines the doctype we want to use in our
         // output
-        'doctype'                  => 'HTML5',
+        'doctype' => 'HTML5',
         // Here we define the error templates
-        'not_found_template'       => 'error/index',
-        'exception_template'       => 'error/index',
+        'not_found_template' => 'error/index',
+        'exception_template' => 'error/index',
         // Create out template mapping
         'template_map' => array(
             // This is where the global layout resides
-            'layout/layout'           => __DIR__ . '/../../layout/layout.phtml',
+            'layout/layout' => __DIR__ . '/../../layout/layout.phtml',
             // This defines where we can find the templates
             // for the error messages
-            'error/404'               => __DIR__ . '/../../layout/error/error.phtml',
-            'error/index'             => __DIR__ . '/../../layout/error/error.phtml',
+            'error/404' => __DIR__ . '/../../layout/error/error.phtml',
+            'error/index' => __DIR__ . '/../../layout/error/error.phtml',
         )
     ),
     'service_manager' => array(
@@ -39,15 +40,30 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
+            'entitymanager' => 'doctrine.entitymanager.orm_default',
         ),
+    ),
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => 'localhost',
+                    'port'     => '3306',
+                    'user'     => 'root',
+                    'password' => 'ilikerandompasswords',
+                    'dbname'   => 'attendance',
+                )
+            )
+        )
     ),
     'translator' => array(
         'locale' => 'en_US',
         'translation_file_patterns' => array(
             array(
-                'type'     => 'gettext',
+                'type' => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
+                'pattern' => '%s.mo',
             ),
         ),
     ),
@@ -57,7 +73,7 @@ return array(
             Mustache_Engine::PRAGMA_BLOCKS
         ),
         'partials_loader' => array(
-            dirname(__FILE__).'/../../layout',
+            dirname(__FILE__) . '/../../layout',
             "extension" => ".phtml"
         )
     )
