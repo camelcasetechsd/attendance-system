@@ -29,8 +29,12 @@ class Renderer extends OriginalRenderer implements RendererInterface
                     __METHOD__
                 ));
             }
-
+            
             $values = $model->getVariables();
+            if($values instanceof Variables && !$values->offsetExists("production")){
+                $isProduction = (APPLICATION_ENV == "production" )? true : false;
+                $values->offsetSet (/*$index =*/ "isProduction", /*$newval =*/ $isProduction);
+            }
             unset($model);
         }
 
