@@ -35,8 +35,10 @@ class Query
      * @param string $entityName
      */
     public function setEntity($entityName) {
-        $this->entityName = $entityName;
-        $this->entityRepository = $this->entityManager->getRepository($entityName);
+        if(! empty($entityName)){
+            $this->entityName = $entityName;
+            $this->entityRepository = $this->entityManager->getRepository($entityName);
+        }
         return $this;
     }
     
@@ -47,9 +49,9 @@ class Query
      *
      * @return object|null The entity instance or NULL if the entity can not be found.
      */
-    public function find($id)
+    public function find($entityName, $id)
     {
-        return $this->entityRepository->find($id);
+        return $this->setEntity($entityName)->entityRepository->find($id);
     }
 
     /**
@@ -57,9 +59,9 @@ class Query
      *
      * @return array The entities.
      */
-    public function findAll()
+    public function findAll($entityName)
     {
-        return $this->entityRepository->findAll();
+        return $this->setEntity($entityName)->entityRepository->findAll();
     }
 
     /**
@@ -72,9 +74,9 @@ class Query
      *
      * @return array The objects.
      */
-    public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    public function findBy($entityName, array $criteria, array $orderBy = null, $limit = null, $offset = null)
     {
-        return $this->entityRepository->findBy($criteria, $orderBy, $limit, $offset);
+        return $this->setEntity($entityName)->entityRepository->findBy($criteria, $orderBy, $limit, $offset);
     }
 
     /**
@@ -85,13 +87,13 @@ class Query
      *
      * @return object|null The entity instance or NULL if the entity can not be found.
      */
-    public function findOneBy(array $criteria, array $orderBy = null)
+    public function findOneBy($entityName, array $criteria, array $orderBy = null)
     {
-        return $this->entityRepository->findOneBy($criteria, $orderBy);
+        return $this->setEntity($entityName)->entityRepository->findOneBy($criteria, $orderBy);
     }
     
-    public function filter(Criteria $criteria)
+    public function filter($entityName, Criteria $criteria)
     {
-        return $this->entityRepository->matching($criteria);
+        return $this->setEntity($entityName)->entityRepository->matching($criteria);
     }
 }
