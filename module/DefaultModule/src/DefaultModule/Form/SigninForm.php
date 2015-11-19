@@ -43,10 +43,8 @@ class SigninForm extends Form {
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'class' => 'btn btn-lg btn-success btn-block',
-            ),
-            'options' => array(
-                'label' => 'Log in',
-            ),
+                'value' => 'Log in',
+            )
         ));
 
         $this->setInputFilter($this->getInputFilter());

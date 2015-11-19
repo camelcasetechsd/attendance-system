@@ -74,10 +74,8 @@ class AttendanceForm extends Form {
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'class' => 'btn btn-success',
-            ),
-            'options' => array(
-                'label' => 'Create',
-            ),
+                'value' => 'Create',
+            )
         ));
     }
 

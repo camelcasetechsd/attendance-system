@@ -53,10 +53,7 @@ class FilterByYearForm extends Form {
             'attributes' => array(
                 'class' => 'btn btn-success',
                 'value' => 'Filter!',
-            ),
-            'options' => array(
-                'label' => 'Filter!',
-            ),
+            )
         ));
     }
 

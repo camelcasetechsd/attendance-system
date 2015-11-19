@@ -251,10 +251,7 @@ class UserForm extends Form {
             'attributes' => array(
                 'class' => 'btn btn-success',
                 'value' => 'Submit!',
-            ),
-            'options' => array(
-                'label' => 'Submit!',
-            ),
+            )
         ));
         $this->add(array(
             'name' => 'reset',
@@ -262,10 +259,7 @@ class UserForm extends Form {
             'attributes' => array(
                 'class' => 'btn btn-danger',
                 'value' => 'Reset!',
-            ),
-            'options' => array(
-                'label' => 'Reset!',
-            ),
+            )
         ));
     }
 
