@@ -3,6 +3,8 @@
 namespace Settings\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\InputFilter\InputFilterInterface;
+use Zend\InputFilter\InputFilter;
 
 /**
  * Class Position

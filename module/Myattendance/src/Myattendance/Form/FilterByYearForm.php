@@ -1,6 +1,6 @@
 <?php
 
-namespace DefaultModule\Form;
+namespace Myattendance\Form;
 
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
