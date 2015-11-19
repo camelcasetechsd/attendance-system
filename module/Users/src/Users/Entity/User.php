@@ -3,6 +3,8 @@
 namespace Users\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\InputFilter\InputFilterInterface;
+use Zend\InputFilter\InputFilter;
 
 /**
  * Class User
@@ -10,8 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @package Users\Entity
  */
-class User
-{
+class User {
 
     const DEFAULT_VACATION_BALANCE = 21;
     const STATUS_ACTIVE = 1;
@@ -149,8 +150,7 @@ class User
      */
     public $status;
 
-    static public function hashPassword($password)
-    {
+    static public function hashPassword($password) {
         if (function_exists("password_hash")) {
             return password_hash($password, PASSWORD_BCRYPT);
         } else {
@@ -158,13 +158,267 @@ class User
         }
     }
 
-    static public function verifyPassword($givenPassword, $savedPassword)
-    {
+    static public function verifyPassword($givenPassword, $savedPassword) {
         if (function_exists('password_verify')) {
             return password_verify($givenPassword, $savedPassword);
         } else {
-            return crypt($givenPassword , $savedPassword) == $savedPassword;
+            return crypt($givenPassword, $savedPassword) == $savedPassword;
         }
+    }
+
+    public function setBranch($branch) {
+        $this->branch = $branch;
+        return $this;
+    }
+
+    public function setDateOfBirth($dateOfBirth) {
+        $this->dateOfBirth = $dateOfBirth;
+        return $this;
+    }
+
+    public function setDepartment($department) {
+        $this->department = $department;
+        return $this;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+        return $this;
+    }
+
+    public function setManager($manager) {
+        $this->manager = $manager;
+        return $this;
+    }
+
+    public function setMaritalStatus($maritalStatus) {
+        $this->maritalStatus = $maritalStatus;
+        return $this;
+    }
+
+    public function setMobile($mobile) {
+        $this->mobile = $mobile;
+        return $this;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function setPhoto($photo) {
+        $this->photo = $photo;
+        return $this;
+    }
+
+    public function setPosition($position) {
+        $this->position = $position;
+        return $this;
+    }
+
+    public function setRole($role) {
+        $this->role = $role;
+        return $this;
+    }
+
+    public function setStartDate($startDate) {
+        $this->startDate = $startDate;
+        return $this;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
+        return $this;
+    }
+
+    public function setTotalWorkingHoursThisMonth($totalWorkingHoursThisMonth) {
+        $this->totalWorkingHoursThisMonth = $totalWorkingHoursThisMonth;
+        return $this;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+        return $this;
+    }
+
+    public function setVacationBalance($vacationBalance) {
+        $this->vacationBalance = $vacationBalance;
+        return $this;
+    }
+
+    /**
+     * Convert the object to an array.
+     *
+     * @return array
+     */
+    public function getArrayCopy() {
+        return get_object_vars($this);
+    }
+
+    /**
+     * Populate from an array.
+     *
+     * @param array $data
+     */
+    public function exchangeArray($data = array()) {
+        $this->setBranch($data["branch"])
+                ->setDateOfBirth($data["dateOfBirth"])
+                ->setDepartment($data["department"])
+                ->setDescription($data["description"])
+                ->setManager($data["manager"])
+                ->setMaritalStatus($data["maritalStatus"])
+                ->setMobile($data["mobile"])
+                ->setName($data["name"])
+                ->setPassword($data["password"])
+                ->setPhoto($data["photo"])
+                ->setPosition($data["position"])
+                ->setRole($data["role"])
+                ->setStartDate($data["startDate"])
+                ->setStatus($data["status"])
+                ->setTotalWorkingHoursThisMonth($data["totalWorkingHoursThisMonth"])
+                ->setUsername($data["username"])
+                ->setVacationBalance($data["vacationBalance"]);
+    }
+
+    public function setInputFilter(InputFilterInterface $inputFilter) {
+        throw new \Exception("Not used");
+    }
+
+    public function getInputFilter() {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+
+            $inputFilter->add(array(
+                'name' => 'username',
+                'required' => true,
+                'filters' => array(
+                    array(
+                        'name' => 'StringTrim',
+                    )
+                )
+            ));
+            $inputFilter->add(array(
+                'name' => 'password',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'min' => 8
+                        )
+                    )
+                )
+            ));
+            $inputFilter->add(array(
+                'name' => 'confirmPassword',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        'name' => 'StringLength',
+                        'options' => array(
+                            'min' => 8
+                        )
+                    )
+                )
+            ));
+            $inputFilter->add(array(
+                'name' => 'name',
+                'required' => true,
+                'filters' => array(
+                    array(
+                        'name' => 'StringTrim',
+                    )
+                )
+            ));
+            $inputFilter->add(array(
+                'name' => 'mobile',
+                'required' => true,
+                'filters' => array(
+                    array(
+                        'name' => 'StringTrim',
+                    )
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'Digits',
+                    ),
+                    array(
+                        'name' => 'regex',
+                        'options' => array(
+                            'pattern' => '/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/',
+                            'messages' => 'This is not a mobile number!'
+                        )
+                    )
+                )
+            ));
+            $inputFilter->add(array(
+                'name' => 'dateOfBirth',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        'name' => 'date',
+                        'options' => array(
+                            'format' => 'MM/dd/yyyy',
+                        )
+                    )
+                )
+            ));
+            $inputFilter->add(array(
+                'name' => 'startDate',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        'name' => 'date',
+                        'options' => array(
+                            'format' => 'MM/dd/yyyy',
+                        )
+                    )
+                )
+            ));
+            $inputFilter->add(array(
+                'name' => 'vacationBalance',
+                'required' => true,
+            ));
+            $inputFilter->add(array(
+                'name' => 'description',
+                'filters' => array(
+                    array(
+                        'name' => 'StringTrim',
+                    )
+                ),
+            ));
+
+            $inputFilter->add(array(
+                'name' => 'photo',
+                'required' => true,
+                'validators' => array(
+                    array('name' => 'Count',
+                        'options' => array(
+                            'max' => 1
+                        )
+                    ),
+                    array('name' => 'Size',
+                        'options' => array(
+                            'max' => 2097152
+                        )
+                    ),
+                    array('name' => 'Extension',
+                        'options' => array(
+                            'extension' => 'gif,jpg,png'
+                        )
+                    ),
+                )
+            ));
+
+            $this->inputFilter = $inputFilter;
+        }
+
+        return $this->inputFilter;
     }
 
 }
