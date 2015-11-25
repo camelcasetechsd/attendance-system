@@ -8,7 +8,8 @@ return array(
             'user' => 'Users\Controller\IndexController'
         ),
         'factories' => array(
-            'Users\Event\Authentication' =>  'Users\Service\AuthenticationFactory',
+            'Users\Auth\Authentication' =>  'Users\Service\AuthenticationFactory',
+            'Users\Event\AuthenticationEvent' =>  'Users\Service\AuthenticationEventFactory',
             'Users\Acl\Acl' =>  'Users\Service\AclFactory',
         ),
     ),

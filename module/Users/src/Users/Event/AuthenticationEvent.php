@@ -25,6 +25,7 @@ use Zend\Authentication\AuthenticationService;
 use Users\Acl\Acl as AclClass;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Http\Request as HttpRequest ;
+use Zend\Http\Response;
 
 /**
  * Authentication Event Handler Class
@@ -36,7 +37,7 @@ use Zend\Http\Request as HttpRequest ;
  * @copyright Copyright (c) 2011, Marco Neumann
  * @license   http://binware.org/license/index/type:new-bsd New BSD License
  */
-class Authentication extends AbstractActionController {
+class AuthenticationEvent extends AbstractActionController {
 
     /**
      * @var AclClass
@@ -93,7 +94,7 @@ class Authentication extends AbstractActionController {
 
 
         if (isset($url)) {
-            $event->setResponse(new \Zend\Http\Response());
+            $event->setResponse(new Response());
             $this->redirect()->getController()->setEvent($event);
             $response = $this->redirect()->toUrl($url);
             return $response;

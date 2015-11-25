@@ -4,15 +4,14 @@ namespace Users\Service;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Users\Event\Authentication;
+use Users\Auth\Authentication;
 
 class AuthenticationFactory implements FactoryInterface {
 
     public function createService(ServiceLocatorInterface $serviceLocator) {
-        $acl = $serviceLocator->get('Users\Acl\Acl');
+        $wrapperQuery = $serviceLocator->get('wrapperQuery');
         
-        $authentication = new Authentication();
-        $authentication->setAclClass($acl);
+        $authentication = new Authentication($wrapperQuery);
 
         return $authentication;
     }

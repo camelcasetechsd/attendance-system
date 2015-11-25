@@ -36,7 +36,7 @@ class Module implements ConfigProviderInterface,AutoloaderProviderInterface {
      */
     public function mvcPreDispatch($event) {
         $serviceManager = $event->getTarget()->getServiceManager();
-        $auth = $serviceManager->get('Users\Event\Authentication');
+        $auth = $serviceManager->get('Users\Event\AuthenticationEvent');
 
         return $auth->preDispatch($event);
     }
