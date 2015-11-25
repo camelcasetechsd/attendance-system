@@ -24,12 +24,12 @@ class RendererFactory implements FactoryInterface {
             $config['helpers']['name'] = $username;
             $acl = $serviceLocator->get('Users\Acl\Acl');
             // hide modules that are not allowed
-            if ($acl->isAllowed($role, 'user')) {
+            if ($acl->isAllowed($role, 'Users\Controller\Index')) {
                 $config['helpers']['visibleUserModule'] = TRUE;
             } else {
                 $config['helpers']['visibleUserModule'] = FALSE;
             }
-            if ($acl->isAllowed($role, 'settingsIndex')) {
+            if ($acl->isAllowed($role, 'Settings\Controller\Index')) {
                 $config['helpers']['visibleSettingsModule'] = TRUE;
             } else {
                 $config['helpers']['visibleSettingsModule'] = FALSE;
