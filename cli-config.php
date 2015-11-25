@@ -12,16 +12,11 @@ defined('APPLICATION_ENV')
 // Ensure library/ is on include_path
 require_once 'vendor/autoload.php';
 
-require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance();
+require 'init_autoloader.php';
 
 // Create application, bootstrap, and run
-$application = new Zend_Application(
-    APPLICATION_ENV,
-    APPLICATION_PATH . '/configs/application.yaml'
-);
-$bootstrap = $application->bootstrap();
+$application = Zend\Mvc\Application::init(require 'config/application.config.php');
 
-$entityManager = $bootstrap->getBootstrap()->getResource('entityManager');
+$entityManager = $application->getServiceManager()->get('entityManager');
 
 return ConsoleRunner::createHelperSet($entityManager);

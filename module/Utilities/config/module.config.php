@@ -8,7 +8,7 @@ return array(
         'factories' => array(
             'Utilities\Service\Query' => 'Utilities\Service\Query\QueryFactory',
         )
-    ),
+        ),
     'validators' => array(
         'invokables' => array(
             'TimeValidator' => 'Utilities\Service\Validator\TimeValidator',

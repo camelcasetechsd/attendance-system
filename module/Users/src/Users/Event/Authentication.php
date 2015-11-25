@@ -24,6 +24,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\Authentication\AuthenticationService;
 use Users\Acl\Acl as AclClass;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Http\Request as HttpRequest ;
 
 /**
  * Authentication Event Handler Class
@@ -49,7 +50,11 @@ class Authentication extends AbstractActionController {
      * @throws \Exception
      */
     public function preDispatch(MvcEvent $event) {
-        //@todo - Should we really use here and Controller Plugin?
+        
+        // ACL dispatcher is used only in HTTP requests not console requests
+        if(! $event->getRequest() instanceof HttpRequest){
+            return;
+        }
         $userAuth = new AuthenticationService();
         $role = AclClass::DEFAULT_ROLE;
         $acl = $this->getAclClass();

@@ -4,7 +4,6 @@ composer install --prefer-dist;
 
 ## prepare Grunt libraries
 npm update npm
-npm install grunt-cli
 npm install
 
 ## prepare Database
