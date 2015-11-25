@@ -1,13 +1,10 @@
 
-    <h1>An error occurred</h1>
-    <p>{{message}}</p>
-
+<h1>An error occurred</h1>
+<p>{{message}}</p>
+{{#exception}}
+    {{#display_exceptions}}
     <h3>Exception information:</h3>
-    <p><b>Message:</b> {{exceptionmessage}}</p>
-
-    <h3>Stack trace:</h3>
-    <pre>{{stacktrace}}</pre>
-
-    <h3>Request Parameters:</h3>
-    <pre>{{requestparams}}</pre>
+    <p><b>Trace:</b> <pre>{{exception}}</pre></p>
+    {{/display_exceptions}}
+{{/exception}}
 
