@@ -1,7 +1,19 @@
 <?php
+
 namespace Settings;
 
 return array(
+    'service_manager' => array(
+        'aliases' => array(
+            'settingsIndex' => 'Settings\Controller\IndexController',
+            'settingsVacation' => 'Settings\Controller\VacationController',
+            'settingsPosition' => 'Settings\Controller\PositionController',
+            'settingsHoliday' => 'Settings\Controller\HolidayController',
+            'settingsDepartments' => 'Settings\Controller\DepartmentsController',
+            'settingsBranches' => 'Settings\Controller\BranchesController',
+            'settingsAttendance' => 'Settings\Controller\AttendanceController',
+        )
+    ),
     'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(

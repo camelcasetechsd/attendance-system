@@ -1,7 +1,13 @@
 <?php
+
 namespace Requests;
 
 return array(
+    'service_manager' => array(
+        'aliases' => array(
+            'requestsMyrequests' => 'Requests\Controller\MyrequestsController',
+        )
+    ),
     'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(

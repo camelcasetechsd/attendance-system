@@ -2,8 +2,6 @@
 
 namespace Calendar;
 
-// Our main imports that we want to use
-use Zend\Mvc\MvcEvent;
 
 class Module {
 

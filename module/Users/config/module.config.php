@@ -1,7 +1,17 @@
 <?php
+
 namespace Users;
 
 return array(
+    'service_manager' => array(
+        'aliases' => array(
+            'user' => 'Users\Controller\IndexController'
+        ),
+        'factories' => array(
+            'Users\Event\Authentication' =>  'Users\Service\AuthenticationFactory',
+            'Users\Acl\Acl' =>  'Users\Service\AclFactory',
+        ),
+    ),
     'doctrine' => array(
         'driver' => array(
             __NAMESPACE__ . '_driver' => array(
