@@ -63,7 +63,7 @@ class FilterByYearForm extends Form {
         $this->setInputFilter($this->getInputFilter());
     }
 
-    private function getInputFilter() {
+    public function getInputFilter() {
         if (!$this->_inputFilter) {
             $inputFilter = new InputFilter();
 
