@@ -2,10 +2,10 @@
 
 namespace Settings\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Utilities\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 
-class BranchesController extends AbstractActionController
+class BranchesController extends ActionController
 {
 
     public function indexAction()

@@ -2,10 +2,10 @@
 
 namespace Requests\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Utilities\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 
-class MyrequestsController extends AbstractActionController
+class MyrequestsController extends ActionController
 {
 
     public function indexAction()

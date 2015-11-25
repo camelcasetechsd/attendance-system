@@ -2,11 +2,11 @@
 
 namespace DefaultModule\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Utilities\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 use Mustache_Engine;
 
-class IndexController extends AbstractActionController
+class IndexController extends ActionController
 {
 
     public function indexAction()

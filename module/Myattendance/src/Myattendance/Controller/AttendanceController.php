@@ -2,10 +2,10 @@
 
 namespace Myattendance\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Utilities\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 
-class AttendanceController extends AbstractActionController
+class AttendanceController extends ActionController
 {
 
     public function indexAction()
