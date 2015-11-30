@@ -17,7 +17,7 @@ Users\Entity\User:
         username: <username()>
         password: 123456
         mobile: "010123456789"
-        photo: http://beazing.com/themes/sexymetro/img/no_user.jpg
+        photo: http://cdn3.rd.io/user/no-user-image-square.jpg
         maritalStatus: exe
         dateOfBirth: <date()>
         description: human
@@ -30,7 +30,7 @@ Users\Entity\User:
         username: admin
         password: admin
         mobile: "010123456789"
-        photo: http://beazing.com/themes/sexymetro/img/no_user.jpg
+        photo: http://cdn3.rd.io/user/no-user-image-square.jpg
         maritalStatus: exe
         dateOfBirth: <date()>
         description: human
@@ -43,7 +43,7 @@ Users\Entity\User:
         username: HR
         password: HR
         mobile: "010123456789"
-        photo: http://beazing.com/themes/sexymetro/img/no_user.jpg
+        photo: http://cdn3.rd.io/user/no-user-image-square.jpg
         maritalStatus: exe
         dateOfBirth: <date()>
         description: human
@@ -56,7 +56,7 @@ Users\Entity\User:
         username: Manager
         password: manager
         mobile: "010123456789"
-        photo: http://beazing.com/themes/sexymetro/img/no_user.jpg
+        photo: http://cdn3.rd.io/user/no-user-image-square.jpg
         maritalStatus: exe
         dateOfBirth: <date()>
         description: human
@@ -69,7 +69,7 @@ Users\Entity\User:
         username: user
         password: 12345678
         mobile: "01066313459"
-        photo: http://beazing.com/themes/sexymetro/img/no_user.jpg
+        photo: http://cdn3.rd.io/user/no-user-image-square.jpg
         maritalStatus: exe
         dateOfBirth: <date()>
         description: human
