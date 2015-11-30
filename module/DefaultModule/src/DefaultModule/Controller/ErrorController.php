@@ -20,6 +20,10 @@ class ErrorController extends ActionController
         return new ViewModel();
     }
 
+    /**
+     * @ToDo get error display overriden by this action, As now it is handled by original ZF2 exception strategy 
+     * @return ViewModel
+     */
     public function errorAction()
     {
         $errors = $this->_getParam('error_handler');
