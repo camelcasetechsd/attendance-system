@@ -3,7 +3,7 @@
 namespace Utilities\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Form\View\Helper\Form;
+use Utilities\Form\Form;
 use Zend\Form\FormInterface;
 
 class ActionController extends AbstractActionController
