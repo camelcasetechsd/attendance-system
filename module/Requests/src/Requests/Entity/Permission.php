@@ -5,6 +5,7 @@ namespace Requests\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilter;
+use Zend\Validator\Regex;
 
 /**
  * Class Permission
@@ -19,6 +20,8 @@ class Permission {
     const STATUS_APPROVED = 3;
     const STATUS_DENIED = 4;
 
+    private $inputFilter;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
@@ -70,6 +73,29 @@ class Permission {
      */
     public $status;
 
+    public function getDate() {
+        return $this->date;
+    }
+
+    public function getDateOfSubmission() {
+        return $this->dateOfSubmission;
+    }
+
+    public function getFromTime() {
+        return $this->fromTime;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function getToTime() {
+        return $this->toTime;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
     public function setDate($date) {
         $this->date = $date;
         return $this;
@@ -137,7 +163,7 @@ class Permission {
                 'validators' => array(
                     array('name' => 'date',
                         'options' => array(
-                            'format' => 'MM/dd/yyyy'
+                            'format' => 'm/d/Y',
                         )
                     ),
                 )
@@ -149,7 +175,7 @@ class Permission {
                     array('name' => 'regex',
                         'options' => array(
                             'pattern' => '/^(2[0-3]|1[0-9]|0[0-9]|[^0-9][0-9]):([0-5][0-9]|[0-9]):([0-5][0-9]|[0-9])$/',
-                            'messages' => 'please pick time from the menu .... '
+                            'messages' => array(Regex::NOT_MATCH => 'please pick time from the menu .... ')
                         )
                     ),
                 )
@@ -165,7 +191,7 @@ class Permission {
                     array('name' => 'regex',
                         'options' => array(
                             'pattern' => '/^(2[0-3]|1[0-9]|0[0-9]|[^0-9][0-9]):([0-5][0-9]|[0-9]):([0-5][0-9]|[0-9])$/',
-                            'messages' => 'please pick time from the menu .... '
+                            'messages' => array(Regex::NOT_MATCH => 'please pick time from the menu .... ')
                         )
                     ),
                 )

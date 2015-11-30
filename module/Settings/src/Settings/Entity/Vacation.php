@@ -14,6 +14,8 @@ use Zend\InputFilter\InputFilter;
  */
 class Vacation {
 
+    private $inputFilter;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
@@ -50,6 +52,22 @@ class Vacation {
      */
     public $active = 1;
 
+    public function getType() {
+        return $this->type;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function getBalance() {
+        return $this->balance;
+    }
+
+    public function isActive() {
+        return $this->active;
+    }
+    
     public function setType($type) {
         $this->type = $type;
         return $this;
@@ -65,7 +83,7 @@ class Vacation {
         return $this;
     }
 
-    public function isActive($active) {
+    public function setActive($active) {
         $this->active = $active;
         return $this;
     }

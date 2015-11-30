@@ -19,6 +19,8 @@ class VacationRequest {
     const STATUS_APPROVED = 3;
     const STATUS_DENIED = 4;
 
+    private $inputFilter;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
@@ -75,6 +77,34 @@ class VacationRequest {
      */
     public $status;
 
+    public function getAttachment() {
+        return $this->attachment;
+    }
+
+    public function getDateOfSubmission() {
+        return $this->dateOfSubmission;
+    }
+
+    public function getFromDate() {
+        return $this->fromDate;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function getToDate() {
+        return $this->toDate;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function getVacationType() {
+        return $this->vacationType;
+    }
+    
     public function setAttachment($attachment) {
         $this->attachment = $attachment;
         return $this;
@@ -125,8 +155,7 @@ class VacationRequest {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
-        $this->setAttachment($data['attachment'])
-                ->setDateOfSubmission($data['dateOfSubmission'])
+        $this->setDateOfSubmission($data['dateOfSubmission'])
                 ->setFromDate($data['fromDate'])
                 ->setStatus($data['status'])
                 ->setToDate($data['toDate'])
@@ -150,17 +179,12 @@ class VacationRequest {
             $inputFilter->add(array(
                 'name' => 'attachment',
                 'validators' => array(
-                    array('name' => 'Count',
-                        'options' => array(
-                            'max' => 1
-                        )
-                    ),
-                    array('name' => 'Size',
+                    array('name' => 'Filesize',
                         'options' => array(
                             'max' => 2097152
                         )
                     ),
-                    array('name' => 'Extension',
+                    array('name' => 'Fileextension',
                         'options' => array(
                             'extension' => 'gif,jpg,png'
                         )

@@ -5,6 +5,7 @@ namespace Settings\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilter;
+use Zend\Validator\Regex;
 
 /**
  * Class Branche
@@ -14,6 +15,8 @@ use Zend\InputFilter\InputFilter;
  */
 class Attendance {
 
+    private $inputFilter;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
@@ -50,6 +53,22 @@ class Attendance {
      */
     public $active = 1;
 
+    public function getBranch() {
+        return $this->branch;
+    }
+
+    public function getStartTime() {
+        return $this->startTime;
+    }
+
+    public function getEndTime() {
+        return $this->endTime;
+    }
+
+    public function isActive() {
+        return $this->active;
+    }
+    
     public function setBranch($branch) {
         $this->branch = $branch;
         return $this;
@@ -65,7 +84,7 @@ class Attendance {
         return $this;
     }
 
-    public function isActive($active) {
+    public function setActive($active) {
         $this->active = $active;
         return $this;
     }
@@ -107,7 +126,7 @@ class Attendance {
                         'name' => 'regex',
                         'options' => array(
                             'pattern' => '/^(2[0-3]|1[0-9]|0[0-9]|[^0-9][0-9]):([0-5][0-9]|[0-9]):([0-5][0-9]|[0-9])$/',
-                            'messages' => 'please pick time from the menu .... '))
+                            'messages' => array(Regex::NOT_MATCH => 'please pick time from the menu .... ')))
                 )
             ));
             $inputFilter->add(array(
@@ -117,7 +136,7 @@ class Attendance {
                     array('name' => 'regex',
                         'options' => array(
                             'pattern' => '/^(2[0-3]|1[0-9]|0[0-9]|[^0-9][0-9]):([0-5][0-9]|[0-9]):([0-5][0-9]|[0-9])$/',
-                            'messages' => 'please pick time from the menu .... ')
+                            'messages' => array(Regex::NOT_MATCH => 'please pick time from the menu .... '))
                     ),
                     array('name' => 'Utilities\Service\Validator\TimeValidator',
                         'options' => array(

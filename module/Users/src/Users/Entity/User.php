@@ -5,6 +5,7 @@ namespace Users\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilter;
+use Zend\Validator\Regex;
 
 /**
  * Class User
@@ -17,6 +18,9 @@ class User {
     const DEFAULT_VACATION_BALANCE = 21;
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
+    const SAME_PASSWORD = "SAME_PASSWORD";
+    
+    private $inputFilter;
 
     /**
      * @ORM\Id
@@ -166,6 +170,74 @@ class User {
         }
     }
 
+    public function getBranch() {
+        return $this->branch;
+    }
+
+    public function getDateOfBirth() {
+        return $this->dateOfBirth;
+    }
+
+    public function getDepartment() {
+        return $this->department;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function getManager() {
+        return $this->manager;
+    }
+
+    public function getMaritalStatus() {
+        return $this->maritalStatus;
+    }
+
+    public function getMobile() {
+        return $this->mobile;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function getPhoto() {
+        return $this->photo;
+    }
+
+    public function getPosition() {
+        return $this->position;
+    }
+
+    public function getRole() {
+        return $this->role;
+    }
+
+    public function getStartDate() {
+        return $this->startDate;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function getTotalWorkingHoursThisMonth() {
+        return $this->totalWorkingHoursThisMonth;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getVacationBalance() {
+        return $this->vacationBalance;
+    }
+    
     public function setBranch($branch) {
         $this->branch = $branch;
         return $this;
@@ -266,6 +338,15 @@ class User {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
+        if(array_key_exists('role', $data)){
+            $this->setRole($data["role"]);
+        }
+        if(array_key_exists('status', $data)){
+            $this->setRole($data["status"]);
+        }
+        if(array_key_exists('totalWorkingHoursThisMonth', $data)){
+            $this->setRole($data["totalWorkingHoursThisMonth"]);
+        }
         $this->setBranch($data["branch"])
                 ->setDateOfBirth($data["dateOfBirth"])
                 ->setDepartment($data["department"])
@@ -275,12 +356,8 @@ class User {
                 ->setMobile($data["mobile"])
                 ->setName($data["name"])
                 ->setPassword($data["password"])
-                ->setPhoto($data["photo"])
                 ->setPosition($data["position"])
-                ->setRole($data["role"])
                 ->setStartDate($data["startDate"])
-                ->setStatus($data["status"])
-                ->setTotalWorkingHoursThisMonth($data["totalWorkingHoursThisMonth"])
                 ->setUsername($data["username"])
                 ->setVacationBalance($data["vacationBalance"]);
     }
@@ -351,7 +428,7 @@ class User {
                         'name' => 'regex',
                         'options' => array(
                             'pattern' => '/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/',
-                            'messages' => 'This is not a mobile number!'
+                            'messages' => array(Regex::NOT_MATCH => 'This is not a mobile number!')
                         )
                     )
                 )
@@ -363,7 +440,7 @@ class User {
                     array(
                         'name' => 'date',
                         'options' => array(
-                            'format' => 'MM/dd/yyyy',
+                            'format' => 'm/d/Y',
                         )
                     )
                 )
@@ -375,7 +452,7 @@ class User {
                     array(
                         'name' => 'date',
                         'options' => array(
-                            'format' => 'MM/dd/yyyy',
+                            'format' => 'm/d/Y',
                         )
                     )
                 )
@@ -397,17 +474,12 @@ class User {
                 'name' => 'photo',
                 'required' => true,
                 'validators' => array(
-                    array('name' => 'Count',
-                        'options' => array(
-                            'max' => 1
-                        )
-                    ),
-                    array('name' => 'Size',
+                    array('name' => 'Filesize',
                         'options' => array(
                             'max' => 2097152
                         )
                     ),
-                    array('name' => 'Extension',
+                    array('name' => 'Fileextension',
                         'options' => array(
                             'extension' => 'gif,jpg,png'
                         )

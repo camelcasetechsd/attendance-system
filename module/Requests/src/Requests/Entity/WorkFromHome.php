@@ -19,6 +19,8 @@ class WorkFromHome {
     const STATUS_APPROVED = 3;
     const STATUS_DENIED = 4;
 
+    private $inputFilter;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
@@ -69,6 +71,30 @@ class WorkFromHome {
      */
     public $status;
 
+    public function getDateOfSubmission() {
+        return $this->dateOfSubmission;
+    }
+
+    public function getEndDate() {
+        return $this->endDate;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function getStartDate() {
+        return $this->startDate;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function getReason() {
+        return $this->reason;
+    }
+    
     public function setDateOfSubmission($dateOfSubmission) {
         $this->dateOfSubmission = $dateOfSubmission;
         return $this;

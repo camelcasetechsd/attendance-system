@@ -14,6 +14,8 @@ use Zend\InputFilter\InputFilter;
  */
 class Holiday {
 
+    private $inputFilter;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
@@ -50,6 +52,22 @@ class Holiday {
      */
     public $active = 1;
 
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getDateTo() {
+        return $this->dateTo;
+    }
+
+    public function getDateFrom() {
+        return $this->dateFrom;
+    }
+
+    public function isActive() {
+        return $this->active;
+    }
+    
     public function setName($name) {
         $this->name = $name;
         return $this;
@@ -65,7 +83,7 @@ class Holiday {
         return $this;
     }
 
-    public function isActive($active) {
+    public function setActive($active) {
         $this->active = $active;
         return $this;
     }

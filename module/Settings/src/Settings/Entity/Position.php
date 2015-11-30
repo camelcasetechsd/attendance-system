@@ -13,6 +13,8 @@ use Zend\InputFilter\InputFilter;
  * @package Settings\Entity
  */
 class Position {
+    
+    private $inputFilter;
 
     /**
      * @ORM\Id
@@ -36,6 +38,14 @@ class Position {
      */
     public $description;
 
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+    
     public function setDescription($description) {
         $this->description = $description;
         return $this;

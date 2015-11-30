@@ -17,6 +17,8 @@ class Branch {
     const STATUS_ACTIVE = 1;
     const STATUS_INACTIVE = 2;
 
+    private $inputFilter;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
@@ -61,6 +63,26 @@ class Branch {
      */
     public $status;
 
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function getManager() {
+        return $this->manager;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+    
     public function setAddress($address) {
         $this->address = $address;
         return $this;
