@@ -2,16 +2,6 @@
 
 return array(
     'view_manager' => array(
-        // Create out template mapping
-        'template_map' => array(
-            'default-module/index/index' => __DIR__ . '/../view/default-module/index/index.phtml',
-            'default-module/error/index' => __DIR__ . '/../view/default-module/error/index.phtml',
-            'default-module/error/error' => __DIR__ . '/../view/default-module/error/error.phtml',
-            'default-module/error/deactivated' => __DIR__ . '/../view/default-module/error/deactivated.phtml',
-            'default-module/sign/index' => __DIR__ . '/../view/default-module/sign/index.phtml',
-            'default-module/sign/in' => __DIR__ . '/../view/default-module/sign/in.phtml',
-            'default-module/sign/out' => __DIR__ . '/../view/default-module/sign/out.phtml',
-        ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),

@@ -3,6 +3,11 @@
 namespace Settings;
 
 return array(
+    'view_manager' => array(
+        'template_path_stack' => array(
+            __DIR__ . '/../view',
+        ),
+    ),
     'service_manager' => array(
         'aliases' => array(
             'settingsIndex' => 'Settings\Controller\IndexController',

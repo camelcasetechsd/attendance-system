@@ -1,6 +1,11 @@
 <?php
 
 return array(
+    'view_manager' => array(
+        'template_path_stack' => array(
+            __DIR__ . '/../view',
+        ),
+    ),
     'controllers' => array(
         'invokables' => array(
             'Calendar\Controller\Index' => 'Calendar\Controller\IndexController',
@@ -15,7 +20,7 @@ return array(
                       We want to make /calendar the main end point, with
                       an optional controller and action.
                      */
-                    'route' => '/calendar/index[/:action]',
+                    'route' => '/calendar[/:action]',
                     /*
                       We want a default end point (if no controller
                       and action is given) to go to the index action
