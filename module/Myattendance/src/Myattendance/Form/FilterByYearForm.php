@@ -27,27 +27,31 @@ class FilterByYearForm extends Form {
 
         $this->add(array(
             'name' => 'dateFrom',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'placeholder' => 'MM/DD/YYYY Example: 10/10/2010',
                 'required' => 'required',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'From Date: ',
+                'format' => 'm/d/Y',
             ),
         ));
 
         $this->add(array(
             'name' => 'dateTo',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'placeholder' => 'MM/DD/YYYY Example: 10/10/2010',
                 'required' => 'required',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'To Date: ',
+                'format' => 'm/d/Y',
             ),
         ));
 

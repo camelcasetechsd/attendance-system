@@ -18,24 +18,28 @@ class WorkfromhomeForm extends Form {
 
         $this->add(array(
             'name' => 'startDate',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'class' => 'date form-control',
                 'required' => 'required',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'Start Date',
+                'format' => 'm/d/Y',
             ),
         ));
 
         $this->add(array(
             'name' => 'endDate',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'class' => 'date form-control',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'End Date',
+                'format' => 'm/d/Y',
             ),
         ));
 

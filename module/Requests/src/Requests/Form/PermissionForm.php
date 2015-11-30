@@ -18,13 +18,15 @@ class PermissionForm extends Form {
 
         $this->add(array(
             'name' => 'date',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'required' => 'required',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'Date: ',
+                'format' => 'm/d/Y',
             ),
         ));
 

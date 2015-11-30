@@ -25,26 +25,30 @@ class HolidayForm extends Form {
         ));
         $this->add(array(
             'name' => 'dateFrom',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'required' => 'required',
                 'placeholder' => 'MM/DD/YYYY Example: 10/10/2010',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'From Date: ',
+                'format' => 'm/d/Y',
             ),
         ));
         $this->add(array(
             'name' => 'dateTo',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'required' => 'required',
                 'placeholder' => 'MM/DD/YYYY Example: 10/10/2010',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'To Date: ',
+                'format' => 'm/d/Y',
             ),
         ));
 

@@ -19,27 +19,31 @@ class VacationRequestForm extends Form {
 
         $this->add(array(
             'name' => 'fromDate',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'required' => 'required',
                 'placeholder' => 'Example: 10/22/2010',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'From Date: ',
+                'format' => 'm/d/Y',
             ),
         ));
 
         $this->add(array(
             'name' => 'toDate',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'placeholder' => 'Example: 10/22/2010',
                 'class' => 'form-control date',
                 'id' => 'toDate',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'To Date: ',
+                'format' => 'm/d/Y',
             ),
         ));
 
