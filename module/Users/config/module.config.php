@@ -13,9 +13,10 @@ return array(
             'user' => 'Users\Controller\IndexController'
         ),
         'factories' => array(
-            'Users\Auth\Authentication' =>  'Users\Service\AuthenticationFactory',
-            'Users\Event\AuthenticationEvent' =>  'Users\Service\AuthenticationEventFactory',
-            'Users\Acl\Acl' =>  'Users\Service\AclFactory',
+            'Users\Auth\Authentication' => 'Users\Service\AuthenticationFactory',
+            'Users\Event\AuthenticationEvent' => 'Users\Service\AuthenticationEventFactory',
+            'Users\Acl\Acl' => 'Users\Service\AclFactory',
+            'Users\Model\User' => 'Users\Model\UserFactory',
         ),
     ),
     'doctrine' => array(
@@ -39,6 +40,19 @@ return array(
     ),
     'router' => array(
         'routes' => array(
+            'userEdit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/users/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Users\Controller\Index',
+                        'action' => 'edit',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
             'users' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
@@ -46,7 +60,7 @@ return array(
                       We want to make /users the main end point, with
                       an optional controller and action.
                      */
-                    'route' => '/users/index[/:action]',
+                    'route' => '/users[/:action]',
                     /*
                       We want a default end point (if no controller
                       and action is given) to go to the index action
