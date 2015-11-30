@@ -92,8 +92,15 @@ class Query
         return $this->setEntity($entityName)->entityRepository->findOneBy($criteria, $orderBy);
     }
     
-    public function filter($entityName, Criteria $criteria)
+    public function filter($entityName, $criteria = false, $countFlag = false)
     {
-        return $this->setEntity($entityName)->entityRepository->matching($criteria);
+        if(! $criteria instanceof Criteria){
+            $criteria = new Criteria();
+        }
+        $return = $this->setEntity($entityName)->entityRepository->matching($criteria);
+        if($countFlag === true){
+           $return = (int) $return->count();
+        }
+        return $return;
     }
 }
