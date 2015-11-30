@@ -14,6 +14,9 @@ class UserForm extends Form {
     protected $query;
 
     public function __construct($name = null, $options = null) {
+        if(is_null($name)){
+            $name = "user";
+        }
         $this->query = $options['query'];
         unset($options['query']);
         parent::__construct($name, $options);
@@ -38,7 +41,6 @@ class UserForm extends Form {
             'type' => 'Zend\Form\Element\Password',
             'attributes' => array(
                 'placeholder' => 'Enter User Password',
-                'required' => 'required',
                 'class' => 'form-control',
             ),
             'options' => array(
@@ -51,7 +53,6 @@ class UserForm extends Form {
             'type' => 'Zend\Form\Element\Password',
             'attributes' => array(
                 'placeholder' => 'Confirm User Password',
-                'required' => 'required',
                 'class' => 'form-control',
             ),
             'options' => array(
@@ -86,27 +87,31 @@ class UserForm extends Form {
 
         $this->add(array(
             'name' => 'dateOfBirth',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'placeholder' => 'Example: 10/10/2010',
                 'required' => 'required',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'DateOfBirth: ',
+                'format' => 'm/d/Y',
             ),
         ));
 
         $this->add(array(
             'name' => 'startDate',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
                 'placeholder' => 'Example: 10/10/2010',
                 'required' => 'required',
                 'class' => 'form-control date',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'StartDate: ',
+                'format' => 'm/d/Y',
             ),
         ));
 
@@ -116,8 +121,8 @@ class UserForm extends Form {
             'attributes' => array(
                 'required' => 'required',
                 'class' => 'form-control',
-                'max' => '0',
-                'min' => '21',
+                'min' => '0',
+                'max' => '21',
             ),
             'options' => array(
                 'label' => 'VacationBalance: ',
@@ -136,12 +141,6 @@ class UserForm extends Form {
                 'label' => 'Description: ',
             ),
         ));
-        $maritalStatus = new Zend_Form_Element_Select('maritalStatus');
-        $maritalStatus->
-                setLabel('MaritalStatus: ')->
-                addMultiOption('single', 'Single')->
-                addMultiOption('married', 'Married')->
-                setAttrib('class', 'form-control');
 
         $this->add(array(
             'name' => 'maritalStatus',
@@ -233,9 +232,6 @@ class UserForm extends Form {
         $this->add(array(
             'name' => 'photo',
             'type' => 'Zend\Form\Element\File',
-            'attributes' => array(
-                'required' => 'required',
-            ),
             'options' => array(
                 'label' => 'Picture',
             ),
