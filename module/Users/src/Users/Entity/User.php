@@ -18,7 +18,6 @@ class User {
     const DEFAULT_VACATION_BALANCE = 21;
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
-    const SAME_PASSWORD = "SAME_PASSWORD";
     
     private $inputFilter;
 

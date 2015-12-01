@@ -2,7 +2,7 @@
 
 namespace Users\Form;
 
-use Zend\Form\Form;
+use Utilities\Form\Form;
 
 /**
  * User Registeration Form Class using Zend_Form
@@ -14,9 +14,6 @@ class UserForm extends Form {
     protected $query;
 
     public function __construct($name = null, $options = null) {
-        if(is_null($name)){
-            $name = "user";
-        }
         $this->query = $options['query'];
         unset($options['query']);
         parent::__construct($name, $options);

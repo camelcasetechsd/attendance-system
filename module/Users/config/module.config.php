@@ -53,6 +53,19 @@ return array(
                     ),
                 )
             ),
+            'userDelete' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/users/delete/:id',
+                    'defaults' => array(
+                        'controller' => 'Users\Controller\Index',
+                        'action' => 'delete',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
             'users' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(

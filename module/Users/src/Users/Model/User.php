@@ -146,7 +146,7 @@ class User {
 
     public function deleteUser($id)
     {
-        $user         = $this->query->find(/*$entityName =*/ null, $id);
+        $user         = $this->query->find(/*$entityName =*/ 'Users\Entity\User', $id);
         $user->status = UserEntity::STATUS_DELETED;
         $this->query->entityManager->merge($user);
         $this->query->entityManager->flush();

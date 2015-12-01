@@ -53,26 +53,25 @@ class IndexController extends ActionController {
 
             // Make certain to merge the files info!
             $fileData = $request->getFiles()->toArray();
-            
+
             $data = array_merge_recursive(
                     $request->getPost()->toArray(), $fileData
             );
-            var_dump($fileData);
-            if (empty($data['password'])) {
-                $samePassword = User::SAME_PASSWORD;
-                $data['password'] = $data['confirmPassword'] = $samePassword;
-                $form->get("password")->setValue($samePassword);
-                $form->get("confirmPassword")->setValue($samePassword);
-            }
 
             $form->setInputFilter($userObj->getInputFilter());
+            $inputFilter = $form->getInputFilter();
             $form->setData($data);
             // file not updated
-            if(isset($fileData['photo']['name']) && empty($fileData['photo']['name'])){
+            if (isset($fileData['photo']['name']) && empty($fileData['photo']['name'])) {
                 // Change required flag to false for any previously uploaded files
-                $inputFilter   = $form->getInputFilter();
                 $input = $inputFilter->get('photo');
                 $input->setRequired(false);
+            }
+            if (empty($data['password'])) {
+                $password = $inputFilter->get('password');
+                $password->setRequired(false);
+                $confirmPassword = $inputFilter->get('confirmPassword');
+                $confirmPassword->setRequired(false);
             }
             if ($form->isValid()) {
                 $userModel->saveUser($data, $userObj);
@@ -88,11 +87,48 @@ class IndexController extends ActionController {
     }
 
     public function newAction() {
-        return new ViewModel();
+
+        $variables = array();
+        $query = $this->getServiceLocator()->get('wrapperQuery');
+        $userModel = $this->getServiceLocator()->get('Users\Model\User');
+        $userObj = new User();
+        $options = array();
+        $options['query'] = $query;
+        $form = new UserForm(/* $name = */ null, $options);
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+
+            // Make certain to merge the files info!
+            $fileData = $request->getFiles()->toArray();
+
+            $data = array_merge_recursive(
+                    $request->getPost()->toArray(), $fileData
+            );
+
+            $form->setInputFilter($userObj->getInputFilter());
+            $form->setData($data);
+            if ($data['password'] != $data['confirmPassword']) {
+                $form->get('confirmPassword')->setMessages(array("password doesnt match"));
+            }
+            if ($form->isValid()) {
+                $userModel->saveUser($data);
+
+                $url = $this->getEvent()->getRouter()->assemble(array('action' => 'index'), array('name' => 'users'));
+                $this->redirect()->toUrl($url);
+            }
+        }
+
+        $variables['userForm'] = $this->getFormView($form);
+        return new ViewModel($variables);
     }
 
     public function deleteAction() {
-        return new ViewModel();
+        $id = $this->params('id');
+        $userModel = $this->getServiceLocator()->get('Users\Model\User');
+        $userModel->deleteUser($id);
+        $url = $this->getEvent()->getRouter()->assemble(array('action' => 'index'), array('name' => 'users'));
+        $this->redirect()->toUrl($url);
     }
 
 }
