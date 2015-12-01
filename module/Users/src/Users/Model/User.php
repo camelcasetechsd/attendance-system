@@ -107,14 +107,14 @@ class User {
 
         $entity->role = $this->query->find('Users\Entity\Role',1);
 
-        if (!is_null($userObj) && !empty($userInfo['photo']['name'])) {
+        if (!empty($userInfo['photo']['name'])) {
             $entity->photo = $this->savePhoto();
         }
         $entity->status = UserEntity::STATUS_ACTIVE;
 
         $em->persist($entity);
 
-        $em->flush();
+        $em->flush($entity);
     }
 
     protected function savePhoto()
@@ -149,6 +149,6 @@ class User {
         $user         = $this->query->find(/*$entityName =*/ 'Users\Entity\User', $id);
         $user->status = UserEntity::STATUS_DELETED;
         $this->query->entityManager->merge($user);
-        $this->query->entityManager->flush();
+        $this->query->entityManager->flush($user);
     }
 }
