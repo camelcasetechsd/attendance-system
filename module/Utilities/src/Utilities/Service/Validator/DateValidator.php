@@ -3,6 +3,7 @@
 namespace Utilities\Service\Validator;
 
 use Zend\Validator\AbstractValidator;
+use Zend\Config\Config;
 
 /**
  * Zend Framework
@@ -43,7 +44,7 @@ class DateValidator extends AbstractValidator {
      * Error messages
      * @var array
      */
-    protected $_messageTemplates = array(
+    protected $messageTemplates = array(
         self::NOT_GREATER => "DateTo should be more than  DateFrom",
         self::MISSING_TOKEN => 'No token was provided to match against',
     );
@@ -51,17 +52,17 @@ class DateValidator extends AbstractValidator {
     /**
      * @var array
      */
-    protected $_messageVariables = array(
-        'token' => '_tokenString'
+    protected $messageVariables = array(
+        'token' => 'tokenString'
     );
 
     /**
      * Original token against which to validate
      * @var string
      */
-    protected $_tokenString;
-    protected $_token;
-    protected $_strict = true;
+    protected $tokenString;
+    protected $token;
+    protected $strict = true;
 
     /**
      * Sets validator options
@@ -69,7 +70,7 @@ class DateValidator extends AbstractValidator {
      * @param mixed $token
      */
     public function __construct($token = null) {
-        if ($token instanceof Zend_Config) {
+        if ($token instanceof Config) {
             $token = $token->toArray();
         }
 
@@ -82,6 +83,8 @@ class DateValidator extends AbstractValidator {
         } else if (null !== $token) {
             $this->setToken($token);
         }
+        
+        parent::__construct();
     }
 
     /**
@@ -90,18 +93,18 @@ class DateValidator extends AbstractValidator {
      * @return string
      */
     public function getToken() {
-        return $this->_token;
+        return $this->token;
     }
 
     /**
      * Set token against which to compare
      *
      * @param  mixed $token
-     * @return Zend_Validate_Identical
+     * @return DateValidator
      */
     public function setToken($token) {
-        $this->_tokenString = $token;
-        $this->_token = $token;
+        $this->tokenString = $token;
+        $this->token = $token;
         return $this;
     }
 
@@ -111,23 +114,21 @@ class DateValidator extends AbstractValidator {
      * @return boolean
      */
     public function getStrict() {
-        return $this->_strict;
+        return $this->strict;
     }
 
     /**
      * Sets the strict parameter
      *
-     * @param Zend_Validate_Identical
-     * @return $this
+     * @param bool $strict
+     * @return DateValidator
      */
     public function setStrict($strict) {
-        $this->_strict = (boolean) $strict;
+        $this->strict = (boolean) $strict;
         return $this;
     }
 
     /**
-     * Defined by Zend_Validate_Interface
-     *
      * Returns true if and only if a token has been set and the provided value
      * matches that token.
      *
@@ -136,7 +137,7 @@ class DateValidator extends AbstractValidator {
      * @return boolean
      */
     public function isValid($value, $context = null) {
-        $this->_setValue($value);
+        $this->setValue($value);
 
         if (($context !== null) && isset($context) && array_key_exists($this->getToken(), $context)) {
             $token = $context[$this->getToken()];
@@ -145,7 +146,7 @@ class DateValidator extends AbstractValidator {
         }
 
         if ($token === null) {
-            $this->_error(self::MISSING_TOKEN);
+            $this->error(self::MISSING_TOKEN);
             return false;
         }
 
@@ -154,7 +155,7 @@ class DateValidator extends AbstractValidator {
         $valueDate = new DateTime($value);
         $tokenDate = new DateTime($token);
         if (($strict && ($valueDate <= $tokenDate)) || (!$valueDate && ($value <= $tokenDate))) {
-            $this->_error(self::NOT_GREATER);
+            $this->error(self::NOT_GREATER);
             return false;
         }
 
