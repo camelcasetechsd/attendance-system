@@ -103,4 +103,13 @@ class Query
         }
         return $return;
     }
+    
+    public function save($entity, $data = array())
+    {
+        if(! empty($data) && method_exists($entity, 'exchangeArray')){
+            $entity->exchangeArray($data);
+        }
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush($entity);
+    }
 }
