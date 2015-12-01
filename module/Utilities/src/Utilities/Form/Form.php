@@ -2,48 +2,18 @@
 
 namespace Utilities\Form;
 
-use Zend\Form\View\Helper\Form as FormViewHelper;
-use Zend\Form\FieldsetInterface;
-use Zend\Form\FormInterface;
+use Zend\Form\Form as ZendForm;
+use Utilities\Service\Inflector;
 
-class Form extends FormViewHelper{
-    /**
-     * Render a form from the provided $form,
-     *
-     * @param  FormInterface $form
-     * @return string
-     */
-    public function render(FormInterface $form) {
-        if (method_exists($form, 'prepare')) {
-            $form->prepare();
+class Form extends ZendForm {
+
+    public function __construct($name = null, $options = null) {
+        if(is_null($name)){
+            $reflection = new \ReflectionClass($this);
+            $inflector = new Inflector();
+            $name = $inflector->underscore($reflection->getShortName());
         }
-
-        $formContent = '';
-
-        foreach ($form as $element) {
-
-            if ($element instanceof FieldsetInterface) {
-                $formContent.= $this->getView()->formCollection($element);
-            } else {
-
-                $element->setAttribute('id', $form->getAttribute('name') . "_" . $element->getAttribute('name'));
-                $labelAbsent = false;
-                $formElementAppendString = '';
-                if (empty($element->getLabel()) && $element->getAttribute('type') !== "hidden") {
-                    $labelAbsent = true;
-                }
-                if ($labelAbsent === true) {
-                    $formContent.= "<dt>&nbsp;</dt>";
-                } else {
-                    $formContent.='<dd>';
-                    $formElementAppendString = '</dd>';
-                }
-
-                $formContent.= $this->getView()->formRow($element);
-                $formContent.=$formElementAppendString;
-            }
-        }
-
-        return $this->openTag($form) . $formContent . $this->closeTag();
+        parent::__construct($name, $options);
     }
+
 }
