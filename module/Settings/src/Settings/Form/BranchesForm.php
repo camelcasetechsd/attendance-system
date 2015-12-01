@@ -25,7 +25,7 @@ class BranchesForm extends Form {
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'required' => 'required',
-                'class' => 'time form-control',
+                'class' => 'form-control',
             ),
             'options' => array(
                 'label' => 'Branch title',
@@ -38,7 +38,7 @@ class BranchesForm extends Form {
             'type' => 'Zend\Form\Element\Textarea',
             'attributes' => array(
                 'required' => 'required',
-                'class' => 'time form-control',
+                'class' => 'form-control',
             ),
             'options' => array(
                 'label' => 'Description',
@@ -50,7 +50,7 @@ class BranchesForm extends Form {
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'required' => 'required',
-                'class' => 'time form-control',
+                'class' => 'form-control',
             ),
             'options' => array(
                 'label' => 'Address',
@@ -61,7 +61,7 @@ class BranchesForm extends Form {
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'attributes' => array(
                 'required' => 'required',
-                'class' => 'time form-control',
+                'class' => 'form-control',
             ),
             'options' => array(
                 'label' => 'Manager',

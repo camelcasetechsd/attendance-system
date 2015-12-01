@@ -123,11 +123,13 @@ class Branch {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
+        if(array_key_exists('status', $data)){
+            $this->setStatus($data['status']);
+        }
         $this->setAddress($data['address'])
                 ->setDescription($data['description'])
                 ->setManager($data['manager'])
-                ->setName($data['name'])
-                ->setStatus($data['status']);
+                ->setName($data['name']);
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter) {

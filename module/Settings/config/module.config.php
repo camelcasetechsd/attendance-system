@@ -20,6 +20,7 @@ return array(
         ),
         'factories' => array(
             'Settings\Model\Attendance' => 'Settings\Model\AttendanceFactory',
+            'Settings\Model\Branches' => 'Settings\Model\BranchesFactory',
         ),
     ),
     'doctrine' => array(
