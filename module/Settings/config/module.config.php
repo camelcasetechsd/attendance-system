@@ -17,7 +17,10 @@ return array(
             'settingsDepartments' => 'Settings\Controller\DepartmentsController',
             'settingsBranches' => 'Settings\Controller\BranchesController',
             'settingsAttendance' => 'Settings\Controller\AttendanceController',
-        )
+        ),
+        'factories' => array(
+            'Settings\Model\Attendance' => 'Settings\Model\AttendanceFactory',
+        ),
     ),
     'doctrine' => array(
         'driver' => array(
@@ -46,6 +49,162 @@ return array(
     ),
     'router' => array(
         'routes' => array(
+            'attendanceEdit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/attendance/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Attendance',
+                        'action' => 'edit',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'attendanceDelete' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/attendance/delete/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Attendance',
+                        'action' => 'delete',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'branchesEdit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/branches/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Branches',
+                        'action' => 'edit',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'branchesDelete' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/branches/delete/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Branches',
+                        'action' => 'delete',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'departmentsEdit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/departments/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Departments',
+                        'action' => 'edit',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'departmentsDelete' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/departments/delete/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Departments',
+                        'action' => 'delete',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'holidayEdit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/holiday/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Holiday',
+                        'action' => 'edit',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'holidayDelete' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/holiday/delete/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Holiday',
+                        'action' => 'delete',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'positionEdit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/position/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Position',
+                        'action' => 'edit',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'positionDelete' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/position/delete/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Position',
+                        'action' => 'delete',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'vacationEdit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/vacation/edit/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Vacation',
+                        'action' => 'edit',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'vacationDelete' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/settings/vacation/delete/:id',
+                    'defaults' => array(
+                        'controller' => 'Settings\Controller\Vacation',
+                        'action' => 'delete',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
             'settingsIndex' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
