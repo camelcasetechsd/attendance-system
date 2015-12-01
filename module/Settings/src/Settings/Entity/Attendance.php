@@ -104,10 +104,12 @@ class Attendance {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
+        if(array_key_exists('active', $data)){
+            $this->setActive($data["active"]);
+        }
         $this->setBranch($data['branch'])
-                ->setEndTime($data['endTime'])
-                ->setStartTime($data['startTime'])
-                ->isActive($data['active']);
+                ->setEndTime(new \DateTime($data['endTime']))
+                ->setStartTime(new \DateTime($data['startTime']));
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter) {

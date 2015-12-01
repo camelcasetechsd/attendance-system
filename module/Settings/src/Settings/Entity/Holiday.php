@@ -103,10 +103,12 @@ class Holiday {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
+        if(array_key_exists('active', $data)){
+            $this->setActive($data["active"]);
+        }
         $this->setName($data['name'])
                 ->setDateFrom($data['dateFrom'])
-                ->setDateTo($data['dateTo'])
-                ->isActive($data['active']);
+                ->setDateTo($data['dateTo']);
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter) {

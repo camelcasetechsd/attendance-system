@@ -103,10 +103,12 @@ class Vacation {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
+        if(array_key_exists('active', $data)){
+            $this->setActive($data["active"]);
+        }
         $this->setBalance($data['balance'])
                 ->setDescription($data['description'])
-                ->setType($data['type'])
-                ->isActive($data['active']);
+                ->setType($data['type']);
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter) {
