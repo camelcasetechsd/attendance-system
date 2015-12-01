@@ -2,7 +2,7 @@
 
 namespace Requests\Form;
 
-use Zend\Form\Form;
+use Utilities\Form\Form;
 
 /**
  * add comment Form Class using Zend_Form
