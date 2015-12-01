@@ -1,16 +1,16 @@
 <?php
 
-namespace Users\Model;
+namespace Settings\Model;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Users\Model\User;
+use Settings\Model\Attendance;
 
-class UserFactory implements FactoryInterface {
+class AttendanceFactory implements FactoryInterface {
 
     public function createService(ServiceLocatorInterface $serviceLocator) {
-        $query = $serviceLocator->get('wrapperQuery')->setEntity('Users\Entity\User');
-        return new User($query);
+        $query = $serviceLocator->get('wrapperQuery')->setEntity('Settings\Entity\Attendance');
+        return new Attendance($query);
     }
 
 }

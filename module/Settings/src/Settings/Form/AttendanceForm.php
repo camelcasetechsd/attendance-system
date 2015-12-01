@@ -20,12 +20,13 @@ class AttendanceForm extends Form {
 
         $this->add(array(
             'name' => 'startTime',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Time',
             'attributes' => array(
-                'placeholder' => 'Your name here...',
+                'placeholder' => 'Start time here...',
                 'required' => 'required',
                 'class' => 'time form-control',
                 'id' => 'starttimeformat',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'Start Time',
@@ -34,12 +35,13 @@ class AttendanceForm extends Form {
 
         $this->add(array(
             'name' => 'endTime',
-            'type' => 'Zend\Form\Element\Text',
+            'type' => 'Zend\Form\Element\Time',
             'attributes' => array(
-                'placeholder' => 'Your name here...',
+                'placeholder' => 'Start time here...',
                 'required' => 'required',
                 'class' => 'time form-control',
                 'id' => 'endtimeformat',
+                'type' => 'text',
             ),
             'options' => array(
                 'label' => 'End Time',
