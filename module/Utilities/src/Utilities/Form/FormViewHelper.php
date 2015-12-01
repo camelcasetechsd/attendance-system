@@ -26,7 +26,9 @@ class FormViewHelper extends Form {
                 $formContent.= $this->getView()->formCollection($element);
             } else {
 
-                $element->setAttribute('id', $form->getAttribute('name') . "_" . $element->getAttribute('name'));
+                if (empty($element->getAttribute('id'))) {
+                    $element->setAttribute('id', $form->getAttribute('name') . "_" . $element->getAttribute('name'));
+                }
                 $labelAbsent = false;
                 $formElementAppendString = '';
                 if (empty($element->getLabel()) && $element->getAttribute('type') !== "hidden") {
