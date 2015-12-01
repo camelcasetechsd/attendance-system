@@ -89,7 +89,7 @@ class IndexController extends ActionController {
     public function newAction() {
 
         $variables = array();
-        $query = $this->getServiceLocator()->get('wrapperQuery');
+        $query = $this->getServiceLocator()->get('wrapperQuery')->setEntity('Users\Entity\User');
         $userModel = $this->getServiceLocator()->get('Users\Model\User');
         $userObj = new User();
         $options = array();

@@ -23,7 +23,7 @@ class AttendanceController extends ActionController
     public function newAction()
     {
         $variables = array();
-        $query = $this->getServiceLocator()->get('wrapperQuery');
+        $query = $this->getServiceLocator()->get('wrapperQuery')->setEntity('Settings\Entity\Attendance');
         $attendanceObj = new Attendance();
 
         $options = array();
