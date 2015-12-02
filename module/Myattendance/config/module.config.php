@@ -6,6 +6,14 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
+    'service_manager' => array(
+        'invokables' => array(
+            'Myattendance\Service\Attendance' => 'Myattendance\Service\Attendance',
+        ),
+        'factories' => array(
+            'Myattendance\Model\Attendance' => 'Myattendance\Model\AttendanceFactory',
+        ),
+    ),
     'controllers' => array(
         'invokables' => array(
             'Myattendance\Controller\Index' => 'Myattendance\Controller\IndexController',
