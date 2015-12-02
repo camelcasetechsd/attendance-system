@@ -21,7 +21,7 @@ class PositionForm extends Form {
             'type' => 'Zend\Form\Element\Text',
             'attributes' => array(
                 'required' => 'required',
-                'class' => 'time form-control',
+                'class' => 'form-control',
             ),
             'options' => array(
                 'label' => 'Position title',
@@ -34,7 +34,7 @@ class PositionForm extends Form {
             'type' => 'Zend\Form\Element\Textarea',
             'attributes' => array(
                 'required' => 'required',
-                'class' => 'time form-control',
+                'class' => 'form-control',
             ),
             'options' => array(
                 'label' => 'Description',

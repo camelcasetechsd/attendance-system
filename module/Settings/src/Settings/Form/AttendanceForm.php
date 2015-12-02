@@ -37,7 +37,7 @@ class AttendanceForm extends Form {
             'name' => 'endTime',
             'type' => 'Zend\Form\Element\Time',
             'attributes' => array(
-                'placeholder' => 'Start time here...',
+                'placeholder' => 'End time here...',
                 'required' => 'required',
                 'class' => 'time form-control',
                 'id' => 'endtimeformat',
