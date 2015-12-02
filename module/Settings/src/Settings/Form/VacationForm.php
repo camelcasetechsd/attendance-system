@@ -34,14 +34,6 @@ class VacationForm extends Form {
                 'label' => 'Description:',
             ),
         ));
-        $this->addElement('text', 'balance', array(
-            'label' => 'Balance: ',
-            'required' => true,
-            'filters' => array('StringTrim'),
-            'validators' => array('Digits'),
-            'class' => 'form-control'
-        ));
-
 
         $this->add(array(
             'name' => 'balance',
