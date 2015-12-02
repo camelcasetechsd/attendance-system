@@ -5,6 +5,7 @@ namespace Utilities\Form;
 use Zend\Form\View\Helper\Form;
 use Zend\Form\FieldsetInterface;
 use Zend\Form\FormInterface;
+use Zend\Form\Element\Submit;
 
 class FormViewHelper extends Form {
     /**
@@ -41,6 +42,10 @@ class FormViewHelper extends Form {
                     $formElementAppendString = '</dd>';
                 }
 
+                if($element instanceof Submit && $form->isEditForm === true){
+                    $element->setValue("Edit");
+                }
+                
                 $formContent.= $this->getView()->formRow($element);
                 $formContent.=$formElementAppendString;
             }

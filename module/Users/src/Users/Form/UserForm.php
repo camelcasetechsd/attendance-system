@@ -243,7 +243,7 @@ class UserForm extends Form {
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'class' => 'btn btn-success',
-                'value' => 'Submit!',
+                'value' => 'Create',
             )
         ));
         $this->add(array(
@@ -251,7 +251,7 @@ class UserForm extends Form {
             'type' => 'Zend\Form\Element',
             'attributes' => array(
                 'class' => 'btn btn-danger resetButton',
-                'value' => 'Reset!',
+                'value' => 'Reset',
                 'type' => 'button',
             )
         ));

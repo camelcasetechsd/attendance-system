@@ -35,7 +35,7 @@ class CommentForm extends Form {
             'type' => 'Zend\Form\Element\Submit',
             'attributes' => array(
                 'class' => 'btn btn-success',
-                'value' => 'Submit !',
+                'value' => 'Submit',
                 'id' => 'submit',
             )
         ));
