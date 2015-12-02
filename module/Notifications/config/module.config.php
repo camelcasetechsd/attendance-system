@@ -26,8 +26,26 @@ return array(
             'Notifications\Controller\Index' => 'Notifications\Controller\IndexController',
         ),
     ),
+    'service_manager' => array(
+        'factories' => array(
+            'Notifications\Model\Notifications' => 'Notifications\Model\NotificationsFactory',
+        ),
+    ),
     'router' => array(
         'routes' => array(
+            'notificationsSeen' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/notifications/seen/:id',
+                    'defaults' => array(
+                        'controller' => 'Notifications\Controller\Index',
+                        'action' => 'seen',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
             'notifications' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
@@ -35,7 +53,7 @@ return array(
                       We want to make /notifications the main end point, with
                       an optional controller and action.
                      */
-                    'route' => '/notifications/index[/:action]',
+                    'route' => '/notifications[/:action]',
                     /*
                       We want a default end point (if no controller
                       and action is given) to go to the index action
