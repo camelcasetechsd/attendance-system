@@ -45,7 +45,7 @@ class DateValidator extends AbstractValidator {
      * @var array
      */
     protected $messageTemplates = array(
-        self::NOT_GREATER => "DateTo should be more than  DateFrom",
+        self::NOT_GREATER => "DateTo should be more than DateFrom",
         self::MISSING_TOKEN => 'No token was provided to match against',
     );
 
@@ -152,9 +152,9 @@ class DateValidator extends AbstractValidator {
 
         $strict = $this->getStrict();
 
-        $valueDate = new DateTime($value);
-        $tokenDate = new DateTime($token);
-        if (($strict && ($valueDate <= $tokenDate)) || (!$valueDate && ($value <= $tokenDate))) {
+        $valueDate = new \DateTime($value);
+        $tokenDate = new \DateTime($token);
+        if (($strict && ($valueDate < $tokenDate)) || (!$valueDate && ($value < $tokenDate))) {
             $this->error(self::NOT_GREATER);
             return false;
         }
