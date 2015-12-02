@@ -53,9 +53,6 @@ EOT
         $vacations = $loader->load('data/fixtures/VacationFixtures.yml');
         $this->insertObjectsInDatabase($entityManager, $vacations);
         
-        $notification = $loader->load('data/fixtures/NotificationFixtures.yml');
-        $this->insertObjectsInDatabase($entityManager, $notification); 
-
         $workFromHome = $loader->load('data/fixtures/WorkFromHomeFixtures.yml');
         foreach ($workFromHome as $key) {
             $key->startDate = new \DateTime("now");
@@ -132,6 +129,9 @@ EOT
 
         $vacationRequests = $loader->load('data/fixtures/VacationRequestFixtures.yml');
         $this->insertObjectsInDatabase($entityManager, $vacationRequests);
+        
+        $notification = $loader->load('data/fixtures/NotificationFixtures.yml');
+        $this->insertObjectsInDatabase($entityManager, $notification); 
         
         $entityManager->flush();
 

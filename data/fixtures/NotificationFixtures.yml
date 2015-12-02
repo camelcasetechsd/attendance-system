@@ -1,13 +1,16 @@
 Notifications\Entity\Notification:
-    notification1:
+    notification{1..4}:
         text: 'Your vacation request had been approved'
         url : '/myattendance/vacation'
-        status : 2
-    notification2:
+        status : <numberBetween(1, 2)>
+        user : @user<numberBetween(26, 29)>
+    notification{5..8}:
         text: "Your've reached your vacation balance limit , there's no days off left for you"
         url : '/myattendance/vacation'
-        status : 2
-    notification3:
+        status : <numberBetween(1, 2)>
+        user : @user<numberBetween(26, 29)>
+    notification{9..12}:
         text: 'Your Permission had been rejected'
         url : '/myattendance/vacation'
-        status : 2
+        status : <numberBetween(1, 2)>
+        user : @user<numberBetween(26, 29)>
