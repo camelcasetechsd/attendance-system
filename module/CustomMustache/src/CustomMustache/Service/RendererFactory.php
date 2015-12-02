@@ -10,16 +10,18 @@ use Zend\Authentication\AuthenticationService;
 class RendererFactory implements FactoryInterface {
 
     public function createService(ServiceLocatorInterface $serviceLocator) {
-
+        
         $config = $serviceLocator->get('Configuration');
         $config = $config['mustache'];
         $config['helpers'] = array();
+        $config['helpers']['unseenNotificationsCount'] = FALSE;
         $auth = new AuthenticationService();
 
         if ($auth->hasIdentity()) {
             $config['helpers']['visible'] = TRUE;
             $storage = $auth->getIdentity();
             $role = $storage['rolename'];
+            $userId = $storage['id'];
             $username = $storage['name'];
             $config['helpers']['name'] = $username;
             $acl = $serviceLocator->get('Users\Acl\Acl');
@@ -34,6 +36,11 @@ class RendererFactory implements FactoryInterface {
             } else {
                 $config['helpers']['visibleSettingsModule'] = FALSE;
             }
+            
+            $notificationsModel = $serviceLocator->get('Notifications\Model\Notifications');
+            $unseenNotificationsCount = $notificationsModel->listNotifications($userId, /*$status =*/ 2, /*$countFlag =*/ true);
+            $config['helpers']['unseenNotificationsCount'] = ($unseenNotificationsCount == 0)? false : $unseenNotificationsCount;
+            
         } else {
             $config['helpers']['visible'] = FALSE;
         }
