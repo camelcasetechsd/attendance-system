@@ -250,8 +250,9 @@ class UserForm extends Form {
             'name' => 'reset',
             'type' => 'Zend\Form\Element',
             'attributes' => array(
-                'class' => 'btn btn-danger',
+                'class' => 'btn btn-danger resetButton',
                 'value' => 'Reset!',
+                'type' => 'button',
             )
         ));
     }
