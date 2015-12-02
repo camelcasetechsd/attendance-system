@@ -7,7 +7,6 @@ use Zend\View\Model\ViewModel;
 use Myattendance\Form\FilterByYearForm;
 use Zend\Authentication\AuthenticationService;
 use Utilities\Service\Time;
-use Zend\Stdlib\Parameters;
 
 class AttendanceController extends ActionController {
 

@@ -12,6 +12,7 @@ return array(
         ),
         'factories' => array(
             'Myattendance\Model\Attendance' => 'Myattendance\Model\AttendanceFactory',
+            'Myattendance\Model\Vacation' => 'Myattendance\Model\VacationFactory',
         ),
     ),
     'controllers' => array(
