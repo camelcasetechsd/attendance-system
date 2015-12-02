@@ -22,6 +22,7 @@ return array(
             'Settings\Model\Attendance' => 'Settings\Model\AttendanceFactory',
             'Settings\Model\Branches' => 'Settings\Model\BranchesFactory',
             'Settings\Model\Departments' => 'Settings\Model\DepartmentsFactory',
+            'Settings\Model\Holiday' => 'Settings\Model\HolidayFactory',
         ),
     ),
     'doctrine' => array(

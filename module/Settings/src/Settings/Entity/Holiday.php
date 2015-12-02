@@ -107,8 +107,8 @@ class Holiday {
             $this->setActive($data["active"]);
         }
         $this->setName($data['name'])
-                ->setDateFrom($data['dateFrom'])
-                ->setDateTo($data['dateTo']);
+                ->setDateFrom(new \DateTime($data['dateFrom']))
+                ->setDateTo(new \DateTime($data['dateTo']));
     }
 
     public function setInputFilter(InputFilterInterface $inputFilter) {

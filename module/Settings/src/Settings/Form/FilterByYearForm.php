@@ -36,7 +36,7 @@ class FilterByYearForm extends Form {
             ),
         ));
 
-        $allHolidays = $this->query->findBy('Attendance\Entity\Holiday', array(), array('dateFrom' => 'DESC'));
+        $allHolidays = $this->query->findBy('Settings\Entity\Holiday', array(), array('dateFrom' => 'DESC'));
         foreach ($allHolidays as $holiday) {
             $holidayYear = date_format($holiday->dateFrom, 'Y');
             $valueOptions[$holidayYear] = $holidayYear;
