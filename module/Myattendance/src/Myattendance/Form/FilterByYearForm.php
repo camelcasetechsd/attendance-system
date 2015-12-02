@@ -15,17 +15,6 @@ class FilterByYearForm extends Form {
         $this->setAttribute('class', 'form form-horizontal');
 
         $this->add(array(
-            'name' => 'year',
-            'type' => 'Zend\Form\Element\Select',
-            'attributes' => array(
-                'class' => 'form-control',
-            ),
-            'options' => array(
-                'label' => 'Year: ',
-            ),
-        ));
-
-        $this->add(array(
             'name' => 'dateFrom',
             'type' => 'Zend\Form\Element\Date',
             'attributes' => array(
