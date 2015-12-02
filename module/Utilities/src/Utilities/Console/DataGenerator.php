@@ -52,7 +52,7 @@ EOT
 
         $vacations = $loader->load('data/fixtures/VacationFixtures.yml');
         $this->insertObjectsInDatabase($entityManager, $vacations);
-
+        
         $notification = $loader->load('data/fixtures/NotificationFixtures.yml');
         $this->insertObjectsInDatabase($entityManager, $notification); 
 
@@ -130,6 +130,9 @@ EOT
 
         $this->insertObjectsInDatabase($entityManager, $comments);
 
+        $vacationRequests = $loader->load('data/fixtures/VacationRequestFixtures.yml');
+        $this->insertObjectsInDatabase($entityManager, $vacationRequests);
+        
         $entityManager->flush();
 
         $output->writeln('Data Added');

@@ -1,12 +1,12 @@
 Requests\Entity\VacationRequest:
     
-    vacationrequest{1..7}:
+    vacationrequest{1..10}:
         
-        user: <numberBetween(1, 7)>
-        startDate: <date()>
-        endDate: <date()>
-        reason: Casual
-        dateOfSubmission: <date()>
+        user: @user<numberBetween(26, 29)>
+        fromDate: <dateTimeThisMonth()>
+        toDate: <dateTimeThisMonth()>
+        vacationType: @vacation<numberBetween(0, 2)>
+        dateOfSubmission: <dateTimeThisMonth()>
         status: <numberBetween(1, 4)>
     
 
