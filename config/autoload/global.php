@@ -31,7 +31,10 @@ return array(
             // for the error messages
             'error/404' => __DIR__ . '/../../layout/error/error.phtml',
             'error/index' => __DIR__ . '/../../layout/error/error.phtml',
-        )
+        ),
+        'strategies' => array(
+            'ViewJsonStrategy',
+        ),
     ),
     'service_manager' => array(
         'abstract_factories' => array(
