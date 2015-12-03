@@ -81,6 +81,7 @@ return array(
                     "approve",
                     "decline",
                     "viewall",
+                    "index",
                 ),
             ),
             "HR" => array(
@@ -95,6 +96,7 @@ return array(
                     "approve",
                     "decline",
                     "viewall",
+                    "index",
                 ),
             ),
             "Manager" => array(
@@ -109,6 +111,7 @@ return array(
                     "approve",
                     "decline",
                     "viewall",
+                    "index",
                 ),
             ),
         ),
