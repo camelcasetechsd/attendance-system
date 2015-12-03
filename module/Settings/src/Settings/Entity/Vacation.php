@@ -14,6 +14,10 @@ use Zend\InputFilter\InputFilter;
  */
 class Vacation {
 
+    const SICK_LEAVE = 1;
+    const CASUAL = 2;
+    const ANNUAL = 3;
+                
     private $inputFilter;
     
     /**

@@ -126,6 +126,9 @@ class VacationRequest {
     }
 
     public function setToDate($toDate) {
+        if (!is_null($toDate)) {
+            $toDate = new \DateTime($toDate);
+        }
         $this->toDate = $toDate;
         return $this;
     }
@@ -155,11 +158,12 @@ class VacationRequest {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
-        $this->setDateOfSubmission($data['dateOfSubmission'])
-                ->setFromDate($data['fromDate'])
+        $this->setDateOfSubmission(new \DateTime($data['dateOfSubmission']))
+                ->setFromDate(new \DateTime($data['fromDate']))
                 ->setStatus($data['status'])
                 ->setToDate($data['toDate'])
                 ->setUser($data['user'])
+                ->setAttachment($data['attachment'])
                 ->setVacationType($data['vacationType']);
     }
 
@@ -178,6 +182,7 @@ class VacationRequest {
 
             $inputFilter->add(array(
                 'name' => 'attachment',
+                'required' => true,
                 'validators' => array(
                     array('name' => 'Filesize',
                         'options' => array(
@@ -191,7 +196,7 @@ class VacationRequest {
                     ),
                 )
             ));
-
+            
             $this->inputFilter = $inputFilter;
         }
 

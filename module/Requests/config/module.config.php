@@ -16,6 +16,7 @@ return array(
             'Requests\Model\Comment' => 'Requests\Model\CommentFactory',
             'Requests\Model\Permission' => 'Requests\Model\PermissionFactory',
             'Requests\Model\WorkFromHome' => 'Requests\Model\WorkFromHomeFactory',
+            'Requests\Model\Vacation' => 'Requests\Model\VacationFactory',
         ),
     ),
     'doctrine' => array(

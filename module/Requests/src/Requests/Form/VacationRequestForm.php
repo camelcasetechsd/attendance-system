@@ -24,6 +24,7 @@ class VacationRequestForm extends Form {
                 'required' => 'required',
                 'placeholder' => 'Example: 10/22/2010',
                 'class' => 'form-control date',
+                'id' => 'fromDate',
                 'type' => 'text',
             ),
             'options' => array(
@@ -63,7 +64,23 @@ class VacationRequestForm extends Form {
                 ),
             ),
         ));
-
+        
+        $this->add(array(
+            'name' => 'attachment',
+            'type' => 'Zend\Form\Element\File',
+            'attributes' => array(
+                'class' => 'attach_hide',
+                'value' => null,
+                'id' => 'attachment',
+            ),
+            'options' => array(
+                'label' => 'Attachment:',
+                'label_attributes' => array(
+                    'id' => 'attachment-label'
+                ),
+            ),
+        ));
+        
         $this->add(array(
             'name' => 'submit',
             'type' => 'Zend\Form\Element\Submit',
@@ -71,18 +88,6 @@ class VacationRequestForm extends Form {
                 'class' => 'btn btn-success',
                 'value' => 'Create',
             )
-        ));
-
-        $this->add(array(
-            'name' => 'attachment',
-            'type' => 'Zend\Form\Element\File',
-            'attributes' => array(
-                'class' => 'attach_hide',
-                'value' => null,
-            ),
-            'options' => array(
-                'label' => 'Attachment:',
-            ),
         ));
     }
 
