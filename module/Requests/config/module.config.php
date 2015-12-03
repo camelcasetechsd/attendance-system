@@ -15,6 +15,7 @@ return array(
         'factories' => array(
             'Requests\Model\Comment' => 'Requests\Model\CommentFactory',
             'Requests\Model\Permission' => 'Requests\Model\PermissionFactory',
+            'Requests\Model\WorkFromHome' => 'Requests\Model\WorkFromHomeFactory',
         ),
     ),
     'doctrine' => array(
