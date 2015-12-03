@@ -11,7 +11,11 @@ return array(
     'service_manager' => array(
         'aliases' => array(
             'requestsMyrequests' => 'Requests\Controller\MyrequestsController',
-        )
+        ),
+        'factories' => array(
+            'Requests\Model\Comment' => 'Requests\Model\CommentFactory',
+            'Requests\Model\Permission' => 'Requests\Model\PermissionFactory',
+        ),
     ),
     'doctrine' => array(
         'driver' => array(
@@ -62,6 +66,32 @@ return array(
                     ),
                 )
             ),
+            'showRequestsPermission' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/permission/show/:id',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Permission',
+                        'action' => 'show',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'deletecommentRequestsPermission' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/permission/deletecomment/:id',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Permission',
+                        'action' => 'deletecomment',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
             'requestsPermission' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
@@ -87,6 +117,32 @@ return array(
                     ),
                 )
             ),
+            'showRequestsVacation' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/vacation/show/:id',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Vacation',
+                        'action' => 'show',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'deletecommentRequestsVacation' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/vacation/deletecomment/:id',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Vacation',
+                        'action' => 'deletecomment',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
             'requestsVacation' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
@@ -109,6 +165,32 @@ return array(
                      */
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ),
+                )
+            ),
+            'showRequestsWorkfromhome' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/workfromhome/show/:id',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Workfromhome',
+                        'action' => 'show',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                    ),
+                )
+            ),
+            'deletecommentRequestsWorkfromhome' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/workfromhome/deletecomment/:id',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Workfromhome',
+                        'action' => 'deletecomment',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
                     ),
                 )
             ),

@@ -141,11 +141,11 @@ class Permission {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
-        $this->setDate($data['date'])
-                ->setDateOfSubmission($data['dateOfSubmission'])
-                ->setFromTime($data['fromTime'])
+        $this->setDate(new \DateTime($data['date']))
+                ->setDateOfSubmission(new \DateTime($data['dateOfSubmission']))
+                ->setFromTime(new \DateTime($data['fromTime']))
                 ->setStatus($data['status'])
-                ->setToTime($data['toTime'])
+                ->setToTime(new \DateTime($data['toTime']))
                 ->setUser($data['user']);
     }
 
