@@ -22,7 +22,7 @@ class Notifications {
         $notification->text = $text;
         $notification->url = $url;
         $notification->user = $reciver;
-        $this->query->save($notification);
+        $this->query->setEntity('Notifications\Entity\Notification')->save($notification);
     }
     
     /**
