@@ -2,14 +2,29 @@
 
 namespace Notifications\Model;
 
+use Notifications\Entity\Notification;
+
 class Notifications {
 
     protected $query;
+    protected $managerId = 28;
 
     public function __construct($query) {
         $this->query = $query;
     }
 
+    public function create($text, $url){
+    
+        // send the request to the Manager
+        $reciver = $this->query->find('Users\Entity\User', $this->managerId);
+        $notification = new Notification();
+        $notification->status = Notification::STATUS_UNSEEN;
+        $notification->text = $text;
+        $notification->url = $url;
+        $notification->user = $reciver;
+        $this->query->save($notification);
+    }
+    
     /**
      * get Notifications
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
