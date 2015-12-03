@@ -17,7 +17,7 @@ class CommentForm extends Form {
         $this->setAttribute('class', 'form form-horizontal');
 
         $this->add(array(
-            'name' => 'comment',
+            'name' => 'body',
             'type' => 'Zend\Form\Element\Textarea',
             'attributes' => array(
                 'required' => 'required',
