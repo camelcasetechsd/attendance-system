@@ -2,7 +2,7 @@ Requests\Entity\WorkFromHome:
     
     workfromhome{1..7}:
         
-        user: <numberBetween(1, 7)>
+        user: @user<numberBetween(26, 29)>
         startDate: <date()>
         endDate : <date()>
         reason: Sick
