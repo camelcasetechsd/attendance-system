@@ -30,9 +30,9 @@ class WorkFromHome {
     public $id;
 
     /**
-     *
-     * @ORM\Column(type="integer")
-     * @var integer
+     * @ORM\ManyToOne(targetEntity="Users\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @var Users\Entity\User
      */
     public $user;
 
@@ -101,6 +101,9 @@ class WorkFromHome {
     }
 
     public function setEndDate($endDate) {
+        if (!is_null($endDate)) {
+            $endDate = new \DateTime($endDate);
+        }
         $this->endDate = $endDate;
         return $this;
     }
@@ -140,10 +143,10 @@ class WorkFromHome {
      * @param array $data
      */
     public function exchangeArray($data = array()) {
-        $this->setDateOfSubmission($data['dateOfSubmission'])
+        $this->setDateOfSubmission(new \DateTime($data['dateOfSubmission']))
                 ->setEndDate($data['endDate'])
                 ->setStatus($data['status'])
-                ->setStartDate($data['startDate'])
+                ->setStartDate(new \DateTime($data['startDate']))
                 ->setUser($data['user'])
                 ->setReason($data['reason']);
     }
