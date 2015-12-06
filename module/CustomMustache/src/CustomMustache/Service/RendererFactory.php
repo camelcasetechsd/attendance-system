@@ -7,8 +7,23 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use CustomMustache\View\Renderer;
 use Zend\Authentication\AuthenticationService;
 
+/**
+ * Renderer Factory
+ * 
+ * Prepare Renderer service factory
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class RendererFactory implements FactoryInterface {
 
+    /**
+     * Prepare Renderer service
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param ServiceLocatorInterface $serviceLocator
+     * @return Renderer
+     */
     public function createService(ServiceLocatorInterface $serviceLocator) {
         
         $config = $serviceLocator->get('Configuration');
@@ -65,9 +80,12 @@ class RendererFactory implements FactoryInterface {
     }
 
     /**
+     * Prepare config array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
+     * @access private
      * @param array $config
-     * @return \Mustache_Loader_FilesystemLoader
+     * @return array configuration array for mustache
      */
     private function setConfigs(array $config) {
         $options = array("extension" => ".phtml");

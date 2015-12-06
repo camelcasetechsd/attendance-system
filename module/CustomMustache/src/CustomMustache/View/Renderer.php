@@ -7,15 +7,26 @@ use Zend\View\Model\ModelInterface;
 use Mustache\Exception as Exception;
 use Zend\View\Variables;
 
+/**
+ * Renderer Service
+ * 
+ * Render Mustache template
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class Renderer extends OriginalRenderer implements RendererInterface
 {
   
     /**
      * Processes a view script and returns the output.
-     *
-     * @param  string|ModelInterface   $nameOrModel The script/resource process, or a view model
-     * @param  null|array|\ArrayAccess $values      Values to use during rendering
-     * @return string The script output.
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public     * 
+     * @param mixed $nameOrModel string|ModelInterface The script/resource process, or a view model
+     * @param mixed $values null|array|\ArrayAccess Values to use during rendering
+     * @return string The script output
+     * @throws Exception\DomainException
+     * @throws \Exception
      */
     public function render($nameOrModel, $values = null)
     {
