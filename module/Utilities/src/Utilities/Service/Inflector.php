@@ -347,7 +347,7 @@ class Inflector
     * 
     * @access public
     * @static
-    * @param    integer    $number    Number to get its ordinal value
+    * @param    int    $number    Number to get its ordinal value
     * @return string Ordinal representation of given string.
     */
     function ordinalize($number)
