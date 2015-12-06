@@ -5,12 +5,24 @@ namespace Requests\Form;
 use Utilities\Form\Form;
 
 /**
- * Permission Request Form Class using Zend_Form
+ * Permission Form
+ * 
+ * Handles Permission form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author Moataz Mohamed
  * 
  */
 class PermissionForm extends Form {
 
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         parent::__construct($name, $options);
 

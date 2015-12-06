@@ -4,14 +4,34 @@ namespace Settings\Form;
 
 use Utilities\Form\Form;
 
+/**
+ * FilterByYear Form
+ * 
+ * Handles FilterByYear form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class FilterByYearForm extends Form {
 
     /**
      * @var string selected year to filter by 
      */
     public $selectedYear;
+    
+    /**
+     *
+     * @var Utilities\Service\Query\Query 
+     */
     protected $query;
 
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         if (!(isset($options["year"]))) {
             $options["year"] = null;

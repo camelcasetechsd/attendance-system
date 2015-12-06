@@ -5,14 +5,29 @@ namespace Users\Form;
 use Utilities\Form\Form;
 
 /**
- * User Registeration Form Class using Zend_Form
- * @author Mohamed Ramadan
+ * User Form
  * 
- *  */
+ * Handles User form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * @author Mohamed Ramadan
+ */
 class UserForm extends Form {
 
+    /**
+     *
+     * @var Utilities\Service\Query\Query 
+     */
     protected $query;
 
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         $this->query = $options['query'];
         unset($options['query']);

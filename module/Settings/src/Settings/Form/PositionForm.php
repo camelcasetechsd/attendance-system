@@ -5,12 +5,23 @@ namespace Settings\Form;
 use Utilities\Form\Form;
 
 /**
- * Description of Position
- *
+ * Position Form
+ * 
+ * Handles Position form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
  */
 class PositionForm extends Form {
 
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         parent::__construct($name, $options);
 

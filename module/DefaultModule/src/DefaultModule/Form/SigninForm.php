@@ -14,6 +14,10 @@ use Zend\InputFilter\InputFilter;
  */
 class SigninForm extends Form {
 
+    /**
+     *
+     * @var InputFilter validation constraints 
+     */
     private $_inputFilter;
 
     /**

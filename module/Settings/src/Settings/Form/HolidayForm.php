@@ -4,8 +4,23 @@ namespace Settings\Form;
 
 use Utilities\Form\Form;
 
+/**
+ * Holiday Form
+ * 
+ * Handles Holiday form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class HolidayForm extends Form {
 
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         parent::__construct($name, $options);
 

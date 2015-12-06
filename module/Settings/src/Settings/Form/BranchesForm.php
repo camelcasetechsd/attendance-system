@@ -5,14 +5,29 @@ namespace Settings\Form;
 use Utilities\Form\Form;
 
 /**
- * Description of Branches
- *
+ * Branches Form
+ * 
+ * Handles Branches form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author AbdEl-Moneim
  */
 class BranchesForm extends Form {
 
+    /**
+     *
+     * @var Utilities\Service\Query\Query 
+     */
     protected $query;
 
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         $this->query = $options['query'];
         unset($options['query']);

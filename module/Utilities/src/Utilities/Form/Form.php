@@ -6,10 +6,29 @@ use Zend\Form\Form as ZendForm;
 use Utilities\Service\Inflector;
 use Zend\Form\FormInterface;
 
+/**
+ * Form
+ * 
+ * Handles form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class Form extends ZendForm {
 
+    /**
+     *
+     * @var bool ,default is false
+     */
     public $isEditForm = false;
     
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         if(is_null($name)){
             $reflection = new \ReflectionClass($this);
@@ -23,9 +42,10 @@ class Form extends ZendForm {
      * Bind an object to the form
      *
      * Ensures the object is populated with validated values.
-     *
+     * Set isEditForm to true so that edit form is distinguished
+     * 
      * @param  object $object
-     * @param  int $flags
+     * @param  int $flags ,default value is FormInterface::VALUES_NORMALIZED
      * @return mixed|void
      * @throws Exception\InvalidArgumentException
      */

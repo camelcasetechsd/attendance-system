@@ -7,12 +7,22 @@ use Zend\Form\FieldsetInterface;
 use Zend\Form\FormInterface;
 use Zend\Form\Element\Submit;
 
+/**
+ * FormView Helper
+ * 
+ * Handles form elements display
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class FormViewHelper extends Form {
     /**
      * Render a form from the provided $form,
-     *
+     * 
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
      * @param  FormInterface $form
-     * @return string
+     * @return string form HTML content
      */
     public function render(FormInterface $form) {
         if (method_exists($form, 'prepare')) {
@@ -27,6 +37,8 @@ class FormViewHelper extends Form {
                 $formContent.= $this->getView()->formCollection($element);
             } else {
 
+                // Add Id to all form elements
+                // When element has an Id, Label tag won't enclose form element
                 if (empty($element->getAttribute('id'))) {
                     $element->setAttribute('id', $form->getAttribute('name') . "_" . $element->getAttribute('name'));
                 }
@@ -42,6 +54,7 @@ class FormViewHelper extends Form {
                     $formElementAppendString = '</dd>';
                 }
 
+                // Change submit button text to edit if form is an edit form
                 if($element instanceof Submit && $form->isEditForm === true){
                     $element->setValue("Edit");
                 }

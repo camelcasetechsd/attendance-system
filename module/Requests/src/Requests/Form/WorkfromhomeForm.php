@@ -5,12 +5,23 @@ namespace Requests\Form;
 use Utilities\Form\Form;
 
 /**
- * WorkFromHome Request Form Class using Zend_Form
- * @author Ahmed
+ * Workfromhome Form
  * 
+ * Handles Workfromhome form setup
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * @author Ahmed
  */
 class WorkfromhomeForm extends Form {
 
+    /**
+     * setup form
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         parent::__construct($name, $options);
 
