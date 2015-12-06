@@ -51,7 +51,7 @@ class RendererFactory implements FactoryInterface {
             } else {
                 $config['helpers']['visibleSettingsModule'] = FALSE;
             }
-            
+            // update notification icon with unseen notifications count
             $notificationsModel = $serviceLocator->get('Notifications\Model\Notifications');
             $unseenNotificationsCount = $notificationsModel->listNotifications($userId, /*$status =*/ 2, /*$countFlag =*/ true);
             $config['helpers']['unseenNotificationsCount'] = ($unseenNotificationsCount == 0)? false : $unseenNotificationsCount;
