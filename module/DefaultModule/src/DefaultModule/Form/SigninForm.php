@@ -5,10 +5,25 @@ namespace DefaultModule\Form;
 use Utilities\Form\Form;
 use Zend\InputFilter\InputFilter;
 
+/**
+ * Signin Form
+ * 
+ * Handles Authentication form setup and validation
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class SigninForm extends Form {
 
     private $_inputFilter;
 
+    /**
+     * setup form and add validation constraints
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name ,default is null
+     * @param array $options ,default is null
+     */
     public function __construct($name = null, $options = null) {
         parent::__construct($name, $options);
 
@@ -50,6 +65,13 @@ class SigninForm extends Form {
         $this->setInputFilter($this->getInputFilter());
     }
 
+    /**
+     * set validation constraints
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return InputFilter validation constraints
+     */
     public function getInputFilter() {
         if (!$this->_inputFilter) {
             $inputFilter = new InputFilter();

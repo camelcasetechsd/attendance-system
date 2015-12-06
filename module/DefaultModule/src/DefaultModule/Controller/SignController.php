@@ -7,14 +7,35 @@ use Zend\View\Model\ViewModel;
 use DefaultModule\Form\SigninForm;
 use Zend\Authentication\AuthenticationService;
 
+/**
+ * Sign Controller
+ * 
+ * Handles Authentication processes
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class SignController extends ActionController
 {
 
+    /**
+     * Default action
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function indexAction()
     {
         return new ViewModel();
     }
 
+    /**
+     * User Login
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function inAction()
     {
         $variables = array();
@@ -26,6 +47,8 @@ class SignController extends ActionController
             // checking if the form is valid
             if ($form->isValid()) {
                 $auth = $this->getServiceLocator()->get('Users\Auth\Authentication')->setRequest($request);
+                // validate authentication data
+                // set user-related data in session
                 $result = $auth->authenticateMe();
                 if ($result->isValid()) {
                     $auth->newSession();
@@ -42,11 +65,18 @@ class SignController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * User Logout
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function outAction()
     {
         $auth = new AuthenticationService();
+        // clear user-related data in session
         $auth->clearIdentity();
-        //Redirect to login page again 
+        // Redirect to login page again 
         $url = $this->getEvent()->getRouter()->assemble(array('action' => 'in'), array('name' => 'defaultSign'));
         $this->redirect()->toUrl($url);
     }

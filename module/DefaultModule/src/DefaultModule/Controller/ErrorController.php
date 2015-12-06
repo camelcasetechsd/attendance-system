@@ -7,27 +7,54 @@ use Zend\View\Model\ViewModel;
 use Zend\Mvc\Application;
 use Zend\Log\Logger;
 
+/**
+ * Error Controller
+ * 
+ * Handles Errors display
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * @author ahmed
+ */
 class ErrorController extends ActionController
 {
 
+    /**
+     * Error due to Access denied for current user
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function indexAction()
     {
         return new ViewModel();
     }
 
+    /**
+     * Error due to current user being deactivated
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function deactivatedAction()
     {
         return new ViewModel();
     }
 
     /**
+     * Default Error display
      * @ToDo get error display overriden by this action, As now it is handled by original ZF2 exception strategy 
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
      * @return ViewModel
      */
     public function errorAction()
     {
-        $errors = $this->_getParam('error_handler');
+        $errors = $this->params('error_handler');
         $variables = array();
+        // default message when actual error is not accessible
         if (!$errors || !$errors instanceof \ArrayObject) {
             $variables['message'] = 'You have reached the error page';
             return;
@@ -43,14 +70,14 @@ class ErrorController extends ActionController
                 $variables['message'] = 'Page not found';
                 break;
             default:
-                // application error
+                // 500 error -- application error
                 $this->getResponse()->setHttpResponseCode(500);
                 $priority = Logger::CRIT;
                 $variables['message'] = 'Application error';
                 break;
         }
         
-        // Log exception
+        // Log exception to keep it for future investigation
         $log = new Logger();
         $log->log($priority, $variables['message'], $errors->exception);
         $log->log($priority, 'Request Parameters', $errors->request->getParams());
@@ -62,6 +89,7 @@ class ErrorController extends ActionController
             $variables['stacktrace'] = $variables['exception']->getTraceAsString();
         }
         
+        // display request parameters
         $variables['request']   = $errors->request;
         $variables['requestparams'] = var_export($errors->request->getParams(), true);
         
