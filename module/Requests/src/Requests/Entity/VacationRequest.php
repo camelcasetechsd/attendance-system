@@ -126,7 +126,7 @@ class VacationRequest {
     }
 
     public function setToDate($toDate) {
-        if (!is_null($toDate)) {
+        if (!is_null($toDate) && !is_object($toDate)) {
             $toDate = new \DateTime($toDate);
         }
         $this->toDate = $toDate;
