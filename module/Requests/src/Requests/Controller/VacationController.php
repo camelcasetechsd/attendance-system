@@ -11,6 +11,9 @@ use Requests\Entity\Comment;
 use Zend\Authentication\AuthenticationService;
 use Settings\Entity\Vacation as VacationType;
 
+/**
+ * @author mohamed ramadan
+ */
 class VacationController extends ActionController
 {
 

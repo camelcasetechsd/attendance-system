@@ -3,8 +3,10 @@
 namespace Settings\Model;
 
 use Doctrine\ORM\Query\Expr\Join;
-use Settings\Entity\Attendance as AttendanceEntity;
 
+/**
+ * @author ahmed
+ */
 class Attendance {
 
     protected $query;

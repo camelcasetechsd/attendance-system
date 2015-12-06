@@ -10,6 +10,9 @@ use Requests\Entity\Permission;
 use Requests\Entity\Comment;
 use Zend\Authentication\AuthenticationService;
 
+/**
+ * @author moataz
+ */
 class PermissionController extends ActionController {
 
     public function indexAction() {

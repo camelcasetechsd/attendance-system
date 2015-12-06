@@ -7,6 +7,9 @@ use Utilities\Service\Random;
 use Zend\File\Transfer\Adapter\Http;
 use Settings\Entity\Vacation as VacationType ;
 
+/**
+ * @author mohamed ramadan
+ */
 class Vacation {
 
     protected $query;

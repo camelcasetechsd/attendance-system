@@ -9,6 +9,9 @@ use Requests\Entity\Permission;
 use Requests\Entity\VacationRequest;
 use Requests\Entity\WorkFromHome;
 
+/**
+ * @author ahmed
+ */
 class MyrequestsController extends ActionController {
 
     public function indexAction() {

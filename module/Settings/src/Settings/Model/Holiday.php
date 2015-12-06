@@ -2,6 +2,9 @@
 
 namespace Settings\Model;
 
+/**
+ * @author ahmed
+ */
 class Holiday {
 
     protected $query;

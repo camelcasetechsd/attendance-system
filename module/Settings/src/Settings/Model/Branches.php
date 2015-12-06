@@ -4,6 +4,9 @@ namespace Settings\Model;
 
 use Settings\Entity\Branch as BranchesEntity;
 
+/**
+ * @author abdel-moneim
+ */
 class Branches {
 
     protected $query;

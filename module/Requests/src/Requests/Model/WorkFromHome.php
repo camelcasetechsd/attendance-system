@@ -4,6 +4,9 @@ namespace Requests\Model;
 
 use Requests\Entity\WorkFromHome as WorkFromHomeEntity;
 
+/**
+ * @author ahmed
+ */
 class WorkFromHome {
 
     protected $query;

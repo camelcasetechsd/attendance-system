@@ -7,6 +7,9 @@ use Zend\View\Model\ViewModel;
 use Settings\Form\BranchesForm;
 use Settings\Entity\Branch;
 
+/**
+ * @author abdel-moneim
+ */
 class BranchesController extends ActionController
 {
 

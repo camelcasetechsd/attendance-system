@@ -4,6 +4,9 @@ namespace Notifications\Model;
 
 use Notifications\Entity\Notification;
 
+/**
+ * @author ahmed
+ */
 class Notifications {
 
     protected $query;

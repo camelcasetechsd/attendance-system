@@ -4,6 +4,9 @@ namespace Requests\Model;
 
 use Requests\Entity\Permission as PermissionEntity;
 
+/**
+ * @author ahmed
+ */
 class Permission {
 
     protected $query;

@@ -7,8 +7,10 @@ use Zend\View\Model\ViewModel;
 use Settings\Form\FilterByYearForm;
 use Settings\Form\HolidayForm;
 use Settings\Entity\Holiday;
-use Zend\Json\Json;
 
+/**
+ * @author ahmed
+ */
 class HolidayController extends ActionController {
 
     public function indexAction() {

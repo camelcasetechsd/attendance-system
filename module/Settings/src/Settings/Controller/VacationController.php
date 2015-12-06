@@ -7,6 +7,9 @@ use Zend\View\Model\ViewModel;
 use Settings\Form\VacationForm;
 use Settings\Entity\Vacation;
 
+/**
+ * @author ahmed
+ */
 class VacationController extends ActionController {
 
     public function indexAction() {

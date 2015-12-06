@@ -4,6 +4,9 @@ namespace Settings\Model;
 
 use Settings\Entity\Department as DepartmentsEntity;
 
+/**
+ * @author ahmed
+ */
 class Departments {
 
     protected $query;

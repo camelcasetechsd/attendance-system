@@ -2,6 +2,9 @@
 
 namespace Requests\Model;
 
+/**
+ * @author mohamed ramadan
+ */
 class Comment {
 
     protected $query;

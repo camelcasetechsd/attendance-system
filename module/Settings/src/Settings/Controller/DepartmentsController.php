@@ -7,6 +7,9 @@ use Zend\View\Model\ViewModel;
 use Settings\Entity\Department;
 use Settings\Form\DepartmentForm;
 
+/**
+ * @author ahmed
+ */
 class DepartmentsController extends ActionController
 {
 
