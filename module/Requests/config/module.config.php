@@ -13,6 +13,7 @@ return array(
             'requestsMyrequests' => 'Requests\Controller\MyrequestsController',
         ),
         'factories' => array(
+            'Requests\Model\MyRequest' => 'Requests\Model\MyRequestFactory',
             'Requests\Model\Comment' => 'Requests\Model\CommentFactory',
             'Requests\Model\Permission' => 'Requests\Model\PermissionFactory',
             'Requests\Model\WorkFromHome' => 'Requests\Model\WorkFromHomeFactory',
@@ -43,6 +44,48 @@ return array(
     ),
     'router' => array(
         'routes' => array(
+            'approveRequestsMyrequests' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/myrequests/approve/:id/:requestType',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Myrequests',
+                        'action' => 'approve',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'requestType' => '[a-zA-Z]+',
+                    ),
+                )
+            ),
+            'declineRequestsMyrequests' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/myrequests/decline/:id/:requestType',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Myrequests',
+                        'action' => 'decline',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'requestType' => '[a-zA-Z]+',
+                    ),
+                )
+            ),
+            'cancelRequestsMyrequests' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/requests/myrequests/cancel/:id/:requestType',
+                    'defaults' => array(
+                        'controller' => 'Requests\Controller\Myrequests',
+                        'action' => 'cancel',
+                    ),
+                    'constraints' => array(
+                        'id' => '[0-9]+',
+                        'requestType' => '[a-zA-Z]+',
+                    ),
+                )
+            ),
             'requestsMyrequests' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
