@@ -13,10 +13,13 @@ class Notifications {
         $this->query = $query;
     }
 
-    public function create($text, $url){
+    public function create($text, $url, $userId = false){
     
+        if($userId === false){
+            $userId = $this->managerId;
+        }
         // send the request to the Manager
-        $reciver = $this->query->find('Users\Entity\User', $this->managerId);
+        $reciver = $this->query->find('Users\Entity\User', $userId);
         $notification = new Notification();
         $notification->status = Notification::STATUS_UNSEEN;
         $notification->text = $text;
