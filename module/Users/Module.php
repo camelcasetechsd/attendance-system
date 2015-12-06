@@ -7,17 +7,45 @@ use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\Mvc\MvcEvent;
 
+/**
+ * Users Module
+ * 
+ * users module configuration
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class Module implements ConfigProviderInterface,AutoloaderProviderInterface {
 
+    /**
+     * on Bootstrap application, Attach dispatch event listener
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param MvcEvent $event
+     */
     public function onBootstrap(MvcEvent $event) {
         $eventManager = $event->getApplication()->getEventManager();
         $eventManager->attach( MvcEvent::EVENT_DISPATCH, array($this, 'mvcPreDispatch'), 100);
     }
 
+    /**
+     * Get config array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array module configuration array
+     */
     public function getConfig() {
         return include __DIR__ . '/config/module.config.php';
     }
 
+    /**
+     * Get autoloader config array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array module autoloader configuration array
+     */
     public function getAutoloaderConfig() {
         return array(
             'Zend\Loader\StandardAutoloader' => array(
