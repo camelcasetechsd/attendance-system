@@ -7,20 +7,24 @@ use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilter;
 
 /**
- * Class Position
+ * Position Entity
  * @ORM\Entity
  * @ORM\Table(name="position")
- * @package Settings\Entity
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
 class Position {
     
+    /**
+     *
+     * @var InputFilter validation constraints 
+     */
     private $inputFilter;
 
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -38,19 +42,49 @@ class Position {
      */
     public $description;
 
+    /**
+     * Get description
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string description
+     */
     public function getDescription() {
         return $this->description;
     }
 
+    /**
+     * Get name
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string name
+     */
     public function getName() {
         return $this->name;
     }
     
+    /**
+     * Set description
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $description
+     * @return Position current entity
+     */
     public function setDescription($description) {
         $this->description = $description;
         return $this;
     }
 
+    /**
+     * Set name
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name
+     * @return Position current entity
+     */
     public function setName($name) {
         $this->name = $name;
         return $this;
@@ -58,8 +92,10 @@ class Position {
 
     /**
      * Convert the object to an array.
-     *
-     * @return array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array current entity properties
      */
     public function getArrayCopy() {
         return get_object_vars($this);
@@ -67,18 +103,35 @@ class Position {
 
     /**
      * Populate from an array.
-     *
-     * @param array $data
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param array $data ,default is empty array
      */
     public function exchangeArray($data = array()) {
         $this->setDescription($data['description'])
                 ->setName($data['name']);
     }
 
+    /**
+     * setting inputFilter is forbidden
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param InputFilterInterface $inputFilter
+     * @throws \Exception
+     */
     public function setInputFilter(InputFilterInterface $inputFilter) {
         throw new \Exception("Not used");
     }
 
+    /**
+     * set validation constraints
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return InputFilter validation constraints
+     */
     public function getInputFilter() {
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();

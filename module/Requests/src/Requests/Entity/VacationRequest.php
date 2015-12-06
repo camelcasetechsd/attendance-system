@@ -7,25 +7,41 @@ use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilter;
 
 /**
- * Class VacationRequest
+ * VacationRequest Entity
  * @ORM\Entity
  * @ORM\Table(name="vacationRequest")
- * @package Requests\Entity
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
 class VacationRequest {
 
+    /**
+     * Request is submitted
+     */
     const STATUS_SUBMITTED = 1;
+    /**
+     * Request is cancelled
+     */
     const STATUS_CANCELLED = 2;
+    /**
+     * Request is approved
+     */
     const STATUS_APPROVED = 3;
+    /**
+     * Request is denied
+     */
     const STATUS_DENIED = 4;
 
+    /**
+     *
+     * @var InputFilter validation constraints 
+     */
     private $inputFilter;
     
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -73,58 +89,147 @@ class VacationRequest {
     /**
      *
      * @ORM\Column(type="integer")
-     * @var integer
+     * @var int
      */
     public $status;
 
+    /**
+     * Get attachment
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string attachment
+     */
     public function getAttachment() {
         return $this->attachment;
     }
 
+    /**
+     * Get dateOfSubmission
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return \DateTime dateOfSubmission
+     */
     public function getDateOfSubmission() {
         return $this->dateOfSubmission;
     }
 
+    /**
+     * Get fromDate
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return \DateTime fromDate
+     */
     public function getFromDate() {
         return $this->fromDate;
     }
 
+    /**
+     * Get status
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return int status
+     */
     public function getStatus() {
         return $this->status;
     }
 
+    /**
+     * Get toDate
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return \DateTime toDate
+     */
     public function getToDate() {
         return $this->toDate;
     }
 
+    /**
+     * Get user
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return Users\Entity\User user
+     */
     public function getUser() {
         return $this->user;
     }
 
+    /**
+     * Get vacationType
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return int vacationType
+     */
     public function getVacationType() {
         return $this->vacationType;
     }
     
+    /**
+     * Set attachment
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $attachment
+     * @return VacationRequest current entity
+     */
     public function setAttachment($attachment) {
         $this->attachment = $attachment;
         return $this;
     }
 
+    /**
+     * Set dateOfSubmission
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param \DateTime $dateOfSubmission
+     * @return VacationRequest current entity
+     */
     public function setDateOfSubmission($dateOfSubmission) {
         $this->dateOfSubmission = $dateOfSubmission;
         return $this;
     }
 
+    /**
+     * Set fromDate
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param \DateTime $fromDate
+     * @return VacationRequest current entity
+     */
     public function setFromDate($fromDate) {
         $this->fromDate = $fromDate;
         return $this;
     }
 
+    /**
+     * Set status
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $status
+     * @return VacationRequest current entity
+     */
     public function setStatus($status) {
         $this->status = $status;
         return $this;
     }
 
+    /**
+     * Set toDate
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param \DateTime $toDate
+     * @return VacationRequest current entity
+     */
     public function setToDate($toDate) {
         if (!is_null($toDate) && !is_object($toDate)) {
             $toDate = new \DateTime($toDate);
@@ -133,11 +238,27 @@ class VacationRequest {
         return $this;
     }
 
+    /**
+     * Set user
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param Users\Entity\User $user
+     * @return VacationRequest current entity
+     */
     public function setUser($user) {
         $this->user = $user;
         return $this;
     }
 
+    /**
+     * Set vacationType
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $vacationType
+     * @return VacationRequest current entity
+     */
     public function setVacationType($vacationType) {
         $this->vacationType = $vacationType;
         return $this;
@@ -145,8 +266,10 @@ class VacationRequest {
 
     /**
      * Convert the object to an array.
-     *
-     * @return array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array current entity properties
      */
     public function getArrayCopy() {
         return get_object_vars($this);
@@ -154,8 +277,10 @@ class VacationRequest {
 
     /**
      * Populate from an array.
-     *
-     * @param array $data
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param array $data ,default is empty array
      */
     public function exchangeArray($data = array()) {
         $this->setDateOfSubmission(new \DateTime($data['dateOfSubmission']))
@@ -167,10 +292,25 @@ class VacationRequest {
                 ->setVacationType($data['vacationType']);
     }
 
+    /**
+     * setting inputFilter is forbidden
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param InputFilterInterface $inputFilter
+     * @throws \Exception
+     */
     public function setInputFilter(InputFilterInterface $inputFilter) {
         throw new \Exception("Not used");
     }
 
+    /**
+     * set validation constraints
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return InputFilter validation constraints
+     */
     public function getInputFilter() {
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();

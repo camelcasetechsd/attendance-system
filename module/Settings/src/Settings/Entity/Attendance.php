@@ -8,27 +8,31 @@ use Zend\InputFilter\InputFilter;
 use Zend\Validator\Regex;
 
 /**
- * Class Branche
+ * Attendance Entity
  * @ORM\Entity
  * @ORM\Table(name="attendance")
- * @package Settings\Entity
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
 class Attendance {
 
+    /**
+     *
+     * @var InputFilter validation constraints 
+     */
     private $inputFilter;
     
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 
     /**
      *
      * @ORM\Column(type="integer")
-     * @var integer
+     * @var int
      */
     public $branch;
 
@@ -49,41 +53,101 @@ class Attendance {
     /**
      *
      * @ORM\Column(type="integer")
-     * @var integer
+     * @var int
      */
     public $active = 1;
 
+    /**
+     * Get branch
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return int branch
+     */
     public function getBranch() {
         return $this->branch;
     }
 
+    /**
+     * Get startTime
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return \DateTime startTime
+     */
     public function getStartTime() {
         return $this->startTime;
     }
 
+    /**
+     * Get endTime
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return \DateTime endTime
+     */
     public function getEndTime() {
         return $this->endTime;
     }
 
+    /**
+     * Get active
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return int active
+     */
     public function isActive() {
         return $this->active;
     }
     
+    /**
+     * Set branch
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $branch
+     * @return Attendance current entity
+     */
     public function setBranch($branch) {
         $this->branch = $branch;
         return $this;
     }
 
+    /**
+     * Set startTime
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param \DateTime $startTime
+     * @return Attendance current entity
+     */
     public function setStartTime($startTime) {
         $this->startTime = $startTime;
         return $this;
     }
 
+    /**
+     * Set endTime
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param \DateTime $endTime
+     * @return Attendance current entity
+     */
     public function setEndTime($endTime) {
         $this->endTime = $endTime;
         return $this;
     }
 
+    /**
+     * Set active
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $active
+     * @return Attendance current entity
+     */
     public function setActive($active) {
         $this->active = $active;
         return $this;
@@ -91,8 +155,10 @@ class Attendance {
 
     /**
      * Convert the object to an array.
-     *
-     * @return array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array current entity properties
      */
     public function getArrayCopy() {
         return get_object_vars($this);
@@ -100,8 +166,10 @@ class Attendance {
 
     /**
      * Populate from an array.
-     *
-     * @param array $data
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param array $data ,default is empty array
      */
     public function exchangeArray($data = array()) {
         if(array_key_exists('active', $data)){
@@ -112,10 +180,25 @@ class Attendance {
                 ->setStartTime(new \DateTime($data['startTime']));
     }
 
+    /**
+     * setting inputFilter is forbidden
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param InputFilterInterface $inputFilter
+     * @throws \Exception
+     */
     public function setInputFilter(InputFilterInterface $inputFilter) {
         throw new \Exception("Not used");
     }
 
+    /**
+     * set validation constraints
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return InputFilter validation constraints
+     */
     public function getInputFilter() {
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();

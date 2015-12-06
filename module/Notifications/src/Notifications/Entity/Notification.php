@@ -4,21 +4,28 @@ namespace Notifications\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Notification
+ * Notification Entity
  * @ORM\Entity
  * @ORM\Table(name="notification")
- * @package Notifications\Entity
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
-
 class Notification
 {
+    /**
+     * Notification is seen
+     */
     const STATUS_SEEN   = 1;
+    /**
+     * Notification is unseen
+     */
     const STATUS_UNSEEN = 2;
+    
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -47,7 +54,7 @@ class Notification
     /**
      *
      * @ORM\Column(type="integer")
-     * @var integer
+     * @var int
      */
     public $status;
 }

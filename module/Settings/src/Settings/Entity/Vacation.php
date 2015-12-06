@@ -7,24 +7,37 @@ use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilter;
 
 /**
- * Class Branche
+ * Vacation Entity
  * @ORM\Entity
  * @ORM\Table(name="vacation")
- * @package Settings\Entity
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
 class Vacation {
 
+    /**
+     * Vacation type is sick leave
+     */
     const SICK_LEAVE = 1;
+    /**
+     * Vacation type is casual
+     */
     const CASUAL = 2;
+    /**
+     * Vacation type is annual
+     */
     const ANNUAL = 3;
-                
+           
+    /**
+     *
+     * @var InputFilter validation constraints 
+     */
     private $inputFilter;
     
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -45,48 +58,108 @@ class Vacation {
     /**
      *
      * @ORM\Column(type="integer")
-     * @var integer
+     * @var int
      */
     public $balance;
 
     /**
      *
      * @ORM\Column(type="integer")
-     * @var integer
+     * @var int
      */
     public $active = 1;
 
+    /**
+     * Get type
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string type
+     */
     public function getType() {
         return $this->type;
     }
 
+    /**
+     * Get description
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string description
+     */
     public function getDescription() {
         return $this->description;
     }
 
+    /**
+     * Get balance
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return int balance
+     */
     public function getBalance() {
         return $this->balance;
     }
 
+    /**
+     * Get active
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return int active
+     */
     public function isActive() {
         return $this->active;
     }
     
+    /**
+     * Set type
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $type
+     * @return Vacation current entity
+     */
     public function setType($type) {
         $this->type = $type;
         return $this;
     }
 
+    /**
+     * Set description
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $description
+     * @return Vacation current entity
+     */
     public function setDescription($description) {
         $this->description = $description;
         return $this;
     }
 
+    /**
+     * Set balance
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $balance
+     * @return Vacation current entity
+     */
     public function setBalance($balance) {
         $this->balance = $balance;
         return $this;
     }
 
+    /**
+     * Set active
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $active
+     * @return Vacation current entity
+     */
     public function setActive($active) {
         $this->active = $active;
         return $this;
@@ -94,8 +167,10 @@ class Vacation {
 
     /**
      * Convert the object to an array.
-     *
-     * @return array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array current entity properties
      */
     public function getArrayCopy() {
         return get_object_vars($this);
@@ -103,8 +178,10 @@ class Vacation {
 
     /**
      * Populate from an array.
-     *
-     * @param array $data
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param array $data ,default is empty array
      */
     public function exchangeArray($data = array()) {
         if(array_key_exists('active', $data)){
@@ -115,10 +192,25 @@ class Vacation {
                 ->setType($data['type']);
     }
 
+    /**
+     * setting inputFilter is forbidden
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param InputFilterInterface $inputFilter
+     * @throws \Exception
+     */
     public function setInputFilter(InputFilterInterface $inputFilter) {
         throw new \Exception("Not used");
     }
 
+    /**
+     * set validation constraints
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return InputFilter validation constraints
+     */
     public function getInputFilter() {
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();

@@ -4,12 +4,11 @@ namespace Users\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Position
+ * Role Entity
  * @ORM\Entity
  * @ORM\Table(name="role")
- * @package Users\Entity
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
-
 class Role
 {
 
@@ -17,7 +16,7 @@ class Role
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 

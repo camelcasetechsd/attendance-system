@@ -4,10 +4,10 @@ namespace Settings\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class AttendanceRecord
+ * AttendanceRecord Entity
  * @ORM\Entity
  * @ORM\Table(name="attendancerecord")
- * @package Settings\Entity
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
 
 class AttendanceRecord
@@ -16,7 +16,7 @@ class AttendanceRecord
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 

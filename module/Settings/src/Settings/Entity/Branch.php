@@ -7,23 +7,33 @@ use Zend\InputFilter\InputFilterInterface;
 use Zend\InputFilter\InputFilter;
 
 /**
- * Class Branche
+ * Branch Entity
  * @ORM\Entity
  * @ORM\Table(name="branch")
- * @package Settings\Entity
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  */
 class Branch {
 
+    /**
+     * Branch is active
+     */
     const STATUS_ACTIVE = 1;
+    /**
+     * Branch is inactive
+     */
     const STATUS_INACTIVE = 2;
 
+    /**
+     *
+     * @var InputFilter validation constraints 
+     */
     private $inputFilter;
     
     /**
      * @ORM\Id
      * @ORM\Column(type="integer");
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @var integer
+     * @var int
      */
     public $id;
 
@@ -59,50 +69,125 @@ class Branch {
     /**
      *
      * @ORM\Column(type="integer")
-     * @var integer
+     * @var int
      */
     public $status;
 
+    /**
+     * Get address
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string address
+     */
     public function getAddress() {
         return $this->address;
     }
 
+    /**
+     * Get description
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string description
+     */
     public function getDescription() {
         return $this->description;
     }
 
+    /**
+     * Get manager
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return Users\Entity\User manager
+     */
     public function getManager() {
         return $this->manager;
     }
 
+    /**
+     * Get name
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string name
+     */
     public function getName() {
         return $this->name;
     }
 
+    /**
+     * Get status
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return int status
+     */
     public function getStatus() {
         return $this->status;
     }
     
+    /**
+     * Set address
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $address
+     * @return Branch current entity
+     */
     public function setAddress($address) {
         $this->address = $address;
         return $this;
     }
 
+    /**
+     * Set description
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $description
+     * @return Branch current entity
+     */
     public function setDescription($description) {
         $this->description = $description;
         return $this;
     }
 
+    /**
+     * Set manager
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param Users\Entity\User $manager
+     * @return Branch current entity
+     */
     public function setManager($manager) {
         $this->manager = $manager;
         return $this;
     }
 
+    /**
+     * Set name
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $name
+     * @return Branch current entity
+     */
     public function setName($name) {
         $this->name = $name;
         return $this;
     }
 
+    /**
+     * Set status
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $status
+     * @return Branch current entity
+     */
     public function setStatus($status) {
         $this->status = $status;
         return $this;
@@ -110,8 +195,10 @@ class Branch {
 
     /**
      * Convert the object to an array.
-     *
-     * @return array
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array current entity properties
      */
     public function getArrayCopy() {
         return get_object_vars($this);
@@ -119,8 +206,10 @@ class Branch {
 
     /**
      * Populate from an array.
-     *
-     * @param array $data
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param array $data ,default is empty array
      */
     public function exchangeArray($data = array()) {
         if(array_key_exists('status', $data)){
@@ -132,10 +221,25 @@ class Branch {
                 ->setName($data['name']);
     }
 
+    /**
+     * setting inputFilter is forbidden
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param InputFilterInterface $inputFilter
+     * @throws \Exception
+     */
     public function setInputFilter(InputFilterInterface $inputFilter) {
         throw new \Exception("Not used");
     }
 
+    /**
+     * set validation constraints
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return InputFilter validation constraints
+     */
     public function getInputFilter() {
         if (!$this->inputFilter) {
             $inputFilter = new InputFilter();
