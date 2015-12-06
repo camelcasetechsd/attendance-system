@@ -78,9 +78,6 @@ return array(
                 "privileges" => array(
                     "comment",
                     "cancel",
-                    "approve",
-                    "decline",
-                    "viewall",
                     "index",
                 ),
             ),
