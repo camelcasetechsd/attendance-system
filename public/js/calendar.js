@@ -17,7 +17,7 @@ $(document).ready(function () {
         ],
 
         eventMouseover: function(event) { 
-            var str  ="<a href = '/settings/holiday/edit/id/__event.id__' class ='glyphicon glyphicon-edit' style ='color : white'></a>";
+            var str  ="<a href = '/settings/holiday/edit/__event.id__' class ='glyphicon glyphicon-edit' style ='color : white'></a>";
             var link = str.replace("__event.id__", event.id);
             $(this).append(link);
         },

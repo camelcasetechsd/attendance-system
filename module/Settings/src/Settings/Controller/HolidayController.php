@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 use Settings\Form\FilterByYearForm;
 use Settings\Form\HolidayForm;
 use Settings\Entity\Holiday;
-use Zend\View\Model\JsonModel;
+use Zend\Json\Json;
 
 class HolidayController extends ActionController {
 
@@ -43,7 +43,10 @@ class HolidayController extends ActionController {
         $holidayList = $query->findBy('Settings\Entity\Holiday', array('active' => 1));
         $allholiday = $holidayModel->getAllHoliday($holidayList);
 
-        return new JsonModel($allholiday);
+        $response = $this->getResponse();
+        $response->getHeaders()->addHeaderLine('Content-Type', 'application/json');
+        $response->setContent(json_encode($allholiday));
+        return $response;
     }
 
     public function newAction() {
