@@ -6,8 +6,23 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Users\Auth\Authentication;
 
+/**
+ * Authentication Factory
+ * 
+ * Prepare Authentication service factory
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class AuthenticationFactory implements FactoryInterface {
 
+    /**
+     * Prepare Authentication service
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param ServiceLocatorInterface $serviceLocator
+     * @return Authentication
+     */
     public function createService(ServiceLocatorInterface $serviceLocator) {
         $wrapperQuery = $serviceLocator->get('wrapperQuery');
         

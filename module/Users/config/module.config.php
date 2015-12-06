@@ -13,9 +13,9 @@ return array(
             'user' => 'Users\Controller\IndexController'
         ),
         'factories' => array(
-            'Users\Auth\Authentication' => 'Users\Service\AuthenticationFactory',
-            'Users\Event\AuthenticationEvent' => 'Users\Service\AuthenticationEventFactory',
-            'Users\Acl\Acl' => 'Users\Service\AclFactory',
+            'Users\Auth\Authentication' => 'Users\Auth\AuthenticationFactory',
+            'Users\Event\AuthenticationEvent' => 'Users\Event\AuthenticationEventFactory',
+            'Users\Acl\Acl' => 'Users\Acl\AclFactory',
             'Users\Model\User' => 'Users\Model\UserFactory',
         ),
     ),
