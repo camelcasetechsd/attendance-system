@@ -4,7 +4,7 @@ namespace CustomMustache\Service;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use CustomMustache\View\Renderer;
+use Mustache\View\Renderer;
 use Zend\Authentication\AuthenticationService;
 
 /**
@@ -32,6 +32,8 @@ class RendererFactory implements FactoryInterface {
         $config['helpers']['unseenNotificationsCount'] = FALSE;
         $auth = new AuthenticationService();
 
+        // set isProduction according to current environment
+        $config['helpers']['isProduction'] = (APPLICATION_ENV == "production" )? true : false;
         if ($auth->hasIdentity()) {
             $config['helpers']['visible'] = TRUE;
             $storage = $auth->getIdentity();
