@@ -14,14 +14,14 @@ Feature: Notifications
       And I fill in "fromTime" with "00:00:00"
       And I fill in "toTime" with "01:00:00"
       And I press "submit"
-    Then I should be on "/requests/myrequests/index"
+    Then I should be on "/requests/myrequests"
       And I store request "permission" for "user"
       And I go to "/sign/out"
     Given I mock the login session with "Manager" "manager"
     Then I should see a ".notification_count" element
       And I check notifications count "increased" for "Manager"
       And I "approve" employee "user" request for "Permission"
-      And I should be on "/requests/myrequests/index"
+      And I should be on "/requests/myrequests"
       And I go to "/sign/out"
     Given I mock the login session with "user" "12345678"
     Then I should see a ".notification_count" element

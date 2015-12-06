@@ -2,26 +2,20 @@
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+require 'init_autoloader.php';
 
-require_once 'Zend/Application.php';
-require_once 'Zend/Test/PHPUnit/ControllerTestCase.php';
+use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
+use Zend\Mvc\Application;
 
-class ControllerTestCase extends Zend_Test_PHPUnit_ControllerTestCase
+class ControllerTestCase extends AbstractHttpControllerTestCase
 {
 
     public $application;
 
     public function setUp()
     {
-        $this->application = new Zend_Application(APPLICATION_ENV, APPLICATION_PATH
-                . '/configs/application.yaml');
-        $this->bootstrap = array($this, 'appBootstrap');
+        $this->application = Application::init(require 'config/application.config.php');
         parent::setUp();
-    }
-
-    public function appBootstrap()
-    {
-        $this->application->bootstrap();
     }
 
 }

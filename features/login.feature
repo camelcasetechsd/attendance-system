@@ -14,5 +14,5 @@ Feature: test the login functionality
       | username | admin |
       | password | admin |
     And I press "login"
-    Then I should be on "/index"
+    Then I should be on "/"
 

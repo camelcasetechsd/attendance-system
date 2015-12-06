@@ -101,7 +101,7 @@ class NotificationSubContext extends BehatContext
     public function iProcessEmployeeRequestFor($requestAction, $userName, $requestType)
     {
         $requestId = $this->_lastRequestPerUser[$userName];
-        $page = "/requests/myrequests/$requestAction/id/$requestId/requesttype/$requestType";
+        $page = "/requests/myrequests/$requestAction/$requestId/$requestType";
         $this->getMainContext()->getSession()->visit($this->getMainContext()->locatePath($page));
     }
 

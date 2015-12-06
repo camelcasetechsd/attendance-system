@@ -4,5 +4,5 @@ Feature: Homepage
 
     Scenario: Check the homepage
       Given I mock the login session
-      And I am on "/index"
-      Then I should be on "/index"
+      And I am on "/"
+      Then I should be on "/"

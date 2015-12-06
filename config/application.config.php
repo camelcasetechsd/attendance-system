@@ -12,7 +12,6 @@ $env = getenv('APPLICATION_ENV');
  */
 return array(
     'modules' => array(
-        'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
         'Calendar',

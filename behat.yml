@@ -11,6 +11,7 @@ default:
     extensions:
         Behat\MinkExtension\Extension:
             base_url: http://attendance.local
+            files_path: '%behat.paths.features%/resources'
             goutte: ~
             selenium2: ~
 
