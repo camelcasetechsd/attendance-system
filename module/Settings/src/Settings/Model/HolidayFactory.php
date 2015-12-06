@@ -6,8 +6,23 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Settings\Model\Holiday;
 
+/**
+ * Holiday Factory
+ * 
+ * Prepare Holiday service factory
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class HolidayFactory implements FactoryInterface {
 
+    /**
+     * Prepare Holiday service
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param ServiceLocatorInterface $serviceLocator
+     * @return Holiday
+     */
     public function createService(ServiceLocatorInterface $serviceLocator) {
         $query = $serviceLocator->get('wrapperQuery')->setEntity('Settings\Entity\Holiday');
         return new Holiday($query);

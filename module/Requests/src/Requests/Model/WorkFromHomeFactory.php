@@ -6,8 +6,23 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Requests\Model\WorkFromHome;
 
+/**
+ * WorkFromHome Factory
+ * 
+ * Prepare WorkFromHome service factory
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class WorkFromHomeFactory implements FactoryInterface {
 
+    /**
+     * Prepare WorkFromHome service
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param ServiceLocatorInterface $serviceLocator
+     * @return WorkFromHome
+     */
     public function createService(ServiceLocatorInterface $serviceLocator) {
         $query = $serviceLocator->get('wrapperQuery')->setEntity('Requests\Entity\WorkFromHome');
         $notificationsModel = $serviceLocator->get('Notifications\Model\Notifications');

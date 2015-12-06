@@ -6,8 +6,23 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Notifications\Model\Notifications;
 
+/**
+ * Notifications Factory
+ * 
+ * Prepare Notifications service factory
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ */
 class NotificationsFactory implements FactoryInterface {
 
+    /**
+     * Prepare Notifications service
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param ServiceLocatorInterface $serviceLocator
+     * @return Notifications
+     */
     public function createService(ServiceLocatorInterface $serviceLocator) {
         $query = $serviceLocator->get('wrapperQuery')->setEntity('Notifications\Entity\Notification');
         return new Notifications($query);
