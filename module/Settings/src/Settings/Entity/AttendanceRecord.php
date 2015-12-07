@@ -8,8 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="attendancerecord")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property int $id
+ * @property Users\Entity\User $user
+ * @property \DateTime $timeIn
+ * @property \DateTime $timeOut
+ * @property Settings\Entity\Branch $branch
+ * 
+ * @package settings
+ * @subpackage entity
  */
-
 class AttendanceRecord
 {
     /**
@@ -31,14 +39,14 @@ class AttendanceRecord
     /**
      *
      * @ORM\Column(type="datetime")
-     * @var time
+     * @var \DateTime
      */
     public $timeIn;
     
     /**
      *
      * @ORM\Column(type="datetime")
-     * @var time
+     * @var \DateTime
      */
     public $timeOut;
     

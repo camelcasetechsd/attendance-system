@@ -12,6 +12,18 @@ use Zend\Validator\Regex;
  * @ORM\Entity
  * @ORM\Table(name="permission")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id 
+ * @property Users\Entity\User $user
+ * @property \DateTime $date
+ * @property \DateTime $fromTime
+ * @property \DateTime $toTime
+ * @property \DateTime $dateOfSubmission
+ * @property int $status
+ * 
+ * @package requests
+ * @subpackage entity
  */
 class Permission {
 
@@ -57,28 +69,28 @@ class Permission {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $date;
 
     /**
      *
      * @ORM\Column(type="time")
-     * @var time
+     * @var \DateTime
      */
     public $fromTime;
 
     /**
      *
      * @ORM\Column(type="time")
-     * @var time
+     * @var \DateTime
      */
     public $toTime;
 
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $dateOfSubmission;
 
@@ -275,6 +287,8 @@ class Permission {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

@@ -9,6 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="notification")
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property int $id
+ * @property string $text
+ * @property string $url
+ * @property Users\Entity\User $user
+ * @property int $status
+ * 
+ * @package notifications
+ * @subpackage entity
  */
 class Notification
 {

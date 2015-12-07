@@ -8,6 +8,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="role")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property int $id
+ * @property string $name
+ * 
+ * @package users
+ * @subpackage entity
  */
 class Role
 {

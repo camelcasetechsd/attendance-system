@@ -12,6 +12,16 @@ use Zend\Validator\Regex;
  * @ORM\Entity
  * @ORM\Table(name="attendance")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id
+ * @property int $branch
+ * @property \DateTime $startTime
+ * @property \DateTime $endTime
+ * @property int $active ,default is 1
+ * 
+ * @package settings
+ * @subpackage entity
  */
 class Attendance {
 
@@ -39,14 +49,14 @@ class Attendance {
     /**
      *
      * @ORM\Column(type="time")
-     * @var time
+     * @var \DateTime
      */
     public $startTime;
 
     /**
      *
      * @ORM\Column(type="time")
-     * @var time
+     * @var \DateTime
      */
     public $endTime;
 
@@ -195,6 +205,8 @@ class Attendance {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

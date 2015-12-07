@@ -11,6 +11,19 @@ use Zend\InputFilter\InputFilter;
  * @ORM\Entity
  * @ORM\Table(name="vacationRequest")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id 
+ * @property Users\Entity\User $user 
+ * @property Settings\Entity\Vacation $vacationType 
+ * @property \DateTime $fromDate 
+ * @property \DateTime $toDate 
+ * @property string $attachment
+ * @property \DateTime $dateOfSubmission 
+ * @property int $status
+ * 
+ * @package requests
+ * @subpackage entity
  */
 class VacationRequest {
 
@@ -62,14 +75,14 @@ class VacationRequest {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $fromDate;
 
     /**
      *
      * @ORM\Column(type="date" , nullable=true)
-     * @var date
+     * @var \DateTime
      */
     public $toDate;
 
@@ -82,7 +95,7 @@ class VacationRequest {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $dateOfSubmission;
 
@@ -307,6 +320,8 @@ class VacationRequest {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

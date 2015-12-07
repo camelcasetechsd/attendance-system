@@ -11,6 +11,18 @@ use Zend\InputFilter\InputFilter;
  * @ORM\Entity
  * @ORM\Table(name="workfromhome")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id 
+ * @property Users\Entity\User $user 
+ * @property \DateTime $startDate 
+ * @property \DateTime $endDate 
+ * @property string $reason
+ * @property \DateTime $dateOfSubmission 
+ * @property int $status
+ * 
+ * @package requests
+ * @subpackage entity
  */
 class WorkFromHome {
 
@@ -55,14 +67,14 @@ class WorkFromHome {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $startDate;
 
     /**
      *
      * @ORM\Column(type="date", nullable=true)
-     * @var date
+     * @var \DateTime
      */
     public $endDate;
 
@@ -76,7 +88,7 @@ class WorkFromHome {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $dateOfSubmission;
 
@@ -276,6 +288,8 @@ class WorkFromHome {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

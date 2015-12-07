@@ -11,6 +11,14 @@ use Zend\InputFilter\InputFilter;
  * @ORM\Entity
  * @ORM\Table(name="position")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * 
+ * @package settings
+ * @subpackage entity
  */
 class Position {
     
@@ -128,6 +136,8 @@ class Position {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

@@ -12,6 +12,29 @@ use Zend\Validator\Regex;
  * @ORM\Entity
  * @ORM\Table(name="user")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id
+ * @property string $name
+ * @property string $username
+ * @property string $password
+ * @property string $mobile
+ * @property \DateTime $dateOfBirth
+ * @property string $photo
+ * @property string $maritalStatus
+ * @property string $description
+ * @property Users\Entity\Role $role
+ * @property Settings\Entity\Branch $branch
+ * @property Settings\Entity\Department $department
+ * @property Users\Entity\User $manager
+ * @property Settings\Entity\Position $position
+ * @property \DateTime $startDate
+ * @property int $vacationBalance
+ * @property int $totalWorkingHoursThisMonth
+ * @property int $status
+ * 
+ * @package users
+ * @subpackage entity
  */
 class User {
 
@@ -73,7 +96,7 @@ class User {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $dateOfBirth;
 
@@ -141,7 +164,7 @@ class User {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $startDate;
 
@@ -665,6 +688,8 @@ class User {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

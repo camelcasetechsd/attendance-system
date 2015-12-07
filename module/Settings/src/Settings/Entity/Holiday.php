@@ -11,6 +11,16 @@ use Zend\InputFilter\InputFilter;
  * @ORM\Entity
  * @ORM\Table(name="holiday")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id
+ * @property string $name
+ * @property \DateTime $dateFrom
+ * @property \DateTime $dateTo
+ * @property int $active ,default is 1
+ * 
+ * @package settings
+ * @subpackage entity
  */
 class Holiday {
 
@@ -38,14 +48,14 @@ class Holiday {
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $dateFrom;
 
     /**
      *
      * @ORM\Column(type="date")
-     * @var date
+     * @var \DateTime
      */
     public $dateTo;
 
@@ -194,6 +204,8 @@ class Holiday {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

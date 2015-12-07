@@ -11,6 +11,17 @@ use Zend\InputFilter\InputFilter;
  * @ORM\Entity
  * @ORM\Table(name="comment")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id 
+ * @property string $body
+ * @property Users\Entity\User $user
+ * @property int $request_id
+ * @property int $request_type
+ * @property \Datetime $created
+ * 
+ * @package requests
+ * @subpackage entity
  */
 class Comment {
 
@@ -72,7 +83,7 @@ class Comment {
     /**
      *
      * @ORM\Column(type="datetime")
-     * @var datetime
+     * @var \Datetime
      */
     public $created;
     
@@ -237,6 +248,8 @@ class Comment {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

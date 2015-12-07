@@ -11,6 +11,16 @@ use Zend\InputFilter\InputFilter;
  * @ORM\Entity
  * @ORM\Table(name="vacation")
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $inputFilter validation constraints 
+ * @property int $id
+ * @property string $type
+ * @property string $description
+ * @property int $balance
+ * @property int $active ,default is 1
+ * 
+ * @package settings
+ * @subpackage entity
  */
 class Vacation {
 
@@ -207,6 +217,8 @@ class Vacation {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints
