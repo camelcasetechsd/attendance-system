@@ -13,12 +13,19 @@ use Zend\Authentication\AuthenticationService;
  * Prepare Renderer service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package customMustache
+ * @subpackage service
  */
 class RendererFactory implements FactoryInterface {
 
     /**
      * Prepare Renderer service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses AuthenticationService
+     * @uses \Mustache_Engine
+     * @uses Renderer
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator
@@ -84,6 +91,8 @@ class RendererFactory implements FactoryInterface {
     /**
      * Prepare config array
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses \Mustache_Loader_FilesystemLoader
      * 
      * @access private
      * @param array $config

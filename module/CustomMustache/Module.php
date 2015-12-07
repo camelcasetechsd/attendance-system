@@ -7,6 +7,8 @@ namespace CustomMustache;
  * custom Mustache module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package customMustache
  */
 class Module
 {
