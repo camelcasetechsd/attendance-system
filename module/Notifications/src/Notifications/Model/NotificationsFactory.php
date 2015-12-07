@@ -12,12 +12,17 @@ use Notifications\Model\Notifications;
  * Prepare Notifications service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package notifications
+ * @subpackage model
  */
 class NotificationsFactory implements FactoryInterface {
 
     /**
      * Prepare Notifications service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Notification
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

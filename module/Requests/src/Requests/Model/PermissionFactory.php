@@ -12,12 +12,17 @@ use Requests\Model\Permission;
  * Prepare Permission service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package requests
+ * @subpackage model
  */
 class PermissionFactory implements FactoryInterface {
 
     /**
      * Prepare Permission service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Permission
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

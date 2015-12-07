@@ -12,12 +12,17 @@ use Utilities\Service\Query\Query;
  * Prepare Query service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package utilities
+ * @subpackage query
  */
 class QueryFactory implements FactoryInterface {
 
     /**
      * Prepare Query service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Query
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

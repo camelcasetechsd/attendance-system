@@ -12,12 +12,17 @@ use Requests\Model\WorkFromHome;
  * Prepare WorkFromHome service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package requests
+ * @subpackage model
  */
 class WorkFromHomeFactory implements FactoryInterface {
 
     /**
      * Prepare WorkFromHome service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses WorkFromHome
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

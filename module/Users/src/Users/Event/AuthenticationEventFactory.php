@@ -12,12 +12,19 @@ use Users\Event\AuthenticationEvent;
  * Prepare AuthenticationEvent service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property AclClass $_aclClass
+ * 
+ * @package users
+ * @subpackage event
  */
 class AuthenticationEventFactory implements FactoryInterface {
 
     /**
      * Prepare AuthenticationEvent service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses AuthenticationEvent
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

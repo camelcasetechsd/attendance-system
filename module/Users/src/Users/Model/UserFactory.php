@@ -12,12 +12,17 @@ use Users\Model\User;
  * Prepare User service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package users
+ * @subpackage model
  */
 class UserFactory implements FactoryInterface {
 
     /**
      * Prepare User service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses User
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

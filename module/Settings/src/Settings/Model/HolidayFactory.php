@@ -12,12 +12,17 @@ use Settings\Model\Holiday;
  * Prepare Holiday service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package settings
+ * @subpackage model
  */
 class HolidayFactory implements FactoryInterface {
 
     /**
      * Prepare Holiday service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Holiday
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

@@ -12,12 +12,17 @@ use Users\Acl\Acl;
  * Prepare Acl service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package users
+ * @subpackage acl
  */
 class AclFactory implements FactoryInterface {
 
     /**
      * Prepare Acl service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Acl
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

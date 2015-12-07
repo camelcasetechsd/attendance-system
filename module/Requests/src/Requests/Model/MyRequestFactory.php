@@ -12,12 +12,17 @@ use Requests\Model\MyRequest;
  * Prepare MyRequest service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package requests
+ * @subpackage model
  */
 class MyRequestFactory implements FactoryInterface {
 
     /**
      * Prepare MyRequest service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses MyRequest
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

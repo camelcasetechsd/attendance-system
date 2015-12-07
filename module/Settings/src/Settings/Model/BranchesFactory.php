@@ -12,12 +12,17 @@ use Settings\Model\Branches;
  * Prepare Branches service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package settings
+ * @subpackage model
  */
 class BranchesFactory implements FactoryInterface {
 
     /**
      * Prepare Branches service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Branches
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

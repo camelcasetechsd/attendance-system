@@ -12,12 +12,17 @@ use Settings\Model\Departments;
  * Prepare Departments service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package settings
+ * @subpackage model
  */
 class DepartmentsFactory implements FactoryInterface {
 
     /**
      * Prepare Departments service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Departments
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

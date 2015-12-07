@@ -12,12 +12,17 @@ use Requests\Model\Comment;
  * Prepare Comment service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package requests
+ * @subpackage model
  */
 class CommentFactory implements FactoryInterface {
 
     /**
      * Prepare Comment service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Comment
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

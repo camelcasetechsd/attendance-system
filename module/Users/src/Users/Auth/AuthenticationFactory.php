@@ -12,12 +12,17 @@ use Users\Auth\Authentication;
  * Prepare Authentication service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package users
+ * @subpackage auth
  */
 class AuthenticationFactory implements FactoryInterface {
 
     /**
      * Prepare Authentication service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Authentication
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator
