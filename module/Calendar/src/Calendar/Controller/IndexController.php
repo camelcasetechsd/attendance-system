@@ -11,6 +11,9 @@ use Zend\View\Model\ViewModel;
  * controller responsible for displaying holiday calender
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package calender
+ * @subpackage controller
  */
 class IndexController extends ActionController
 {

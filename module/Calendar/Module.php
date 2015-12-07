@@ -8,6 +8,7 @@ namespace Calendar;
  * calender module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * @package calender
  */
 class Module {
 
