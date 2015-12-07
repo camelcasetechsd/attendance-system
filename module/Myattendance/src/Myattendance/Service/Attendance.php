@@ -2,8 +2,28 @@
 
 namespace Myattendance\Service;
 
+/**
+ * Attendance service
+ * 
+ * Handles Attendance controller business
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package myattendance
+ * @subpackage service
+ */
 class Attendance {
 
+    /**
+     * Group attendances list into lists per each month
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $dateFrom
+     * @param string $dateTo
+     * @param array $list all attendances list
+     * @return array attendances ordered by months
+     */
     public function groupIntoLists($dateFrom, $dateTo, $list) {
         $result = array();
         //create a list of these dates
@@ -15,11 +35,11 @@ class Attendance {
         $period = new \DatePeriod($start, $interval, $end);
 
 
-        foreach ($period as $dt) {
+        foreach ($period as $periodicDateTime) {
             $currentItem = array(
                 'counter' => 0,
-                'date' => $dt->format("Y-F"),
-                'list' => $this->fillDateWithRecords($dt->format("Y-F"), $list),
+                'date' => $periodicDateTime->format("Y-F"),
+                'list' => $this->fillDateWithRecords($periodicDateTime->format("Y-F"), $list),
             );
 
             $currentItem['counter'] = sizeof($currentItem['list']);            
@@ -30,6 +50,15 @@ class Attendance {
         return $result;
     }
 
+    /**
+     * Get current date attendances list
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access private
+     * @param string $currentDate month and year only
+     * @param array $list all attendances list
+     * @return array attendances that belong to currentDate only
+     */
     private function fillDateWithRecords($currentDate, $list) {
         $fullList = array();
 

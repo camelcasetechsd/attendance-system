@@ -7,6 +7,8 @@ namespace Myattendance;
  * myattendance module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package myattendance
  */
 class Module
 {

@@ -12,6 +12,10 @@ use Zend\InputFilter\InputFilter;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @property InputFilter $_inputFilter validation constraints 
+ * @package myattendance
+ * @subpackage form
  */
 class FilterByYearForm extends Form {
 
@@ -79,6 +83,8 @@ class FilterByYearForm extends Form {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints

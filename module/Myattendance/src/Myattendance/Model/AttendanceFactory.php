@@ -12,12 +12,17 @@ use Myattendance\Model\Attendance;
  * Prepare Attendance model factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package myattendance
+ * @subpackage model
  */
 class AttendanceFactory implements FactoryInterface {
 
     /**
      * Prepare Attendance service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Attendance
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator

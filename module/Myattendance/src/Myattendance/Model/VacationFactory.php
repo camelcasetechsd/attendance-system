@@ -12,12 +12,17 @@ use Myattendance\Model\Vacation;
  * Prepare Vacation service factory
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package myattendance
+ * @subpackage model
  */
 class VacationFactory implements FactoryInterface {
 
     /**
      * Prepare Vacation service
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Vacation
      * 
      * @access public
      * @param ServiceLocatorInterface $serviceLocator
