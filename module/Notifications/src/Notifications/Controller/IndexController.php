@@ -6,9 +6,28 @@ use Utilities\Controller\ActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Authentication\AuthenticationService;
 
+/**
+ * Notifications Controller
+ * 
+ * notifications entries listing for current user
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package notifications
+ * @subpackage controller
+ */
 class IndexController extends ActionController
 {
 
+    /**
+     * List current user notification entries
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
         $variables = array();
@@ -24,6 +43,12 @@ class IndexController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Set notification seen
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function seenAction()
     {
         $id = $this->params('id');
