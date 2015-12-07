@@ -12,6 +12,8 @@ use Utilities\Form\Form;
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author Moataz Mohamed
  * 
+ * @package requests
+ * @subpackage form
  */
 class PermissionForm extends Form {
 

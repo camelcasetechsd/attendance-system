@@ -10,6 +10,13 @@ use Zend\Form\View\Helper\FormElementErrors as OriginalFormElementErrors;
  * Handles form errors display
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property string $messageCloseString
+ * @property string $messageOpenFormat
+ * @property string $messageSeparatorString
+ * 
+ * @package utilities
+ * @subpackage form
  */
 class FormElementErrors extends OriginalFormElementErrors  
 {

@@ -10,6 +10,9 @@ use Utilities\Form\Form;
  * Handles Vacation form setup
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package settings
+ * @subpackage form
  */
 class VacationForm extends Form {
 

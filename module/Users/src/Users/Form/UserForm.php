@@ -11,6 +11,11 @@ use Utilities\Form\Form;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author Mohamed Ramadan
+ * 
+ * @property Utilities\Service\Query\Query $query
+ * 
+ * @package users
+ * @subpackage form
  */
 class UserForm extends Form {
 

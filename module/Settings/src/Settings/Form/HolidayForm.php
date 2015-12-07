@@ -10,6 +10,9 @@ use Utilities\Form\Form;
  * Handles Holiday form setup
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package settings
+ * @subpackage form
  */
 class HolidayForm extends Form {
 

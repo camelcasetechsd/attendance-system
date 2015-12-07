@@ -11,6 +11,11 @@ use Utilities\Form\Form;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author Ahmed
+ * 
+ * @property Utilities\Service\Query\Query $query
+ * 
+ * @package settings
+ * @subpackage form
  */
 class AttendanceForm extends Form {
 

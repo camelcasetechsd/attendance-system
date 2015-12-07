@@ -11,6 +11,9 @@ use Utilities\Form\Form;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author Mohamed Ramdan
+ * 
+ * @package requests
+ * @subpackage form
  */
 class CommentForm extends Form {
 

@@ -12,6 +12,11 @@ use Zend\Form\FormInterface;
  * Handles form setup
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property bool $isEditForm ,default is bool false
+ * 
+ * @package utilities
+ * @subpackage form
  */
 class Form extends ZendForm {
 
@@ -24,6 +29,9 @@ class Form extends ZendForm {
     /**
      * setup form
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses \ReflectionClass
+     * @uses Inflector
      * 
      * @access public
      * @param string $name ,default is null

@@ -11,6 +11,11 @@ use Utilities\Form\Form;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author AbdEl-Moneim
+ * 
+ * @property Utilities\Service\Query\Query $query
+ * 
+ * @package settings
+ * @subpackage form
  */
 class BranchesForm extends Form {
 

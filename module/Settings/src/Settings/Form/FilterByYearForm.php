@@ -10,6 +10,12 @@ use Utilities\Form\Form;
  * Handles FilterByYear form setup
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property string $selectedYear selected year to filter by
+ * @property Utilities\Service\Query\Query $query
+ * 
+ * @package settings
+ * @subpackage form
  */
 class FilterByYearForm extends Form {
 
