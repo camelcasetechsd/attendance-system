@@ -14,6 +14,9 @@ use Zend\Log\Logger;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package defaultModule
+ * @subpackage controller
  */
 class ErrorController extends ActionController
 {
@@ -44,8 +47,10 @@ class ErrorController extends ActionController
 
     /**
      * Default Error display
-     * @ToDo get error display overriden by this action, As now it is handled by original ZF2 exception strategy 
+     * @todo get error display overriden by this action, As now it is handled by original ZF2 exception strategy 
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses Logger
      * 
      * @access public
      * @return ViewModel

@@ -8,6 +8,8 @@ namespace DefaultModule;
  * default module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package defaultModule
  */
 class Module {
 

@@ -13,6 +13,9 @@ use Zend\Authentication\AuthenticationService;
  * Handles Authentication processes
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package defaultModule
+ * @subpackage controller
  */
 class SignController extends ActionController
 {
@@ -32,6 +35,8 @@ class SignController extends ActionController
     /**
      * User Login
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses SigninForm
      * 
      * @access public
      * @return ViewModel
@@ -68,6 +73,8 @@ class SignController extends ActionController
     /**
      * User Logout
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses AuthenticationService
      * 
      * @access public
      */

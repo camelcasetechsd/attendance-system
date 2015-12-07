@@ -11,6 +11,9 @@ use Zend\View\Model\ViewModel;
  * Handles Application homepage
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package defaultModule
+ * @subpackage controller
  */
 class IndexController extends ActionController
 {

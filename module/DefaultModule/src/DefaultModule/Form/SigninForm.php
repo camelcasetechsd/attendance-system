@@ -11,6 +11,10 @@ use Zend\InputFilter\InputFilter;
  * Handles Authentication form setup and validation
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property InputFilter $_inputFilter validation constraints 
+ * @package defaultModule
+ * @subpackage form
  */
 class SigninForm extends Form {
 
@@ -72,6 +76,8 @@ class SigninForm extends Form {
     /**
      * set validation constraints
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @uses InputFilter
      * 
      * @access public
      * @return InputFilter validation constraints
