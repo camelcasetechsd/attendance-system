@@ -5,20 +5,63 @@ namespace Requests\Model;
 use Requests\Entity\Permission;
 
 /**
+ * MyRequest Model
+ * 
+ * Handles Permission, Vacation and WorkFromHome Entities related business
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @property Utilities\Service\Query\Query $query
+ * @property Notifications\Model\Notifications $notificationsModel
+ * @property Zend\Mvc\Service\RouterFactory $router
+ * 
+ * @package requests
+ * @subpackage model
  */
 class MyRequest {
 
+    /**
+     *
+     * @var Utilities\Service\Query\Query 
+     */
     protected $query;
+    /**
+     *
+     * @var Notifications\Model\Notifications
+     */
     protected $notificationsModel;
+    /**
+     *
+     * @var Zend\Mvc\Service\RouterFactory
+     */
     protected $router;
 
+    /**
+     * Set needed properties
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param Utilities\Service\Query\Query $query
+     * @param Zend\Mvc\Service\RouterFactory $router
+     * @param Notifications\Model\Notifications $notificationsModel
+     */
     public function __construct($query, $router, $notificationsModel) {
         $this->query = $query;
         $this->router = $router;
         $this->notificationsModel = $notificationsModel;
     }
 
+    /**
+     * Approve request
+     * Update user vacation balance, notify user
+     * Notify manager in case user exceeded allowed vacation balance
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $requestId
+     * @param string $requestType
+     */
     public function approve($requestId, $requestType) {
         $request = $this->getRequestEntity($requestId, $requestType);
         $previousRequestState = $request->status;
@@ -57,6 +100,15 @@ class MyRequest {
         $this->notificationsModel->create($text, $myRequestsUrl, $user->id);
     }
     
+    /**
+     * Decline request
+     * Notify user
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $requestId
+     * @param string $requestType
+     */
     public function decline($requestId, $requestType) {
         $request = $this->getRequestEntity($requestId, $requestType);
         $request->status = Permission::STATUS_DENIED;
@@ -69,12 +121,28 @@ class MyRequest {
         $this->notificationsModel->create($text, $myRequestsUrl, $user->id);
     }
     
+    /**
+     * Cancel request
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $requestId
+     * @param string $requestType
+     */
     public function cancel($requestId, $requestType) {
         $request = $this->getRequestEntity($requestId, $requestType);
         $request->status = Permission::STATUS_CANCELLED;
         $this->query->save($request);
     }
 
+    /**
+     * Get request entity by request type
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param int $requestId
+     * @param string $requestType
+     */
     public function getRequestEntity($requestId, $requestType) {
         switch ($requestType) {
             case "Permission" :

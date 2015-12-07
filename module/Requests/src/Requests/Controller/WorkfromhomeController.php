@@ -11,16 +11,37 @@ use Requests\Form\CommentForm;
 use Requests\Entity\Comment;
 
 /**
+ * Workfromhome Controller
+ * 
+ * Workfromhome requests entries listing for current user
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package requests
+ * @subpackage controller
  */
 class WorkfromhomeController extends ActionController
 {
 
+    /**
+     * Default Action
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function indexAction()
     {
         return new ViewModel();
     }
 
+    /**
+     * Delete request comment
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deletecommentAction()
     {
         $id = $this->params('id');
@@ -33,6 +54,17 @@ class WorkfromhomeController extends ActionController
         $this->redirect()->toUrl($url);
     }
 
+    /**
+     * Request new WorkFromHome
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * @uses WorkFromHome
+     * @uses WorkfromhomeForm
+     * 
+     * @return ViewModel
+     */
     public function newAction()
     {
         $variables = array();
@@ -59,6 +91,17 @@ class WorkfromhomeController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Show WorkFromHome and comments on it
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * @uses CommentForm
+     * @uses Comment
+     * 
+     * @return ViewModel
+     */
     public function showAction()
     {
         $id = $this->params('id');

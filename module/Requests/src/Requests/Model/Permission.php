@@ -5,18 +5,56 @@ namespace Requests\Model;
 use Requests\Entity\Permission as PermissionEntity;
 
 /**
+ * Permission Model
+ * 
+ * Handles Permission Entity related business
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @property Utilities\Service\Query\Query $query
+ * @property Notifications\Model\Notifications $notificationsModel
+ * 
+ * @package requests
+ * @subpackage model
  */
 class Permission {
 
+    /**
+     *
+     * @var Utilities\Service\Query\Query 
+     */
     protected $query;
+    /**
+     *
+     * @var Notifications\Model\Notifications
+     */
     protected $notificationsModel;
 
+    /**
+     * Set needed properties
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param Utilities\Service\Query\Query $query
+     * @param Notifications\Model\Notifications $notificationsModel
+     */
     public function __construct($query, $notificationsModel) {
         $this->query = $query;
         $this->notificationsModel = $notificationsModel;
     }
 
+    /**
+     * Create new permission
+     * notify manager with new request
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param Requests\Entity\Permission $permissionObj
+     * @param array $data
+     * @param int $userId
+     * @param string $url
+     */
     public function create($permissionObj, $data, $userId, $url) {
         $user = $this->query->find('Users\Entity\User', $userId);
         $data['user'] = $user;
@@ -27,6 +65,14 @@ class Permission {
         $this->notificationsModel->create($text, $url);
     }
     
+    /**
+     * Prepare permissions for display
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param array $permissions
+     * @return array permissions array after being prepared for display
+     */
     public function prepareForDisplay($permissions)
     {
         foreach ($permissions as $permission) {

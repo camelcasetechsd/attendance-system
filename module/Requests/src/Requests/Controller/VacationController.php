@@ -12,16 +12,42 @@ use Zend\Authentication\AuthenticationService;
 use Settings\Entity\Vacation as VacationType;
 
 /**
+ * Vacation Controller
+ * 
+ * Vacation requests entries listing for current user
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author mohamed ramadan
+ * 
+ * @package requests
+ * @subpackage controller
  */
 class VacationController extends ActionController
 {
 
+    /**
+     * Default Action
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function indexAction()
     {
         return new ViewModel();
     }
 
+    /**
+     * Request new vacation
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * @uses VacationRequest
+     * @uses VacationRequestForm
+     * 
+     * @return ViewModel
+     */
     public function newAction()
     {
         $variables = array();
@@ -58,6 +84,17 @@ class VacationController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Show vacation and comments on it
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * @uses CommentForm
+     * @uses Comment
+     * 
+     * @return ViewModel
+     */
     public function showAction()
     {
         $id = $this->params('id');
@@ -110,6 +147,12 @@ class VacationController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete request comment
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deletecommentAction()
     {
         $id = $this->params('id');

@@ -10,10 +10,27 @@ use Requests\Entity\VacationRequest;
 use Requests\Entity\WorkFromHome;
 
 /**
+ * Myrequests Controller
+ * 
+ * requests entries listing for current user or all users with processing capabilities
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package requests
+ * @subpackage controller
  */
 class MyrequestsController extends ActionController {
 
+    /**
+     * List current user or all users requests entries
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * 
+     * @return ViewModel
+     */
     public function indexAction() {
         $query = $this->getServiceLocator()->get('wrapperQuery');
         $permissionModel = $this->getServiceLocator()->get('Requests\Model\Permission');
@@ -64,6 +81,12 @@ class MyrequestsController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Approve request
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function approveAction() {
         $requestId = $this->params('id');
         $requestType = $this->params('requestType');
@@ -74,6 +97,12 @@ class MyrequestsController extends ActionController {
         $this->redirect()->toUrl($url);
     }
 
+    /**
+     * Cancel request
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function cancelAction() {
         $requestId = $this->params('id');
         $requestType = $this->params('requestType');
@@ -84,6 +113,12 @@ class MyrequestsController extends ActionController {
         $this->redirect()->toUrl($url);
     }
 
+    /**
+     * Decline request
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function declineAction() {
         $requestId = $this->params('id');
         $requestType = $this->params('requestType');

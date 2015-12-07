@@ -11,14 +11,40 @@ use Requests\Entity\Comment;
 use Zend\Authentication\AuthenticationService;
 
 /**
+ * Permission Controller
+ * 
+ * permission requests entries listing for current user
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author moataz
+ * 
+ * @package requests
+ * @subpackage controller
  */
 class PermissionController extends ActionController {
 
+    /**
+     * Default Action
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function indexAction() {
         return new ViewModel();
     }
 
+    /**
+     * Request new permission
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * @uses Permission
+     * @uses PermissionForm
+     * 
+     * @return ViewModel
+     */
     public function newAction() {
         $variables = array();
         $permissionModel = $this->getServiceLocator()->get('Requests\Model\Permission');
@@ -44,6 +70,17 @@ class PermissionController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Show permission and comments on it
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * @uses CommentForm
+     * @uses Comment
+     * 
+     * @return ViewModel
+     */
     public function showAction() {
         $id = $this->params('id');
         $query = $this->getServiceLocator()->get('wrapperQuery');
@@ -89,6 +126,12 @@ class PermissionController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete request comment
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deletecommentAction() {
         $id = $this->params('id');
         $query = $this->getServiceLocator()->get('wrapperQuery');
