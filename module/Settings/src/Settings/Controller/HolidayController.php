@@ -9,10 +9,28 @@ use Settings\Form\HolidayForm;
 use Settings\Entity\Holiday;
 
 /**
+ * Holidays Controller
+ * 
+ * holidays entries listing
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package settings
+ * @subpackage controller
  */
 class HolidayController extends ActionController {
 
+    /**
+     * List holidays
+     * Filter holidays by year if a year is selected
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses FilterByYearForm
+     * 
+     * @return ViewModel
+     */
     public function indexAction() {
         $variables = array();
         $year = $this->getRequest()->getPost('year');
@@ -38,6 +56,13 @@ class HolidayController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Get all holidays as JSON
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string JSON encoded holidays array
+     */
     public function fetchallholidayAction() {
         $holidayModel = $this->getServiceLocator()->get('Settings\Model\Holiday');
         $query = $this->getServiceLocator()->get('wrapperQuery');
@@ -51,6 +76,16 @@ class HolidayController extends ActionController {
         return $response;
     }
 
+    /**
+     * Create new holiday
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Holiday
+     * @uses HolidayForm
+     * 
+     * @return ViewModel
+     */
     public function newAction() {
         $variables = array();
         $query = $this->getServiceLocator()->get('wrapperQuery')->setEntity('Settings\Entity\Holiday');
@@ -78,6 +113,15 @@ class HolidayController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Edit holiday
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses HolidayForm
+     * 
+     * @return ViewModel
+     */
     public function editAction() {
         $variables = array();
         $id = $this->params('id');
@@ -107,6 +151,12 @@ class HolidayController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete holiday
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deleteAction() {
         $id = $this->params('id');
         $query = $this->getServiceLocator()->get('wrapperQuery');

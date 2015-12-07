@@ -8,11 +8,27 @@ use Settings\Form\PositionForm;
 use Settings\Entity\Position;
 
 /**
+ * Position Controller
+ * 
+ * positions entries listing
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package settings
+ * @subpackage controller
  */
 class PositionController extends ActionController
 {
 
+    /**
+     * List positions
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
         $variables = array();
@@ -23,6 +39,16 @@ class PositionController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Create new position
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Position
+     * @uses PositionForm
+     * 
+     * @return ViewModel
+     */
     public function newAction()
     {
         $variables = array();
@@ -48,6 +74,15 @@ class PositionController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Edit position
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses PositionForm
+     * 
+     * @return ViewModel
+     */
     public function editAction()
     {
         $variables = array();
@@ -75,6 +110,12 @@ class PositionController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete position
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deleteAction()
     {
         $id = $this->params('id');

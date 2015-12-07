@@ -8,11 +8,27 @@ use Settings\Form\BranchesForm;
 use Settings\Entity\Branch;
 
 /**
+ * Branches Controller
+ * 
+ * branches entries listing
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author abdel-moneim
+ * 
+ * @package settings
+ * @subpackage controller
  */
 class BranchesController extends ActionController
 {
 
+    /**
+     * List branches
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
         $variables = array();
@@ -23,6 +39,16 @@ class BranchesController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Create new branch
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Branch
+     * @uses BranchesForm
+     * 
+     * @return ViewModel
+     */
     public function newAction()
     {
         $variables = array();
@@ -51,6 +77,15 @@ class BranchesController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Edit branch
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses BranchesForm
+     * 
+     * @return ViewModel
+     */
     public function editAction()
     {
         $variables = array();
@@ -80,6 +115,12 @@ class BranchesController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete branch
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deleteAction()
     {
         $id = $this->params('id');

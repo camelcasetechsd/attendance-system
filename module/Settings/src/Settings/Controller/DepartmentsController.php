@@ -8,11 +8,27 @@ use Settings\Entity\Department;
 use Settings\Form\DepartmentForm;
 
 /**
+ * Departments Controller
+ * 
+ * departments entries listing
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package settings
+ * @subpackage controller
  */
 class DepartmentsController extends ActionController
 {
 
+    /**
+     * List departments
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
         $variables = array();
@@ -23,6 +39,16 @@ class DepartmentsController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Create new department
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Department
+     * @uses DepartmentForm
+     * 
+     * @return ViewModel
+     */
     public function newAction()
     {
         $variables = array();
@@ -51,6 +77,15 @@ class DepartmentsController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Edit department
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses DepartmentForm
+     * 
+     * @return ViewModel
+     */
     public function editAction()
     {
         $variables = array();
@@ -80,6 +115,12 @@ class DepartmentsController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete department
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deleteAction()
     {
         $id = $this->params('id');

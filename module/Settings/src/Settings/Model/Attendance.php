@@ -5,16 +5,44 @@ namespace Settings\Model;
 use Doctrine\ORM\Query\Expr\Join;
 
 /**
+ * Attendance Model
+ * 
+ * Handles Attendance Entity related business
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @property Utilities\Service\Query\Query $query
+ * 
+ * @package settings
+ * @subpackage model
  */
 class Attendance {
 
+    /**
+     *
+     * @var Utilities\Service\Query\Query 
+     */
     protected $query;
 
+    /**
+     * Set needed properties
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param Utilities\Service\Query\Query $query
+     */
     public function __construct($query) {
         $this->query = $query;
     }
 
+    /**
+     * List attendances
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return array attendances ready for display
+     */
     public function listAttendances() {
         $repository = $this->query->entityRepository;
         $parameters = array(

@@ -11,6 +11,9 @@ use Zend\View\Model\ViewModel;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package settings
+ * @subpackage controller
  */
 class IndexController extends ActionController
 {

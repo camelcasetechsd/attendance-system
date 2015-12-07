@@ -8,11 +8,27 @@ use Settings\Form\AttendanceForm;
 use Settings\Entity\Attendance;
 
 /**
+ * Attendance Controller
+ * 
+ * attendance entries listing for current user
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @author ahmed
+ * 
+ * @package settings
+ * @subpackage controller
  */
 class AttendanceController extends ActionController
 {
 
+    /**
+     * List current user attendance entries
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * 
+     * @return ViewModel
+     */
     public function indexAction()
     {
         $variables = array();
@@ -23,6 +39,16 @@ class AttendanceController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Create new attendance
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Attendance
+     * @uses AttendanceForm
+     * 
+     * @return ViewModel
+     */
     public function newAction()
     {
         $variables = array();
@@ -50,6 +76,12 @@ class AttendanceController extends ActionController
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete attendance
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deleteAction()
     {
         $id = $this->params('id');
@@ -64,6 +96,15 @@ class AttendanceController extends ActionController
         $this->redirect()->toUrl($url);
     }
 
+    /**
+     * Edit attendance
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AttendanceForm
+     * 
+     * @return ViewModel
+     */
     public function editAction()
     {
         $variables = array();
