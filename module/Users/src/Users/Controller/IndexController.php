@@ -7,8 +7,25 @@ use Zend\View\Model\ViewModel;
 use Users\Form\UserForm;
 use Users\Entity\User;
 
+/**
+ * Index Controller
+ * 
+ * users entries listing for adminstration
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package users
+ * @subpackage controller
+ */
 class IndexController extends ActionController {
 
+    /**
+     * List users paginated
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return ViewModel
+     */
     public function indexAction() {
         $variables = array();
         $query = $this->getServiceLocator()->get('wrapperQuery');
@@ -35,6 +52,15 @@ class IndexController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Edit user
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses UserForm
+     * 
+     * @return ViewModel
+     */
     public function editAction() {
         $variables = array();
         $id = $this->params('id');
@@ -86,6 +112,16 @@ class IndexController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Create new user
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses User
+     * @uses UserForm
+     * 
+     * @return ViewModel
+     */
     public function newAction() {
 
         $variables = array();
@@ -123,6 +159,12 @@ class IndexController extends ActionController {
         return new ViewModel($variables);
     }
 
+    /**
+     * Delete user
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     */
     public function deleteAction() {
         $id = $this->params('id');
         $userModel = $this->getServiceLocator()->get('Users\Model\User');

@@ -1,25 +1,7 @@
 <?php
 
-/**
- * File for Event Class
- *
- * @category  User
- * @package   User_Event
- * @author    Marco Neumann <webcoder_at_binware_dot_org-->
- * @copyright Copyright (c) 2011, Marco Neumann
- * @license   http://binware.org/license/index/type:new-bsd New BSD License
- */
-/**
- * @namespace
- */
-
 namespace Users\Event;
 
-/**
- * @uses Zend\Mvc\MvcEvent
- * @uses User\Controller\Plugin\UserAuthentication
- * @uses User\Acl\Acl
- */
 use Zend\Mvc\MvcEvent;
 use Zend\Authentication\AuthenticationService;
 use Users\Acl\Acl as AclClass;
@@ -31,11 +13,16 @@ use Zend\Http\Response;
  * Authentication Event Handler Class
  *
  * This Event Handles Authentication
- *
- * @category  User
- * @package   User_Event
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * @author Marco Neumann <webcoder@binware.org>
  * @copyright Copyright (c) 2011, Marco Neumann
- * @license   http://binware.org/license/index/type:new-bsd New BSD License
+ * @license http://binware.org/license/index/type:new-bsd New BSD License
+ * 
+ * @property AclClass $_aclClass
+ * 
+ * @package users
+ * @subpackage event
  */
 class AuthenticationEvent extends AbstractActionController {
 
@@ -46,7 +33,14 @@ class AuthenticationEvent extends AbstractActionController {
 
     /**
      * preDispatch Event Handler
-     *
+     * Handle authentication process
+     * Decide where user should be redirected to when logged in or not
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AuthenticationService
+     * @uses Response
+     * 
      * @param \Zend\Mvc\MvcEvent $event
      * @throws \Exception
      */
@@ -103,7 +97,9 @@ class AuthenticationEvent extends AbstractActionController {
 
     /**
      * Sets ACL Class
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
      * @param \User\Acl\Acl $aclClass
      * @return Authentication
      */
@@ -115,7 +111,11 @@ class AuthenticationEvent extends AbstractActionController {
 
     /**
      * Gets ACL Class
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses AclClass
+     * 
      * @return \User\Acl\Acl
      */
     public function getAclClass() {

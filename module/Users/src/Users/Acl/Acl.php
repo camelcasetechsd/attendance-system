@@ -1,25 +1,7 @@
 <?php
 
-/**
- * File for Acl Class
- *
- * @category  User
- * @package   User_Acl
- * @author    Marco Neumann <webcoder_at_binware_dot_org-->
- * @copyright Copyright (c) 2011, Marco Neumann
- * @license   http://binware.org/license/index/type:new-bsd New BSD License
- */
-/**
- * @namespace
- */
-
 namespace Users\Acl;
 
-/**
- * @uses Zend\Acl\Acl
- * @uses Zend\Acl\Role\GenericRole
- * @uses Zend\Acl\Resource\GenericResource
- */
 use Zend\Permissions\Acl\Acl as ZendAcl;
 use Zend\Permissions\Acl\Role\GenericRole as Role;
 use Zend\Permissions\Acl\Resource\GenericResource as Resource;
@@ -29,10 +11,13 @@ use Zend\Permissions\Acl\Resource\GenericResource as Resource;
  *
  * This class is for loading ACL defined in a config
  *
- * @category User
- * @package  User_Acl
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * @author    Marco Neumann <webcoder@binware.org>
  * @copyright Copyright (c) 2011, Marco Neumann
  * @license   http://binware.org/license/index/type:new-bsd New BSD License
+ * 
+ * @package users
+ * @subpackage acl
  */
 class Acl extends ZendAcl {
 
@@ -42,10 +27,11 @@ class Acl extends ZendAcl {
     const DEFAULT_ROLE = 'Employee';
 
     /**
-     * Constructor
-     *
+     * Set roles and resources
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
      * @param array $config
-     * @return void
      * @throws \Exception
      */
     public function __construct($config) {
@@ -58,17 +44,21 @@ class Acl extends ZendAcl {
             $roles[] = self::DEFAULT_ROLE;
         }
 
-        $this->_addRoles($roles)
-                ->_addResources($config['acl']);
+        $this->addRoles($roles)
+                ->addResources($config['acl']);
     }
 
     /**
      * Adds Roles to ACL
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Role
+     * 
      * @param array $roles
      * @return User\Acl
      */
-    protected function _addRoles($roles) {
+    protected function addRoles($roles) {
         foreach ($roles as $role) {
             if (!$this->hasRole($role)) {
                 $parent = array();
@@ -80,12 +70,16 @@ class Acl extends ZendAcl {
 
     /**
      * Adds Resources to ACL
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Resource
+     * 
      * @param $acl
      * @return User\Acl
      * @throws \Exception
      */
-    protected function _addResources($acl) {
+    protected function addResources($acl) {
         $whitelist = $acl["whitelist"];
         $blacklist = $acl["blacklist"];
         foreach ($acl['resources'] as $resource) {

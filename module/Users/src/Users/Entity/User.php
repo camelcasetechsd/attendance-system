@@ -211,10 +211,10 @@ class User {
      * 
      * @access public
      * @param string $givenPassword
-     * @param string $givenPassword hashed password
+     * @param string $savedPassword hashed password
      * @return bool true if passwords mathced, false else
      */
-    static public function verifyPassword($givenPassword, $givenPassword) {
+    static public function verifyPassword($givenPassword, $savedPassword) {
         if (function_exists('password_verify')) {
             return password_verify($givenPassword, $savedPassword);
         } else {
