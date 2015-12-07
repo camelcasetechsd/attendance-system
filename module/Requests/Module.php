@@ -7,6 +7,8 @@ namespace Requests;
  * requests module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package requests
  */
 class Module
 {

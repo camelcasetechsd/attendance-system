@@ -8,6 +8,8 @@ namespace Utilities;
  * utilities module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package utilities
  */
 class Module {
 

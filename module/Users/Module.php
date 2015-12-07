@@ -13,6 +13,8 @@ use Zend\Mvc\MvcEvent;
  * users module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package users
  */
 class Module implements ConfigProviderInterface,AutoloaderProviderInterface {
 

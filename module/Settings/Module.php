@@ -7,6 +7,8 @@ namespace Settings;
  * settings module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package settings
  */
 class Module
 {

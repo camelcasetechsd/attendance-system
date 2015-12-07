@@ -7,6 +7,8 @@ namespace Notifications;
  * notifications module configuration
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package notifications
  */
 class Module
 {
