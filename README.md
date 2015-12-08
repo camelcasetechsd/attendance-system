@@ -24,22 +24,10 @@ To access the vagrant environment from the terminal, change to the vagrant direc
     vagrant ssh
 
 
-### Use composer to install PHP dependencies:
+### Run deployment script:
 
     cd /vagrant
-    composer install --prefer-dist
-
-### Use bower to install css/js dependencies:
-    cd /vagrant/public
-    bower install 
-
-### Install latest database schema
-    cd /vagrant
-    ./bin/cli orm:schema-tool:update --force
-
-### Install acceptance data
-    cd /vagrant
-    ./bin/cli schema:data-generate 
+    . deploy.sh
 
 ### run acceptance tests
     cd /vagrant
