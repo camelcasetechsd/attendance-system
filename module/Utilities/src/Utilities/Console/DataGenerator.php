@@ -49,6 +49,7 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        date_default_timezone_set("UTC");
         /* @var $entityManager \Doctrine\ORM\EntityManager */
         $entityManager = $this->getHelper('em')->getEntityManager();
 
