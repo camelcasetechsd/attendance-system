@@ -6,30 +6,25 @@ use Zend\Validator\AbstractValidator;
 use Zend\Config\Config;
 
 /**
- * Zend Framework
- *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Validate
+ * Date Validator
+ * 
+ * Validate date against other date being less than itself,
+ * Validator is used with the end date to check start date is less than end date
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
- */
-
-/**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * 
+ * @property array $messageTemplates Error messages
+ * @property array $messageVariables
+ * @property string $tokenString Original token against which to validate
+ * @property string $token
+ * @property bool $strict ,default is bool true
+ * 
+ * @package utilities
+ * @subpackage validator
  */
 class DateValidator extends AbstractValidator {
 
@@ -66,8 +61,10 @@ class DateValidator extends AbstractValidator {
 
     /**
      * Sets validator options
-     *
-     * @param mixed $token
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param mixed $token ,default is null
      */
     public function __construct($token = null) {
         if ($token instanceof Config) {
@@ -83,14 +80,16 @@ class DateValidator extends AbstractValidator {
         } else if (null !== $token) {
             $this->setToken($token);
         }
-        
+
         parent::__construct();
     }
 
     /**
      * Retrieve token
-     *
-     * @return string
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string token
      */
     public function getToken() {
         return $this->token;
@@ -98,9 +97,11 @@ class DateValidator extends AbstractValidator {
 
     /**
      * Set token against which to compare
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
      * @param  mixed $token
-     * @return DateValidator
+     * @return \Utilities\Service\Validator\DateValidator
      */
     public function setToken($token) {
         $this->tokenString = $token;
@@ -110,8 +111,10 @@ class DateValidator extends AbstractValidator {
 
     /**
      * Returns the strict parameter
-     *
-     * @return boolean
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return boolean strict
      */
     public function getStrict() {
         return $this->strict;
@@ -119,9 +122,11 @@ class DateValidator extends AbstractValidator {
 
     /**
      * Sets the strict parameter
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
      * @param bool $strict
-     * @return DateValidator
+     * @return \Utilities\Service\Validator\DateValidator
      */
     public function setStrict($strict) {
         $this->strict = (boolean) $strict;
@@ -130,11 +135,13 @@ class DateValidator extends AbstractValidator {
 
     /**
      * Returns true if and only if a token has been set and the provided value
-     * matches that token.
-     *
+     * is greater than that token's.
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
      * @param  mixed $value
      * @param  array $context
-     * @return boolean
+     * @return boolean valid or not
      */
     public function isValid($value, $context = null) {
         $this->setValue($value);
@@ -145,21 +152,23 @@ class DateValidator extends AbstractValidator {
             $token = $this->getToken();
         }
 
+        $isValid = true;
         if ($token === null) {
             $this->error(self::MISSING_TOKEN);
-            return false;
+            $isValid = false;
         }
 
-        $strict = $this->getStrict();
+        if ($isValid === true) {
+            $strict = $this->getStrict();
 
-        $valueDate = new \DateTime($value);
-        $tokenDate = new \DateTime($token);
-        if (($strict && ($valueDate < $tokenDate)) || (!$valueDate && ($value < $tokenDate))) {
-            $this->error(self::NOT_GREATER);
-            return false;
+            $valueDate = new \DateTime($value);
+            $tokenDate = new \DateTime($token);
+            if (($strict && ($valueDate < $tokenDate)) || (!$valueDate && ($value < $tokenDate))) {
+                $this->error(self::NOT_GREATER);
+                $isValid = false;
+            }
         }
-
-        return true;
+        return $isValid;
     }
 
 }

@@ -5,6 +5,21 @@ namespace Utilities\Service\Query;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Collections\Criteria;
 
+/**
+ * Query
+ * 
+ * Handles database queries related business
+ * Wrapping commonly used database queries
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @property ObjectManager $entityManager
+ * @property Doctrine\Common\Persistence\ObjectRepository $entityRepository
+ * @property string $entityName
+ * 
+ * @package utilities
+ * @subpackage query
+ */
 class Query {
 
     /**
@@ -26,7 +41,10 @@ class Query {
     public $entityName;
 
     /**
+     * Set needed properties
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
+     * @access public
      * @param ObjectManager $entityManager
      */
     public function __construct(ObjectManager $entityManager) {
@@ -34,8 +52,12 @@ class Query {
     }
 
     /**
+     * Set entity that is to-be-queried
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
+     * @access public
      * @param string $entityName
+     * @return \Utilities\Service\Query\Query
      */
     public function setEntity($entityName) {
         if (!empty($entityName)) {
@@ -47,10 +69,13 @@ class Query {
 
     /**
      * Finds an entity by its primary key / identifier.
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $entityName
+     * @param mixed $id The identifier.
      *
-     * @param mixed    $id          The identifier.
-     *
-     * @return object|null The entity instance or NULL if the entity can not be found.
+     * @return mixed object|null The entity instance or NULL if the entity can not be found.
      */
     public function find($entityName, $id) {
         return $this->setEntity($entityName)->entityRepository->find($id);
@@ -58,7 +83,10 @@ class Query {
 
     /**
      * Finds all entities in the repository.
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $entityName
      * @return array The entities.
      */
     public function findAll($entityName) {
@@ -67,11 +95,14 @@ class Query {
 
     /**
      * Finds entities by a set of criteria.
-     *
-     * @param array      $criteria
-     * @param array|null $orderBy
-     * @param int|null   $limit
-     * @param int|null   $offset
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $entityName
+     * @param array  $criteria
+     * @param array  $orderBy ,default is null
+     * @param int    $limit ,default is null
+     * @param int    $offset ,default is null
      *
      * @return array The objects.
      */
@@ -81,16 +112,32 @@ class Query {
 
     /**
      * Finds a single entity by a set of criteria.
-     *
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param string $entityName
      * @param array $criteria
-     * @param array|null $orderBy
+     * @param array $orderBy ,default is null
      *
-     * @return object|null The entity instance or NULL if the entity can not be found.
+     * @return mixed object|null The entity instance or NULL if the entity can not be found.
      */
     public function findOneBy($entityName, array $criteria, array $orderBy = null) {
         return $this->setEntity($entityName)->entityRepository->findOneBy($criteria, $orderBy);
     }
 
+    /**
+     * Filter entities by a set of criteria.
+     * Only count of entities can be retrieved
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @uses Criteria
+     * 
+     * @param string $entityName
+     * @param mixed $criteria Criteria instance ,default is bool false
+     * @param bool $countFlag ,default is bool false
+     * @return type
+     */
     public function filter($entityName, $criteria = false, $countFlag = false) {
         if (!$criteria instanceof Criteria) {
             $criteria = new Criteria();
@@ -102,6 +149,18 @@ class Query {
         return $return;
     }
 
+    /**
+     * Save entity in database
+     * If entity's association hold id not actual object,
+     * Then find that object to set the corresponding property with it
+     * If data is passed to method, then if exchangeArray method exists in entity,
+     * It will be called with the passed data as a parameter
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param mixed $entity entity object to be persisted
+     * @param array $data ,default is empty array
+     */
     public function save($entity, $data = array()) {
         // if association hold id not actual object, 
         // then find that object to set the corresponding property with it
@@ -123,14 +182,21 @@ class Query {
                 }
             }
         }
-        
+
         if (!empty($data) && method_exists($entity, 'exchangeArray')) {
             $entity->exchangeArray($data);
         }
         $this->entityManager->persist($entity);
         $this->entityManager->flush($entity);
     }
-    
+
+    /**
+     * Remove entity from database
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @param mixed $entity entity object to be removed
+     */
     public function remove($entity) {
         $this->entityManager->remove($entity);
         $this->entityManager->flush($entity);

@@ -2,6 +2,10 @@
 
 namespace Utilities\Console;
 
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Command\Command;
+
 /**
  * A test command
  *
@@ -12,17 +16,18 @@ namespace Utilities\Console;
  *
  * New commands need to be added to the list in <root>/cli-commands.php
  * before they will be included in the command setup.
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * 
+ * @package utilities
+ * @subpackage console
  */
-
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Command\Command;
-
 class TestCommand extends Command
 {
 
     /**
+     * Configure command properties
      * {@inheritdoc}
+     * @access protected
      */
     protected function configure()
     {
@@ -36,13 +41,12 @@ EOT
     }
 
     /**
+     * Execute command
      * {@inheritdoc}
+     * @access protected
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /* @var $entityManager \Doctrine\ORM\EntityManager */
-        $entityManager = $this->getHelper('em')->getEntityManager();
-
         // do nothing so far - just an example of how to structure a command
         $output->writeln('TEST');
    }

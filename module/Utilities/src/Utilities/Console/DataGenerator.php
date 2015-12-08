@@ -2,6 +2,11 @@
 
 namespace Utilities\Console;
 
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Command\Command;
+use Nelmio\Alice\Loader\Yaml;
+
 /**
  * A command that uses the Alice data-generator to generate testing data 
  * 
@@ -11,17 +16,18 @@ namespace Utilities\Console;
  * 
  * Note : please make use there is no 'CS Departement' in the department 
  * database table, so as not to violate any constrains
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * 
+ * @package utilities
+ * @subpackage console
  */
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Command\Command;
-
 class DataGenerator extends Command
 {
 
     /**
+     * Configure command properties
      * {@inheritdoc}
+     * @access protected
      */
     protected function configure()
     {
@@ -35,14 +41,18 @@ EOT
     }
 
     /**
+     * Load fixtures in database
      * {@inheritdoc}
+     * 
+     * @uses Yaml
+     * @access protected
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /* @var $entityManager \Doctrine\ORM\EntityManager */
         $entityManager = $this->getHelper('em')->getEntityManager();
 
-        $loader = new \Nelmio\Alice\Loader\Yaml();
+        $loader = new Yaml();
 
         $branches = $loader->load('data/fixtures/BranchFixtures.yml');
         $this->insertObjectsInDatabase($entityManager, $branches);
@@ -138,6 +148,14 @@ EOT
         $output->writeln('Data Added');
     }
 
+    /**
+     * Persist objects in database
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access private
+     * @param Doctrine\Common\Persistence\ObjectManager $entityManager
+     * @param array $objectsToInsert
+     */
     private function insertObjectsInDatabase($entityManager, $objectsToInsert)
     {
         foreach ($objectsToInsert as $object) {
