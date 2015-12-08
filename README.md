@@ -29,9 +29,9 @@ To access the vagrant environment from the terminal, change to the vagrant direc
     cd /vagrant
     . deploy.sh
 
-### run acceptance tests
+### Run acceptance tests
     cd /vagrant
-    ./bin/behat
+    bin/behat
 
 ### View the site:
 
