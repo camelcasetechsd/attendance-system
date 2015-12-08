@@ -4,7 +4,6 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.3.3",
-        "zendframework/zftool": "dev-master",
         "widmogrod/zf2-mustache-module": "dev-master",
         "doctrine/doctrine-orm-module": "0.*",
         "nelmio/alice": "1.7.2",
@@ -12,8 +11,12 @@
         "behat/mink": "1.5.0",
         "behat/mink-extension": "*",
         "behat/mink-goutte-driver": "1.0.9",
-        "behat/mink-selenium2-driver": "1.1.1",
-        "phpunit/phpunit": "4.7.x"
+        "behat/mink-selenium2-driver": "1.1.1"
+    },
+    "require-dev": {
+        "zendframework/zftool": "dev-master",
+        "phpunit/phpunit": "4.7.x",
+        "apigen/apigen": "2.8.1"
     },
     "authors": [
         {

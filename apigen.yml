@@ -1,0 +1,20 @@
+## YAML Template.
+source:
+    - ./module
+    - ./features
+destination: ./doc
+title: attendance
+charset: UTF-8 
+accessLevels:
+    - public
+    - protected
+    - private 
+internal: yes 
+php: yes 
+tree: yes 
+deprecated: yes 
+todo: yes 
+download: no 
+sourceCode: yes 
+colors: yes 
+updateCheck: yes
