@@ -211,7 +211,7 @@ class User {
      * Save user photo
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
-     * @access public
+     * @access protected
      * @uses Http
      * 
      * @return string new attachment file name
@@ -232,7 +232,7 @@ class User {
         $name = $upload->getFileName('photo');
         $extention = pathinfo($name, PATHINFO_EXTENSION);
         //get random new name
-        $newName = $this->random->getRandomName();
+        $newName = $this->random->getRandomUniqueName();
 
         rename($name, 'public/upload/images/' . $newName . '.' . $extention);
 

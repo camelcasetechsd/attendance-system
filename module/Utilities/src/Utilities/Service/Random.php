@@ -2,16 +2,27 @@
 
 namespace Utilities\Service;
 
+/**
+ * Random
+ * 
+ * Generate random values
+ * 
+ * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+ * @package utilities
+ * @subpackage service
+ */
 class Random {
 
-    public function getRandomName() {
-        $seed = str_split('abcdefghijklmnopqrstuvwxyz'
-                . 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-                . '0123456789'); // and any other characters
-        shuffle($seed); // probably optional since array_is randomized; this may be redundant
-        $cid = substr(implode('', $seed), 1, 10) . uniqid();
-
-
+    /**
+     * Get random and unique value
+     * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
+     * 
+     * @access public
+     * @return string random and almost unique value
+     */
+    public function getRandomUniqueName() {
+        $uniqid = uniqid(mt_rand(), true);
+        $cid = str_replace('.', '',$uniqid.md5($uniqid));
         return $cid;
     }
 

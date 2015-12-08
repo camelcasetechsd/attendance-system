@@ -95,7 +95,7 @@ class Vacation {
      * Save vacation attachment
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
-     * @access public
+     * @access protected
      * @uses Http
      * 
      * @return string new attachment file name
@@ -124,7 +124,7 @@ class Vacation {
         } else {
             $extention = pathinfo($name, PATHINFO_EXTENSION);
             //get random new name
-            $newName = $this->random->getRandomName();
+            $newName = $this->random->getRandomUniqueName();
 
             rename($name, 'public/upload/vacation_attachments/' . $newName . '.' . $extention);
 

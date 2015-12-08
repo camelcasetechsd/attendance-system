@@ -52,7 +52,7 @@ class Acl extends ZendAcl {
      * Adds Roles to ACL
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
-     * @access public
+     * @access protected
      * @uses Role
      * 
      * @param array $roles
@@ -72,7 +72,7 @@ class Acl extends ZendAcl {
      * Adds Resources to ACL
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
-     * @access public
+     * @access protected
      * @uses Resource
      * 
      * @param $acl

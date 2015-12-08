@@ -186,7 +186,7 @@ class Adapter implements AdapterInterface
      * with all required pieces of information.
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
-     * @access public
+     * @access protected
      * @throws RuntimeException - in the event that setup was not done properly
      * @return true
      */
@@ -227,7 +227,7 @@ class Adapter implements AdapterInterface
      * that matched the identity provided to this adapter.
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
-     * @access public
+     * @access protected
      * @param array $resultIdentities
      * @return Result
      */
@@ -265,7 +265,7 @@ class Adapter implements AdapterInterface
      * from the information that has been collected during the authenticate() attempt.
      * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
      * 
-     * @access public
+     * @access protected
      * @uses Result
      * 
      * @return Result
