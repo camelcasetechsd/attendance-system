@@ -8,11 +8,6 @@ use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
-define('APPLICATION_ENV', 'testing');
-define('APPLICATION_PATH', dirname(__FILE__) . '/../../application');
-
 require_once dirname(__FILE__) . '/../application/ControllerTestCase.php';
 
 class FeatureContext extends MinkContext
