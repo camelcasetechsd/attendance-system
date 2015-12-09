@@ -18,6 +18,9 @@
         "phpunit/phpunit": "4.7.x",
         "apigen/apigen": "2.8.1"
     },
+    "config":{
+        "bin-dir": "bin/"
+    },
     "authors": [
         {
             "name": "ahmedelbougha",

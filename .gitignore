@@ -18,4 +18,5 @@ public/concat/
 public/fonts/
 *~
 /node_modules
-data/mustache/
+data/mustache/*
+!data/mustache/.gitignore
