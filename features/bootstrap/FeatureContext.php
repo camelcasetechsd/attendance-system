@@ -7,7 +7,9 @@ use Behat\Behat\Context\ClosuredContextInterface,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\MinkContext;
-
+if (!ini_get('date.timezone')) {
+    date_default_timezone_set("UTC");
+}
 require_once dirname(__FILE__) . '/../application/ControllerTestCase.php';
 
 class FeatureContext extends MinkContext
