@@ -12,7 +12,9 @@ vendor/
 /logs
 composer.lock
 public/upload/images/*
+!public/upload/images/.gitignore
 public/upload/vacation_attachments/*
+!public/upload/vacation_attachments/.gitignore
 public/bower_components/
 public/concat/
 public/fonts/
