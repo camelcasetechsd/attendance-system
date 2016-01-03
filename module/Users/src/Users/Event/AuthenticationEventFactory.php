@@ -13,8 +13,6 @@ use Users\Event\AuthenticationEvent;
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * 
- * @property AclClass $_aclClass
- * 
  * @package users
  * @subpackage event
  */

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="generator" content="ApiGen 2.8.0">
 
 	<title>Class Users\Auth\Adapter | attendance</title>
 
-	<link rel="stylesheet" href="resources/style.css?3901564645">
+	<script type="text/javascript" src="resources/combined.js?3770084987"></script>
+	<script type="text/javascript" src="elementlist.js?1833213673"></script>
+	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360">
 
 </head>
 
@@ -181,7 +183,7 @@
 	
 <p>Auth Adapter</p>
 
-<p>Prepare Acl service factory</p>
+<p>Prepare Authentication needed business</p>
 
 	</div>
 
@@ -218,7 +220,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 
 
-	<table class="summary methods" id="methods">
+	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
 	<tr data-order="__construct" id="___construct">
 
@@ -248,11 +250,11 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$query</var></dt>
-					<dd>,default is null</dd>
+					<dd><code><code><a href="class-Utilities.Service.Query.Query.html">Utilities\Service\Query\Query</a></code></code><br>$query ,default is null</dd>
 					<dt><var>$identityColumn</var></dt>
-					<dd>,default is null</dd>
+					<dd><code>string</code><br>$identityColumn ,default is null</dd>
 					<dt><var>$credentialColumn</var></dt>
-					<dd>,default is null</dd>
+					<dd><code>string</code><br>$credentialColumn ,default is null</dd>
 				</dl></div>
 
 
@@ -295,7 +297,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$query</var></dt>
-					<dd></dd>
+					<dd><code><code><a href="class-Utilities.Service.Query.Query.html">Utilities\Service\Query\Query</a></code></code><br>$query</dd>
 				</dl></div>
 
 
@@ -338,7 +340,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$identityColumn</var></dt>
-					<dd></dd>
+					<dd><code>string</code><br>$identityColumn</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -385,7 +387,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$credentialColumn</var></dt>
-					<dd></dd>
+					<dd><code>string</code><br>$credentialColumn</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -432,7 +434,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$value</var></dt>
-					<dd></dd>
+					<dd><code>string</code><br>$value</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -479,7 +481,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$credential</var></dt>
-					<dd></dd>
+					<dd><code>string</code><br>$credential</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -532,7 +534,7 @@ find a record matching the provided identity.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>Zend\Authentication\Result</code><br>Result<br>
+					<code>Zend\Authentication\Result</code><br>
 				</div>
 
 				<h4>Throws</h4>
@@ -580,7 +582,7 @@ setup properly with all required pieces of information.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>true</code><br>true<br>
+					<code>true</code><br>
 				</div>
 
 				<h4>Throws</h4>
@@ -628,12 +630,12 @@ the identity provided to this adapter.</p>
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$resultIdentities</var></dt>
-					<dd></dd>
+					<dd><code>array</code><br>$resultIdentities</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>Zend\Authentication\Result</code><br>Result<br>
+					<code>Zend\Authentication\Result</code><br>
 				</div>
 
 
@@ -677,7 +679,7 @@ the authenticate() attempt.</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code>Zend\Authentication\Result</code><br>Result<br>
+					<code>Zend\Authentication\Result</code><br>
 				</div>
 
 
@@ -708,7 +710,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 
 
-	<table class="summary properties" id="properties">
+	<table class="summary" id="properties">
 	<caption>Properties summary</caption>
 	<tr data-order="_query" id="$_query">
 		<td class="attributes"><code>
@@ -718,6 +720,10 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 		<td class="name">
 				<a href="source-class-Users.Auth.Adapter.html#29-32" title="Go to source code"><var>$_query</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$_query" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -727,8 +733,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 				
 
 			</div>
-		</td>
-		<td class="value"><div><a href="#$_query" class="anchor">#</a><code><span class="php-keyword1">null</span></code></div></td>
+		</div></td>
 	</tr>
 	<tr data-order="_identityColumn" id="$_identityColumn">
 		<td class="attributes"><code>
@@ -738,6 +743,10 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 		<td class="name">
 				<a href="source-class-Users.Auth.Adapter.html#34-39" title="Go to source code"><var>$_identityColumn</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$_identityColumn" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -751,8 +760,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 
 			</div>
-		</td>
-		<td class="value"><div><a href="#$_identityColumn" class="anchor">#</a><code><span class="php-keyword1">null</span></code></div></td>
+		</div></td>
 	</tr>
 	<tr data-order="_credentialColumn" id="$_credentialColumn">
 		<td class="attributes"><code>
@@ -762,6 +770,10 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 		<td class="name">
 				<a href="source-class-Users.Auth.Adapter.html#41-46" title="Go to source code"><var>$_credentialColumn</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$_credentialColumn" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -775,8 +787,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 
 			</div>
-		</td>
-		<td class="value"><div><a href="#$_credentialColumn" class="anchor">#</a><code><span class="php-keyword1">null</span></code></div></td>
+		</div></td>
 	</tr>
 	<tr data-order="_identity" id="$_identity">
 		<td class="attributes"><code>
@@ -786,6 +797,10 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 		<td class="name">
 				<a href="source-class-Users.Auth.Adapter.html#48-53" title="Go to source code"><var>$_identity</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$_identity" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -799,8 +814,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 
 			</div>
-		</td>
-		<td class="value"><div><a href="#$_identity" class="anchor">#</a><code><span class="php-keyword1">null</span></code></div></td>
+		</div></td>
 	</tr>
 	<tr data-order="_credential" id="$_credential">
 		<td class="attributes"><code>
@@ -810,6 +824,10 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 		<td class="name">
 				<a href="source-class-Users.Auth.Adapter.html#55-60" title="Go to source code"><var>$_credential</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$_credential" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -823,8 +841,7 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 
 			</div>
-		</td>
-		<td class="value"><div><a href="#$_credential" class="anchor">#</a><code><span class="php-keyword1">null</span></code></div></td>
+		</div></td>
 	</tr>
 	<tr data-order="_authenticateResultInfo" id="$_authenticateResultInfo">
 		<td class="attributes"><code>
@@ -834,6 +851,10 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 		<td class="name">
 				<a href="source-class-Users.Auth.Adapter.html#62-67" title="Go to source code"><var>$_authenticateResultInfo</var></a>
+		</td>
+		<td class="value"><code><span class="php-keyword1">null</span></code></td>
+		<td class="description"><div>
+			<a href="#$_authenticateResultInfo" class="anchor">#</a>
 
 			<div class="description short">
 				
@@ -847,154 +868,12 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 
 
 			</div>
-		</td>
-		<td class="value"><div><a href="#$_authenticateResultInfo" class="anchor">#</a><code><span class="php-keyword1">null</span></code></div></td>
+		</div></td>
 	</tr>
 	</table>
 
 
 
-	<table class="summary properties" id="magicProperties">
-	<caption>Magic properties summary</caption>
-	<tr data-order="_query" id="m$_query">
-		<td class="attributes"><code>
-			public  
-			<code><a href="class-Utilities.Service.Query.Query.html">Utilities\Service\Query\Query</a></code>
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Users.Auth.Adapter.html#16" title="Go to source code"><var>$_query</var></a>
-
-			<div class="description short">
-				
-<p>,default is null</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>,default is null</p>
-
-
-			</div>
-		</td>
-	</tr>
-	<tr data-order="_identityColumn" id="m$_identityColumn">
-		<td class="attributes"><code>
-			public  
-			string
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Users.Auth.Adapter.html#17" title="Go to source code"><var>$_identityColumn</var></a>
-
-			<div class="description short">
-				
-<p>,default is null</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>,default is null</p>
-
-
-			</div>
-		</td>
-	</tr>
-	<tr data-order="_credentialColumn" id="m$_credentialColumn">
-		<td class="attributes"><code>
-			public  
-			string
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Users.Auth.Adapter.html#18" title="Go to source code"><var>$_credentialColumn</var></a>
-
-			<div class="description short">
-				
-<p>,default is null</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>,default is null</p>
-
-
-			</div>
-		</td>
-	</tr>
-	<tr data-order="_identity" id="m$_identity">
-		<td class="attributes"><code>
-			public  
-			string
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Users.Auth.Adapter.html#19" title="Go to source code"><var>$_identity</var></a>
-
-			<div class="description short">
-				
-<p>,default is null</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>,default is null</p>
-
-
-			</div>
-		</td>
-	</tr>
-	<tr data-order="_credential" id="m$_credential">
-		<td class="attributes"><code>
-			public  
-			string
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Users.Auth.Adapter.html#20" title="Go to source code"><var>$_credential</var></a>
-
-			<div class="description short">
-				
-<p>,default is null</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>,default is null</p>
-
-
-			</div>
-		</td>
-	</tr>
-	<tr data-order="_authenticateResultInfo" id="m$_authenticateResultInfo">
-		<td class="attributes"><code>
-			public  
-			array
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Users.Auth.Adapter.html#21" title="Go to source code"><var>$_authenticateResultInfo</var></a>
-
-			<div class="description short">
-				
-<p>,default is null</p>
-
-			</div>
-
-			<div class="description detailed hidden">
-				
-<p>,default is null</p>
-
-
-			</div>
-		</td>
-	</tr>
-	</table>
 
 
 
@@ -1005,7 +884,5 @@ href="mailto:mohamed.labib&#64;camelcasetech.com">mohamed.labib&#64;<!-- -->came
 	</div>
 </div>
 </div>
-<script src="resources/combined.js?1212040225"></script>
-<script src="elementlist.js?1833213673"></script>
 </body>
 </html>

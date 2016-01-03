@@ -10,7 +10,7 @@ use Zend\Authentication\Result;
 /**
  * Auth Adapter
  * 
- * Prepare Acl service factory
+ * Prepare Authentication needed business
  * 
  * @author Mohamed Labib <mohamed.labib@camelcasetech.com>
  * @property Utilities\Service\Query\Query $_query ,default is null
