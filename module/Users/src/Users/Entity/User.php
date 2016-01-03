@@ -653,10 +653,10 @@ class User {
             $this->setRole($data["role"]);
         }
         if(array_key_exists('status', $data)){
-            $this->setRole($data["status"]);
+            $this->setStatus($data["status"]);
         }
         if(array_key_exists('totalWorkingHoursThisMonth', $data)){
-            $this->setRole($data["totalWorkingHoursThisMonth"]);
+            $this->setTotalWorkingHoursThisMonth($data["totalWorkingHoursThisMonth"]);
         }
         $this->setBranch($data["branch"])
                 ->setDateOfBirth($data["dateOfBirth"])
